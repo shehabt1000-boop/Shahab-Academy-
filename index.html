@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <title>Shehab Academy - شات متقدم</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {font-family: Arial, sans-serif; background:#f0f2f5; margin:0; padding:20px; color:#111; display: flex; justify-content: center; height: 100vh;}
+    #app {width: 900px; background: #fff; border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.06); display: flex; flex-direction: row; height: 600px;}
+    #sidebar {width: 250px; border-left: 1px solid #ddd; padding: 16px; overflow-y: auto; background: #fafafa;}
+    #sidebar h3 {margin-top: 0;}
+    #usersList div {padding: 6px 4px; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 10px;}
+    .avatar {width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #ccc;}
+    .online-dot {width: 10px; height: 10px; background: #2ecc71; border-radius: 50%; margin-left: auto;}
+    #main {flex: 1; display: flex; flex-direction: column;}
+    #chatHeader {padding: 12px 16px; border-bottom: 1px solid #ddd; font-weight: bold; font-size: 18px; display: flex; justify-content: space-between; align-items: center;}
+    #messages {flex: 1; overflow-y: auto; padding: 12px; background: #f7f8fb;}
+    .msg {margin-bottom: 10px; padding: 8px; background: #fff; border-radius: 6px; word-break: break-word; display: flex; align-items: flex-start; gap: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);}
+    .msg .avatar {flex-shrink: 0;}
+    .msgContent {flex: 1;}
+    .msgHeader {display: flex; justify-content: space-between; align-items: center;}
+    .msgUser {font-weight: bold;}
+    .msgTime {font-size: 12px; color: #666; margin-left: 8px;}
+    .msgText {margin-top: 4px; white-space: pre-wrap;}
+    .actions {margin-left: 10px; display: flex; gap: 6px;}
+    .action-btn {cursor: pointer; font-size: 14px; color: #2d8cff; user-select: none;}
+    .action-btn:hover {text-decoration: underline;}
+    #inputBar {display: flex; gap: 8px; padding: 12px 16px; border-top: 1px solid #ddd;}
+    #messageInput {flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 6px; resize: none;}
+    button {padding: 8px 12px; border-radius: 6px; border: none; background: #2d8cff; color: #fff; cursor: pointer;}
+    #loginScreen {width: 100%; max-width: 400px; margin: auto; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.06);}
+    #loginScreen input, #loginScreen select, #loginScreen button {width: 100%; margin: 8px 0; padding: 8px; border-radius: 6px; border: 1px solid #ddd; box-sizing: border-box;}
+    #loginMsg {color: #d00; margin-bottom: 8px;}
+  </style>
+</head>
+<body>
+
+<div id="loginScreen">
+  <h2>تسجيل دخول Shehab Academy</h2>
+  <input id="username" placeholder="اكتب اسمك" autocomplete="off" />
+  <select id="gender">
+    <option value="" disabled selected>اختر جنسك</option>
+    <option value="male">ذكر</option>
+    <option value="female">أنثى</option>
+  </select>
+  <button id="loginBtn">دخول الشات</button>
+  <div id="loginMsg"></div>
+</div>
+
+<div id="app" style="display:none;">
+  <div id="main">
+    <div id="chatHeader">
+      <div>Shehab Academy - الشات</div>
+      <button id="logoutBtn" style="background:#e74c3c;">تسجيل خروج</button>
+    </div>
+    <div id="messages"></div>
+    <div id="inputBar">
+      <textarea id="messageInput" placeholder="اكتب رسالة..." rows="2"></textarea>
+      <button id="sendBtn">إرسال</button>
+    </div>
+  </div>
+  <div id="sidebar">
+    <h3>المتصلون</h3>
+    <div id="usersList"></div>
+  </div>
+</div>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCmnF8hZ6WxvTtCuMUVdwBJsSC89ReDFTQ",
+    authDomain: "chat-demo-1f31f.firebaseapp.com",
+    databaseURL: "https://chat-demo-1f31f-default-rtdb.firebaseio.com",
+    projectId: "chat-demo-1f31f",
+    storageBucket: "chat-demo-1f31f.appspot.com",
+    messagingSenderId: "875733022113",
+    appId: "1:875733022113:web:a9d7d0bf77e4b3f366b5ee"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+
+  const loginScreen = document.getElementById('loginScreen');
+  const app = document.getElementById('app');
+
+  const usernameInput = document.getElementById('username');
+  const genderSelect = document.getElementById('gender');
+  const loginBtn = document.getElementById('loginBtn');
+  const loginMsg = document.getElementById('loginMsg');
+
+  const messagesDiv = document.getElementById('messages');
+  const messageInput = document.getElementById('messageInput');
+  const sendBtn = document.getElementById('sendBtn');
+  const logoutBtn = document.getElementById('logoutBtn');
+
+  const usersListDiv = document.getElementById('usersList');
+
+  let currentUser = null;
+  let currentUserKey = null; // مفتاح المستخدم في قاعدة البيانات
+
+  loginBtn.addEventListener('click', () => {
+    const name = usernameInput.value.trim();
+    const gender = genderSelect.value;
+    if (!name) {
+      loginMsg.textContent = 'الرجاء كتابة اسم المستخدم';
+      return;
+    }
+    if (!gender) {
+      loginMsg.textContent = 'الرجاء اختيار الجنس';
+      return;
+    }
+    loginMsg.textContent = '';
+
+    currentUser = { name, gender };
+    loginScreen.style.display = 'none';
+    app.style.display = 'flex';
+
+    registerUser();
+    listenUsers();
+    listenMessages();
+  });
+
+  logoutBtn.addEventListener('click', () => {
+    if (confirm('هل تريد تسجيل الخروج؟')) {
+      if(currentUserKey){
+        // إزالة المستخدم من قائمة المتصلين عند الخروج
+        db.ref('users/' + currentUserKey).remove();
+      }
+      currentUser = null;
+      currentUserKey = null;
+      loginScreen.style.display = 'block';
+      app.style.display = 'none';
+      messagesDiv.innerHTML = '';
+      usersListDiv.innerHTML = '';
+      usernameInput.value = '';
+      genderSelect.value = '';
+      db.ref('messages').off();
+      db.ref('users').off();
+    }
+  });
+
+  sendBtn.addEventListener('click', sendMessage);
+  messageInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+
+  function sendMessage() {
+    const text = messageInput.value.trim();
+    if (!text) return;
+    const message = {
+      username: currentUser.name,
+      gender: currentUser.gender,
+      message: text,
+      timestamp: Date.now()
+    };
+    db.ref('messages').push(message);
+    messageInput.value = '';
+    scrollBottom();
+  }
+
+  function listenMessages() {
+    messagesDiv.innerHTML = '';
+    db.ref('messages').limitToLast(100).off();
+    db.ref('messages').limitToLast(100).on('child_added', snapshot => {
+      const msg = snapshot.val();
+      const id = snapshot.key;
+      addMessage(msg, id);
+      scrollBottom();
+    });
+
+    // تحديث الرسائل المعدلة
+    db.ref('messages').on('child_changed', snapshot => {
+      const msg = snapshot.val();
+      const id = snapshot.key;
+      updateMessage(msg, id);
+    });
+
+    // حذف الرسائل
+    db.ref('messages').on('child_removed', snapshot => {
+      const id = snapshot.key;
+      removeMessage(id);
+    });
+  }
+
+  function addMessage(m, id) {
+    if(document.getElementById('msg-' + id)) return;
+
+    const msgEl = document.createElement('div');
+    msgEl.className = 'msg';
+    msgEl.id = 'msg-' + id;
+
+    let avatarUrl = '';
+    if(m.gender === 'female') {
+      avatarUrl = 'https://randomuser.me/api/portraits/women/' + (hashCode(m.username) % 100) + '.jpg';
+    } else {
+      avatarUrl = 'https://randomuser.me/api/portraits/men/' + (hashCode(m.username) % 100) + '.jpg';
+    }
+
+    const img = document.createElement('img');
+    img.className = 'avatar';
+    img.src = avatarUrl;
+    img.alt = m.username;
+
+    const msgContent = document.createElement('div');
+    msgContent.className = 'msgContent';
+
+    const msgHeader = document.createElement('div');
+    msgHeader.className = 'msgHeader';
+
+    const userSpan = document.createElement('span');
+    userSpan.className = 'msgUser';
+    userSpan.textContent = m.username;
+
+    const timeSpan = document.createElement('span');
+    timeSpan.className = 'msgTime';
+    timeSpan.textContent = new Date(m.timestamp).toLocaleTimeString('ar-EG');
+
+    msgHeader.appendChild(userSpan);
+    msgHeader.appendChild(timeSpan);
+
+    const msgText = document.createElement('div');
+    msgText.className = 'msgText';
+    msgText.textContent = m.message;
+
+    msgContent.appendChild(msgHeader);
+    msgContent.appendChild(msgText);
+
+    msgEl.appendChild(img);
+    msgEl.appendChild(msgContent);
+
+    messagesDiv.appendChild(msgEl);
+  }
+
+  function updateMessage(m, id) {
+    const msgEl = document.getElementById('msg-' + id);
+    if(!msgEl) return;
+    const msgText = msgEl.querySelector('.msgText');
+    if(msgText){
+      msgText.textContent = m.message;
+    }
+  }
+
+  function removeMessage(id) {
+    const msgEl = document.getElementById('msg-' + id);
+    if(msgEl){
+      msgEl.remove();
+    }
+  }
+
+  function registerUser() {
+    const userRef = db.ref('users').push();
+    currentUserKey = userRef.key;
+
+    userRef.set({
+      name: currentUser.name,
+      gender: currentUser.gender,
+      online: true,
+      lastActive: Date.now()
+    });
+
+    window.addEventListener('beforeunload', () => {
+      userRef.remove();
+    });
+  }
+
+  function listenUsers() {
+    usersListDiv.innerHTML = '';
+
+    db.ref('users').on('value', snapshot => {
+      usersListDiv.innerHTML = '';
+
+      const users = snapshot.val() || {};
+      Object.entries(users).forEach(([key, user]) => {
+        const userDiv = document.createElement('div');
+
+        let avatarUrl = '';
+        if(user.gender === 'female') {
+          avatarUrl = 'https://randomuser.me/api/portraits/women/' + (hashCode(user.name) % 100) + '.jpg';
+        } else {
+          avatarUrl = 'https://randomuser.me/api/portraits/men/' + (hashCode(user.name) % 100) + '.jpg';
+        }
+
+        const img = document.createElement('img');
+        img.className = 'avatar';
+        img.src = avatarUrl;
+        img.alt = user.name;
+
+        const nameSpan = document.createElement('span');
+        nameSpan.textContent = user.name;
+
+        userDiv.appendChild(img);
+        userDiv.appendChild(nameSpan);
+
+        if(user.online){
+          const onlineDot = document.createElement('div');
+          onlineDot.className = 'online-dot';
+          onlineDot.title = 'متصل الآن';
+          userDiv.appendChild(onlineDot);
+        }
+
+        usersListDiv.appendChild(userDiv);
+      });
+    });
+  }
+
+  function hashCode(str) {
+    let hash = 0;
+    for(let i=0; i < str.length; i++){
+      hash = str.charCodeAt(i) + ((hash << 5) - hash);
+      hash = hash & hash;
+    }
+    return Math.abs(hash);
+  }
+
+  function scrollBottom() {
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  }
+</script>
+
+</body>
+  </html>
