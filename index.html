@@ -368,6 +368,24 @@
             overflow-y: auto;
             flex-grow: 1;
             padding-bottom: 10px; /* Space for the fixed footer */
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) var(--secondary-color);
+        }
+
+        /* WebKit Scrollbar (Chrome, Safari) */
+        .modal-body::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .modal-body::-webkit-scrollbar-track {
+            background: var(--secondary-color);
+            border-radius: 10px;
+        }
+
+        .modal-body::-webkit-scrollbar-thumb {
+            background-color: var(--primary-color);
+            border-radius: 10px;
+            border: 2px solid var(--secondary-color);
         }
         
         @keyframes fadeIn {
@@ -381,23 +399,39 @@
             }
         }
 
-        .settings-close-btn {
-            color: #d32f2f;
+        .settings-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             position: sticky;
             top: 0;
-            left: 15px;
+            background-color: var(--card-bg);
+            z-index: 10;
+            padding: 0 0 10px 0;
+        }
+
+        .settings-close-btn {
+            color: #d32f2f;
             font-size: 28px;
             font-weight: bold;
             cursor: pointer;
             transition: color 0.2s ease;
-            background-color: var(--card-bg);
+            background: transparent;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 1rem;
             padding: 5px;
-            border-radius: 5px;
-            z-index: 10;
         }
 
         .settings-close-btn:hover {
             color: #ff5252;
+        }
+        
+        .settings-close-btn span {
+            font-size: 24px;
+            line-height: 1;
         }
 
         .settings-title {
@@ -406,6 +440,12 @@
             border-bottom: 2px solid var(--primary-color);
             padding-bottom: 8px;
             margin-bottom: 15px;
+            width: 100%;
+            text-align: right;
+        }
+        .settings-title.modal-header-title {
+            border-bottom: none;
+            margin-bottom: 0;
         }
 
         .setting-item {
@@ -493,6 +533,24 @@
             opacity: 1;
             visibility: visible;
         }
+        
+        .modal-toast {
+            position: relative;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-toast.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
 
         /* Scroll-to-Top Button */
         .scroll-to-top {
@@ -598,6 +656,26 @@
             background-color: var(--card-bg);
             padding-top: 10px;
             z-index: 10;
+        }
+
+        .modal-scroll-indicator {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 0.8rem;
+            margin-top: 5px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
         }
         
         /* Responsive Design */
@@ -709,12 +787,16 @@
 
     <div id="settingsModal" class="settings-modal">
         <div class="settings-modal-content">
-            <span class="settings-close-btn">&times;</span>
-            <div id="toastMessage" class="toast-message"></div>
+            <div class="settings-header">
+                <h3 class="settings-title modal-header-title">الإعدادات</h3>
+                <button class="settings-close-btn">&times; إغلاق</button>
+            </div>
             
+            <div id="modal-toast" class="modal-toast"></div>
+            
+            <p class="modal-scroll-indicator">اسحب للأسفل لعرض المزيد <i class="fas fa-angle-down"></i></p>
+
             <div class="modal-body">
-                <h3 class="settings-title">الإعدادات</h3>
-            
                 <div class="setting-item">
                     <label for="brightness-slider" class="setting-label">سطوع الموقع:</label>
                     <div class="setting-range-group">
@@ -792,9 +874,11 @@
         const darkThemeGrid = document.getElementById('dark-theme-grid');
         const saveSettingsBtn = document.getElementById('save-settings-btn');
         const resetSettingsBtn = document.getElementById('reset-settings-btn');
-        const toastMessage = document.getElementById('toastMessage');
+        const modalToast = document.getElementById('modal-toast');
         const searchInput = document.getElementById('searchInput');
         const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+        const modalScrollIndicator = document.querySelector('.modal-scroll-indicator');
+        const modalBody = document.querySelector('.modal-body');
         
         const fontSizeButtons = document.querySelectorAll('.font-size-btn');
         
@@ -962,15 +1046,18 @@
             selectedSettings = JSON.parse(JSON.stringify(defaultSettings)); // Deep copy to avoid reference issues
             localStorage.removeItem('user-settings');
             applySettings();
-            showToast('تم إعادة ضبط الإعدادات!');
-            settingsModal.classList.remove('active');
+            showToast('تم إعادة ضبط الإعدادات!', 'reset');
+            setTimeout(() => {
+                settingsModal.classList.remove('active');
+            }, 1000);
         }
 
-        function showToast(message) {
-            toastMessage.textContent = message;
-            toastMessage.classList.add('show');
+        function showToast(message, type = 'save') {
+            modalToast.textContent = message;
+            modalToast.style.backgroundColor = type === 'save' ? '#4CAF50' : '#f44336';
+            modalToast.classList.add('show');
             setTimeout(() => {
-                toastMessage.classList.remove('show');
+                modalToast.classList.remove('show');
             }, 3000);
         }
 
@@ -1148,7 +1235,6 @@
             selectedSettings.customColors[currentTheme].text = e.target.value;
             applySettings();
         });
-
 
         saveSettingsBtn.addEventListener('click', saveSettings);
         resetSettingsBtn.addEventListener('click', resetSettings);
