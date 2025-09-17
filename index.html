@@ -8,7 +8,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
-        /* Default body styles (Theme 3) */
+        /* Default body styles (Theme 1) */
         body {
             --transition-speed: 0.2s;
             font-family: 'Cairo', sans-serif;
@@ -18,57 +18,37 @@
             min-height: 100vh;
             transition: background-color var(--transition-speed), color var(--transition-speed);
             
-            /* Theme 3 Default Light Mode */
-            --primary-color: #e51280;
-            --secondary-color: #f7f0f4;
-            --text-color: #2c2c2c;
-            --link-color: #e51280;
-            --link-hover-color: #cc0b72;
-            --card-bg: #ffffff;
-            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-        }
-        body.dark-mode {
-            /* Theme 3 Dark Mode */
-            --primary-color: #ff88c0;
-            --secondary-color: #1a1a20;
-            --text-color: #f0f0f0;
-            --link-color: #ff88c0;
-            --link-hover-color: #ffb8d9;
-            --card-bg: #282830;
-            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
-        }
-
-        /* --- Theme definitions --- */
-        
-        /* Theme 1 */
-        body.theme-1 {
+            /* Theme 1 Default Light Mode */
             --primary-color: #004c99;
-            --secondary-color: #e6e8eb;
+            --secondary-color: #f0f0f0; /* فاتح */
             --text-color: #2b2b2b;
             --link-color: #004c99;
             --link-hover-color: #003a7a;
-            --card-bg: #f5f5f5;
-            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            --card-bg: #ffffff;
+            --box-shadow: none;
         }
-        body.theme-1.dark-mode {
+        body.dark-mode {
+            /* Theme 1 Dark Mode */
             --primary-color: #799dcf;
             --secondary-color: #151a22;
             --text-color: #f1f3f6;
             --link-color: #799dcf;
             --link-hover-color: #a4c4f0;
             --card-bg: #262d3a;
-            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            --box-shadow: none;
         }
 
+        /* --- Theme definitions --- */
+        
         /* Theme 2 */
         body.theme-2 {
             --primary-color: #487a77;
-            --secondary-color: #e7ebf0;
+            --secondary-color: #f0f0f0; /* تم التعديل */
             --text-color: #283747;
             --link-color: #487a77;
             --link-hover-color: #355e5b;
-            --card-bg: #dce3e7;
-            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            --card-bg: #ffffff; /* تم التعديل */
+            --box-shadow: none;
         }
         body.theme-2.dark-mode {
             --primary-color: #8ac0be;
@@ -77,18 +57,38 @@
             --link-color: #9cd4d2;
             --link-hover-color: #b1e0df;
             --card-bg: #222d38;
-            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            --box-shadow: none;
+        }
+
+        /* Theme 3 */
+        body.theme-3 {
+            --primary-color: #e51280;
+            --secondary-color: #f0f0f0; /* تم التعديل */
+            --text-color: #2c2c2c;
+            --link-color: #e51280;
+            --link-hover-color: #cc0b72;
+            --card-bg: #ffffff;
+            --box-shadow: none;
+        }
+        body.theme-3.dark-mode {
+            --primary-color: #ff88c0;
+            --secondary-color: #1a1a20;
+            --text-color: #f0f0f0;
+            --link-color: #ff88c0;
+            --link-hover-color: #ffb8d9;
+            --card-bg: #282830;
+            --box-shadow: none;
         }
 
         /* Theme 4 */
         body.theme-4 {
             --primary-color: #d1721e;
-            --secondary-color: #e8eaeb;
+            --secondary-color: #f0f0f0; /* تم التعديل */
             --text-color: #162030;
             --link-color: #d1721e;
             --link-hover-color: #bf661a;
-            --card-bg: #d7d9db;
-            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            --card-bg: #ffffff; /* تم التعديل */
+            --box-shadow: none;
         }
         body.theme-4.dark-mode {
             --primary-color: #ffb44d;
@@ -97,18 +97,18 @@
             --link-color: #ffb44d;
             --link-hover-color: #ffde94;
             --card-bg: #0f1520;
-            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            --box-shadow: none;
         }
 
         /* Theme 5 */
         body.theme-5 {
             --primary-color: #5d4ce6;
-            --secondary-color: #ebedef;
+            --secondary-color: #f0f0f0; /* تم التعديل */
             --text-color: #2c3238;
             --link-color: #5d4ce6;
             --link-hover-color: #4c3ecf;
             --card-bg: #ffffff;
-            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.07);
+            --box-shadow: none;
         }
         body.theme-5.dark-mode {
             --primary-color: #b2a9ff;
@@ -117,18 +117,18 @@
             --link-color: #b2a9ff;
             --link-hover-color: #d3ccff;
             --card-bg: #323945;
-            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
+            --box-shadow: none;
         }
 
         /* Theme 6 */
         body.theme-6 {
             --primary-color: #7b3d12;
-            --secondary-color: #f7f0df;
+            --secondary-color: #f0f0f0; /* تم التعديل */
             --text-color: #422a1b;
             --link-color: #7b3d12;
             --link-hover-color: #5c2d0f;
-            --card-bg: #efe8d8;
-            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.09);
+            --card-bg: #ffffff; /* تم التعديل */
+            --box-shadow: none;
         }
         body.theme-6.dark-mode {
             --primary-color: #e0be5b;
@@ -137,18 +137,18 @@
             --link-color: #e0be5b;
             --link-hover-color: #f5d475;
             --card-bg: #352a24;
-            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.45);
+            --box-shadow: none;
         }
 
         /* Theme 7 */
         body.theme-7 {
             --primary-color: #266b6c;
-            --secondary-color: #d8f5ef;
+            --secondary-color: #f0f0f0; /* تم التعديل */
             --text-color: #242d38;
             --link-color: #e09d4c;
             --link-hover-color: #d1853b;
-            --card-bg: #a6e0d9;
-            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            --card-bg: #ffffff; /* تم التعديل */
+            --box-shadow: none;
         }
         body.theme-7.dark-mode {
             --primary-color: #84d2f0;
@@ -157,18 +157,18 @@
             --link-color: #ffb86c;
             --link-hover-color: #ffa43b;
             --card-bg: #152b39;
-            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            --box-shadow: none;
         }
         
         /* Theme 8 */
         body.theme-8 {
             --primary-color: #282828;
-            --secondary-color: #fcfcfc;
+            --secondary-color: #f0f0f0; /* تم التعديل */
             --text-color: #111111;
             --link-color: #282828;
             --link-hover-color: #444444;
-            --card-bg: #e0e0e0;
-            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --card-bg: #ffffff; /* تم التعديل */
+            --box-shadow: none;
         }
         body.theme-8.dark-mode {
             --primary-color: #cccccc;
@@ -177,18 +177,18 @@
             --link-color: #cccccc;
             --link-hover-color: #999999;
             --card-bg: #444444;
-            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            --box-shadow: none;
         }
         
         /* New Themes (from previous update) */
         body.theme-9 {
             --primary-color: #004c99;
-            --secondary-color: #e6e8eb;
+            --secondary-color: #f0f0f0; /* تم التعديل */
             --text-color: #2b2b2b;
             --link-color: #004c99;
             --link-hover-color: #003a7a;
-            --card-bg: #f5f5f5;
-            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            --card-bg: #ffffff; /* تم التعديل */
+            --box-shadow: none;
         }
         body.theme-9.dark-mode {
             --primary-color: #799dcf;
@@ -197,17 +197,17 @@
             --link-color: #799dcf;
             --link-hover-color: #a4c4f0;
             --card-bg: #262d3a;
-            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            --box-shadow: none;
         }
 
         body.theme-10 {
             --primary-color: #1e88e5;
-            --secondary-color: #f4f6f9;
+            --secondary-color: #f0f0f0; /* تم التعديل */
             --text-color: #333333;
             --link-color: #1e88e5;
             --link-hover-color: #1565c0;
             --card-bg: #ffffff;
-            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            --box-shadow: none;
         }
         body.theme-10.dark-mode {
             --primary-color: #7ac4ff;
@@ -216,7 +216,7 @@
             --link-color: #7ac4ff;
             --link-hover-color: #a8d6ff;
             --card-bg: #2c2c44;
-            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            --box-shadow: none;
         }
 
         /* General Styles */
@@ -331,7 +331,7 @@
             background-color: var(--card-bg);
             padding: 15px;
             border-radius: 10px;
-            box-shadow: var(--box-shadow);
+            box-shadow: none;
             margin-bottom: 15px;
             transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
         }
@@ -368,12 +368,8 @@
             font-size: 0.9rem;
             font-weight: 700;
             transition: background-color var(--transition-speed), transform 0.2s ease;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            box-shadow: none;
             position: relative;
-        }
-
-        body.dark-mode .link-item {
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .link-item i {
@@ -584,7 +580,7 @@
         ];
 
         const themes = ['theme-1', 'theme-2', 'theme-3', 'theme-4', 'theme-5', 'theme-6', 'theme-7', 'theme-8', 'theme-9', 'theme-10'];
-        let currentThemeIndex = 2; // Set to 2 to make theme-3 the default
+        let currentThemeIndex = 0; // Set to 0 to make theme-1 the default
         const linkLists = {
             services: document.getElementById('links-1'),
             whatsapp: document.getElementById('links-2'),
@@ -671,9 +667,9 @@
             currentThemeIndex = themes.indexOf(savedTheme);
             applyTheme(savedTheme);
         } else {
-            // Default to theme-3 if no theme is saved
-            applyTheme('theme-3');
-            currentThemeIndex = 2;
+            // Default to theme-1 if no theme is saved
+            applyTheme('theme-1');
+            currentThemeIndex = 0;
         }
 
         if (savedDarkMode) {
