@@ -1258,39 +1258,34 @@
 
 // Modal Scroll Button Logic
 modalScrollButton.addEventListener('click', () => {
-    // Check the current text of the button to determine the action
-    if (modalScrollButton.textContent.includes('عرض المزيد')) {
-        // If the button says 'عرض المزيد', scroll to the bottom
-        modalBody.scrollTo({
-            top: modalBody.scrollHeight,
-            behavior: 'smooth'
-        });
-        // Immediately change the button text
-        modalScrollButton.textContent = 'العودة للأعلى ▲';
-    } else {
-        // If the button says 'العودة للأعلى', scroll to the top
+    const isAtBottom = Math.round(modalBody.scrollHeight - modalBody.scrollTop) <= modalBody.clientHeight + 1;
+
+    if (isAtBottom) {
+        // إذا كان المستخدم في الأسفل، انتقل للأعلى
         modalBody.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
-        // Immediately change the button text back
-        modalScrollButton.textContent = 'عرض المزيد ▼';
+    } else {
+        // إذا كان في أي مكان آخر، انتقل للأسفل
+        modalBody.scrollTo({
+            top: modalBody.scrollHeight,
+            behavior: 'smooth'
+        });
     }
 });
 
-// The scroll listener can be kept to handle manual scrolling
 modalBody.addEventListener('scroll', () => {
-    // A simple check to see if the scroll bar is at or near the bottom
-    const isAtBottom = modalBody.scrollTop + modalBody.clientHeight >= modalBody.scrollHeight;
+    const isAtBottom = Math.round(modalBody.scrollHeight - modalBody.scrollTop) <= modalBody.clientHeight + 1;
 
     if (isAtBottom) {
+        // تغيير نص الزر عند الوصول إلى الأسفل
         modalScrollButton.textContent = 'العودة للأعلى ▲';
     } else {
+        // تغيير نص الزر عندما يكون المستخدم ليس في الأسفل
         modalScrollButton.textContent = 'عرض المزيد ▼';
     }
 });
-
-
-    </script>
+  </script>
 </body>
 </html>
