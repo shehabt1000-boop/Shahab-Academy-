@@ -1257,36 +1257,39 @@
         });
 
 // Modal Scroll Button Logic
-modalBody.addEventListener('scroll', () => {
-    // Check if the user is at the bottom of the modal using a reliable threshold
-    const atBottom = modalBody.scrollTop >= modalBody.scrollHeight - modalBody.clientHeight - 1;
+modalScrollButton.addEventListener('click', () => {
+    // Check the current text of the button to determine the action
+    if (modalScrollButton.textContent.includes('عرض المزيد')) {
+        // If the button says 'عرض المزيد', scroll to the bottom
+        modalBody.scrollTo({
+            top: modalBody.scrollHeight,
+            behavior: 'smooth'
+        });
+        // Immediately change the button text
+        modalScrollButton.textContent = 'العودة للأعلى ▲';
+    } else {
+        // If the button says 'العودة للأعلى', scroll to the top
+        modalBody.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        // Immediately change the button text back
+        modalScrollButton.textContent = 'عرض المزيد ▼';
+    }
+});
 
-    if (atBottom) {
+// The scroll listener can be kept to handle manual scrolling
+modalBody.addEventListener('scroll', () => {
+    // A simple check to see if the scroll bar is at or near the bottom
+    const isAtBottom = modalBody.scrollTop + modalBody.clientHeight >= modalBody.scrollHeight;
+
+    if (isAtBottom) {
         modalScrollButton.textContent = 'العودة للأعلى ▲';
     } else {
         modalScrollButton.textContent = 'عرض المزيد ▼';
     }
 });
 
-
-modalScrollButton.addEventListener('click', () => {
-    // Perform the same check on click
-    const atBottom = modalBody.scrollTop >= modalBody.scrollHeight - modalBody.clientHeight - 1;
-
-    if (atBottom) {
-        // Scroll to top
-        modalBody.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    } else {
-        // Scroll to bottom
-        modalBody.scrollTo({
-            top: modalBody.scrollHeight,
-            behavior: 'smooth'
-        });
-    }
-});
 
     </script>
 </body>
