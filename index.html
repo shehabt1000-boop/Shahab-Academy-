@@ -19,7 +19,7 @@
             line-height: 1.6;
             min-height: 100vh;
             transition: background-color var(--transition-speed), color var(--transition-speed);
-            
+
             /* Default Theme Colors (Light Mode) */
             --primary-color: #004c99;
             --secondary-color: #f0f0f0;
@@ -37,7 +37,7 @@
             --subtitle-size: 0.9rem;
             --section-title-size: 1.2rem;
             --link-item-size: 0.9rem;
-            
+
             background-color: var(--bg-color);
             color: var(--normal-text-color);
         }
@@ -343,7 +343,7 @@
             justify-content: center;
             align-items: center;
         }
-        
+
         .settings-modal.active {
             display: flex;
         }
@@ -363,7 +363,7 @@
             display: flex;
             flex-direction: column;
         }
-        
+
         .modal-body {
             overflow-y: auto;
             flex-grow: 1;
@@ -387,7 +387,7 @@
             border-radius: 10px;
             border: 2px solid var(--secondary-color);
         }
-        
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -428,7 +428,7 @@
         .settings-close-btn:hover {
             color: #ff5252;
         }
-        
+
         .settings-close-btn span {
             font-size: 24px;
             line-height: 1;
@@ -533,7 +533,7 @@
             opacity: 1;
             visibility: visible;
         }
-        
+
         .modal-toast {
             position: relative;
             background-color: #4CAF50;
@@ -606,7 +606,7 @@
             min-width: 35px;
             text-align: center;
         }
-        
+
         .color-input-group {
             display: flex;
             align-items: center;
@@ -788,9 +788,9 @@
                 <h3 class="settings-title modal-header-title">الإعدادات</h3>
                 <button class="settings-close-btn">&times; إغلاق</button>
             </div>
-            
+
             <div id="modal-toast" class="modal-toast"></div>
-            
+
             <button id="modal-scroll-btn" class="modal-scroll-button">
                 عرض المزيد ▼
             </button>
@@ -851,7 +851,7 @@
                     <div id="dark-theme-grid" class="theme-grid"></div>
                 </div>
             </div>
-            
+
             <div class="modal-footer">
                 <button id="save-settings-btn" class="save-btn">حفظ الإعدادات</button>
                 <button id="reset-settings-btn" class="reset-btn">إعادة ضبط الإعدادات</button>
@@ -878,9 +878,9 @@
         const scrollToTopBtn = document.getElementById("scrollToTopBtn");
         const modalScrollButton = document.getElementById('modal-scroll-btn');
         const modalBody = document.querySelector('.modal-body');
-        
+
         const fontSizeButtons = document.querySelectorAll('.font-size-btn');
-        
+
         const primaryColorPicker = document.getElementById('primary-color-picker');
         const bgColorPicker = document.getElementById('bg-color-picker');
         const cardBgColorPicker = document.getElementById('card-bg-color-picker');
@@ -893,7 +893,7 @@
             fontSize: 'medium',
             customColors: {}
         };
-        
+
         const fontSizes = {
             small: { main: 1.6, section: 1.1, link: 0.8 },
             medium: { main: 1.8, section: 1.2, link: 0.9 },
@@ -923,7 +923,7 @@
             'theme-25', 'theme-26', 'theme-27', 'theme-28', 'theme-29', 'theme-30'
         ];
         let currentThemeIndex = 0;
-        
+
         const linkLists = {
             services: document.getElementById('links-1'),
             whatsapp: document.getElementById('links-2'),
@@ -938,7 +938,7 @@
             medical: document.getElementById('medicalSection'),
             hostel: document.getElementById('hostelSection')
         };
-        
+
         function renderLinks(searchTerm = '') {
             const normalizedSearchTerm = searchTerm.trim().toLowerCase();
             Object.values(linkLists).forEach(list => list.innerHTML = '');
@@ -977,13 +977,13 @@
         function applySettings() {
             // Apply brightness
             body.style.setProperty('--site-brightness', `${selectedSettings.brightness}%`);
-            
+
             // Remove all theme classes and apply the selected one
             themes.forEach(t => body.classList.remove(t));
             if (selectedSettings.theme) {
                 body.classList.add(selectedSettings.theme);
             }
-            
+
             // Apply dark mode class
             if (selectedSettings.darkMode === 'dark') {
                 body.classList.add('dark-mode');
@@ -1006,13 +1006,13 @@
             body.style.setProperty('--subtitle-size', `${sizes.link}rem`);
             body.style.setProperty('--section-title-size', `${sizes.section}rem`);
             body.style.setProperty('--link-item-size', `${sizes.link}rem`);
-            
+
             updateThemeGridSelection();
             updateSliderValues();
             updateColorPickers();
             updateFontSizeButtons();
         }
-        
+
         function updateFontSizeButtons() {
             fontSizeButtons.forEach(btn => {
                 btn.classList.remove('active');
@@ -1030,7 +1030,7 @@
                 selectedSettings.customColors = {};
             }
             currentThemeIndex = themes.indexOf(selectedSettings.theme);
-            
+
             brightnessSlider.value = selectedSettings.brightness;
 
             applySettings();
@@ -1040,7 +1040,7 @@
             localStorage.setItem('user-settings', JSON.stringify(selectedSettings));
             showToast('تم حفظ الإعدادات بنجاح!');
         }
-        
+
         function resetSettings() {
             selectedSettings = JSON.parse(JSON.stringify(defaultSettings)); // Deep copy to avoid reference issues
             localStorage.removeItem('user-settings');
@@ -1068,11 +1068,11 @@
                 }
             });
         }
-        
+
         function updateSliderValues() {
             brightnessValueSpan.textContent = `${selectedSettings.brightness}%`;
         }
-        
+
         function updateColorPickers() {
             const tempDiv = document.createElement('div');
             tempDiv.style.display = 'none';
@@ -1081,7 +1081,7 @@
                 tempDiv.classList.add('dark-mode');
             }
             body.appendChild(tempDiv);
-            
+
             const tempStyle = getComputedStyle(tempDiv);
 
             const customColors = selectedSettings.customColors[selectedSettings.theme] || {};
@@ -1090,10 +1090,10 @@
             bgColorPicker.value = customColors.bg || rgbToHex(tempStyle.getPropertyValue('--bg-color'));
             cardBgColorPicker.value = customColors.cardBg || rgbToHex(tempStyle.getPropertyValue('--card-bg'));
             textColorPicker.value = customColors.text || rgbToHex(tempStyle.getPropertyValue('--text-color'));
-            
+
             body.removeChild(tempDiv);
         }
-        
+
         function rgbToHex(rgb) {
             if (!rgb) return '#ffffff';
             const result = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
@@ -1107,10 +1107,10 @@
         function createThemeGrids() {
             lightThemeGrid.innerHTML = '';
             darkThemeGrid.innerHTML = '';
-            
+
             const lightThemes = themes.slice(0, 15);
             const darkThemes = themes.slice(15, 30);
-            
+
             const themeColors = {
                 'theme-1': '004c99', 'theme-2': '487a77', 'theme-3': 'e51280', 'theme-4': 'd1721e',
                 'theme-5': '5d4ce6', 'theme-6': '7b3d12', 'theme-7': '266b6c', 'theme-8': '282828',
@@ -1121,7 +1121,7 @@
                 'theme-25': '4caf50', 'theme-26': '8bc34a', 'theme-27': '00bcd4', 'theme-28': 'c0ca33',
                 'theme-29': 'ff5252', 'theme-30': '7c4dff'
             };
-            
+
             lightThemes.forEach(theme => {
                 const box = document.createElement('div');
                 box.className = 'theme-color-box light-mode-theme';
