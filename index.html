@@ -1258,9 +1258,8 @@
 
 // Modal Scroll Button Logic
 modalBody.addEventListener('scroll', () => {
-    // Check if the user is at the bottom of the modal
-    // Adjusted the condition to be less strict
-    if (modalBody.scrollHeight - modalBody.scrollTop <= modalBody.clientHeight + 1) {
+    // Check if the user is at the bottom of the modal, using a more reliable check
+    if (Math.round(modalBody.scrollHeight - modalBody.scrollTop) <= modalBody.clientHeight) {
         modalScrollButton.textContent = 'العودة للأعلى ▲';
     } else {
         modalScrollButton.textContent = 'عرض المزيد ▼';
@@ -1269,8 +1268,8 @@ modalBody.addEventListener('scroll', () => {
 
 
 modalScrollButton.addEventListener('click', () => {
-    // Adjusted the condition here as well for consistency
-    if (modalBody.scrollHeight - modalBody.scrollTop <= modalBody.clientHeight + 1) {
+    // Perform the same check on click
+    if (Math.round(modalBody.scrollHeight - modalBody.scrollTop) <= modalBody.clientHeight) {
         // Scroll to top
         modalBody.scrollTo({
             top: 0,
