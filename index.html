@@ -342,7 +342,6 @@
             -webkit-backdrop-filter: blur(5px);
             justify-content: center;
             align-items: center;
-            overflow-y: auto;
         }
         
         .settings-modal.active {
@@ -360,7 +359,7 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             animation: fadeIn 0.3s ease-out;
             margin: 10px;
-            max-height: 90vh; /* Added to make it fit on screen without scrolling */
+            max-height: 90vh; /* Changed from 90vh to make it fit */
             overflow-y: auto; /* Allow scrolling only inside modal content if needed */
         }
 
@@ -575,7 +574,17 @@
             .link-item { font-size: 0.8rem; padding: 10px 12px; }
             .link-item i { font-size: 1rem; margin-left: 8px; }
             .search-input { font-size: 0.9rem; }
-            .settings-modal-content { padding: 10px; margin: 5px; }
+            .settings-modal-content { 
+                padding: 10px; 
+                margin: 5px;
+                top: 20px; /* Position from top */
+                transform: translateY(0);
+                align-self: flex-start;
+                max-height: 85vh; /* Adjusted to fit the screen better */
+            }
+            .settings-modal.active {
+                align-items: flex-start; /* Align modal to the top */
+            }
             .settings-title { font-size: 1.2rem; }
             .theme-color-box { height: 30px; }
         }
@@ -865,10 +874,10 @@
 
             // Apply custom colors for the current theme
             const customColors = selectedSettings.customColors[selectedSettings.theme] || {};
-            body.style.setProperty('--primary-color', customColors.primary || null);
-            body.style.setProperty('--bg-color', customColors.bg || null);
-            body.style.setProperty('--card-bg', customColors.cardBg || null);
-            body.style.setProperty('--text-color', customColors.text || null);
+            body.style.setProperty('--primary-color', customColors.primary || '');
+            body.style.setProperty('--bg-color', customColors.bg || '');
+            body.style.setProperty('--card-bg', customColors.cardBg || '');
+            body.style.setProperty('--text-color', customColors.text || '');
 
             // Apply font sizes
             body.style.setProperty('--main-title-size', `${selectedSettings.mainTitleSize}rem`);
@@ -904,8 +913,9 @@
         }
         
         function resetSettings() {
+            selectedSettings = JSON.parse(JSON.stringify(defaultSettings)); // Deep copy to avoid reference issues
             localStorage.removeItem('user-settings');
-            loadSavedSettings();
+            applySettings();
             showToast('تم إعادة ضبط الإعدادات!');
             settingsModal.classList.remove('active');
         }
@@ -935,27 +945,35 @@
         }
         
         function updateColorPickers() {
-            // Get current computed styles to show in pickers
-            const currentTheme = selectedSettings.theme;
-            const customColors = selectedSettings.customColors[currentTheme] || {};
-
+            // Temporarily apply theme to a hidden div to get computed styles
             const tempDiv = document.createElement('div');
             tempDiv.style.display = 'none';
-            body.appendChild(tempDiv);
-            
-            tempDiv.className = `theme-${currentTheme}`;
+            tempDiv.className = selectedSettings.theme;
             if (selectedSettings.darkMode === 'dark') {
                 tempDiv.classList.add('dark-mode');
             }
+            body.appendChild(tempDiv);
             
             const tempStyle = getComputedStyle(tempDiv);
 
-            primaryColorPicker.value = customColors.primary || tempStyle.getPropertyValue('--primary-color');
-            bgColorPicker.value = customColors.bg || tempStyle.getPropertyValue('--bg-color');
-            cardBgColorPicker.value = customColors.cardBg || tempStyle.getPropertyValue('--card-bg');
-            textColorPicker.value = customColors.text || tempStyle.getPropertyValue('--text-color');
+            const customColors = selectedSettings.customColors[selectedSettings.theme] || {};
+
+            primaryColorPicker.value = customColors.primary || rgbToHex(tempStyle.getPropertyValue('--primary-color'));
+            bgColorPicker.value = customColors.bg || rgbToHex(tempStyle.getPropertyValue('--bg-color'));
+            cardBgColorPicker.value = customColors.cardBg || rgbToHex(tempStyle.getPropertyValue('--card-bg'));
+            textColorPicker.value = customColors.text || rgbToHex(tempStyle.getPropertyValue('--text-color'));
             
             body.removeChild(tempDiv);
+        }
+        
+        function rgbToHex(rgb) {
+            if (!rgb) return '#ffffff'; // Default to white if rgb is null or empty
+            const result = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+            if (!result) return rgb; // Return original if not in rgb format
+            function hex(x) {
+                return ("0" + parseInt(x).toString(16)).slice(-2);
+            }
+            return "#" + hex(result[1]) + hex(result[2]) + hex(result[3]);
         }
 
         function createThemeGrids() {
@@ -1018,7 +1036,7 @@
         themeSwitcherBtn.addEventListener('click', () => {
             currentThemeIndex = (currentThemeIndex + 1) % themes.length;
             selectedSettings.theme = themes[currentThemeIndex];
-            selectedSettings.darkMode = 'light';
+            selectedSettings.darkMode = themes[currentThemeIndex].includes('dark') ? 'dark' : 'light';
             applySettings();
         });
 
@@ -1099,7 +1117,7 @@
         });
 
 
-        saveSettingsBtn.addEventListener('click', saveSettings);
+saveSettingsBtn.addEventListener('click', saveSettings);
         resetSettingsBtn.addEventListener('click', resetSettings);
 
         searchInput.addEventListener('input', (e) => {
