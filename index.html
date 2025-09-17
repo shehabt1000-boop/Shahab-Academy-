@@ -95,7 +95,7 @@
             gap: 3px;
             position: relative;
         }
-        
+
         .theme-toggle-container {
             display: flex;
             flex-wrap: wrap;
@@ -287,6 +287,128 @@
             color: var(--link-hover-color);
         }
 
+        /* Settings Modal */
+        .settings-modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .settings-modal-content {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            text-align: right;
+            position: relative;
+        }
+
+        .settings-close-btn {
+            color: var(--text-color);
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .settings-close-btn:hover {
+            color: var(--primary-color);
+        }
+
+        .settings-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .setting-item {
+            margin-bottom: 15px;
+        }
+
+        .setting-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .setting-range {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+            gap: 10px;
+        }
+
+        .theme-color-box {
+            width: 100%;
+            height: 40px;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .theme-color-box.selected {
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        .save-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 20px;
+            width: 100%;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .save-btn:hover {
+            background-color: var(--link-hover-color);
+            transform: translateY(-2px);
+        }
+
+        .toast-message {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .toast-message.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
         /* Scroll-to-Top Button */
         .scroll-to-top {
             position: fixed;
@@ -349,172 +471,9 @@
             .link-item { font-size: 0.8rem; padding: 10px 12px; }
             .link-item i { font-size: 1rem; margin-left: 8px; }
             .search-input { font-size: 0.9rem; }
-        }
-
-        /* Settings Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1001;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.6);
-        }
-
-        .modal-content {
-            background-color: var(--card-bg);
-            margin: 10% auto;
-            padding: 20px;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 500px;
-            position: relative;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            animation-name: animatetop;
-            animation-duration: 0.4s;
-            transition: background-color var(--transition-speed);
-        }
-
-        @keyframes animatetop {
-            from { top: -300px; opacity: 0; }
-            to { top: 10%; opacity: 1; }
-        }
-        
-        .close-btn {
-            color: white;
-            font-size: 28px;
-            font-weight: bold;
-            position: absolute;
-            top: -15px;
-            right: -15px;
-            background-color: red;
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            text-align: center;
-            line-height: 35px;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-
-        .close-btn:hover {
-            background-color: darkred;
-        }
-
-        .modal-header {
-            text-align: center;
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-
-        .settings-section {
-            margin-bottom: 20px;
-        }
-
-        .settings-section h3 {
-            font-size: 1.1rem;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .settings-control {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .settings-control label {
-            min-width: 100px;
-        }
-
-        /* Sliders */
-        .settings-control input[type="range"] {
-            width: 100%;
-            -webkit-appearance: none;
-            appearance: none;
-            height: 8px;
-            background: var(--primary-color);
-            outline: none;
-            opacity: 0.7;
-            transition: opacity 0.2s;
-            border-radius: 5px;
-        }
-        .settings-control input[type="range"]:hover { opacity: 1; }
-        .settings-control input[type="range"]::-webkit-slider-thumb,
-        .settings-control input[type="range"]::-moz-range-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            background: var(--primary-color);
-            cursor: pointer;
-            border-radius: 50%;
-            border: 2px solid var(--card-bg);
-        }
-        .settings-control span.value {
-            font-weight: bold;
-            color: var(--text-color);
-            width: 60px;
-            text-align: left;
-        }
-
-        /* Color Inputs */
-        .settings-control input[type="color"] {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            background-color: transparent;
-            width: 40px;
-            height: 40px;
-            border: 2px solid var(--text-color);
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .settings-control input[type="color"]::-webkit-color-swatch {
-            border: none;
-            border-radius: 5px;
-        }
-        .settings-control input[type="color"]::-moz-color-swatch {
-            border: none;
-            border-radius: 5px;
-        }
-
-        .settings-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .settings-buttons button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 14px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .settings-buttons #reset-btn {
-            background-color: #f44336;
-        }
-
-        .settings-buttons button:hover {
-            background-color: #45a049;
-        }
-
-        .settings-buttons #reset-btn:hover {
-            background-color: #d32f2f;
+            .settings-modal-content { padding: 15px; }
+            .settings-title { font-size: 1.3rem; }
+            .theme-color-box { height: 35px; }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -588,111 +547,41 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <div id="settings-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <div class="modal-header">
-                <h2>الإعدادات</h2>
+    <div id="settingsModal" class="settings-modal">
+        <div class="settings-modal-content">
+            <span class="settings-close-btn">&times;</span>
+            <h3 class="settings-title">إعدادات العرض</h3>
+            <div class="setting-item">
+                <label for="brightness-slider" class="setting-label">سطوع الصفحة:</label>
+                <input type="range" id="brightness-slider" class="setting-range" min="50" max="150" value="100">
             </div>
-            
-            <div class="settings-section">
-                <h3>سطوع الموقع</h3>
-                <div class="settings-control">
-                    <label for="brightness-slider">تغيير السطوع:</label>
-                    <input type="range" id="brightness-slider" min="50" max="150" value="100">
-                    <span id="brightness-value" class="value">100%</span>
-                </div>
+            <div class="setting-item">
+                <label class="setting-label">تغيير المظهر:</label>
+                <div id="theme-grid" class="theme-grid"></div>
             </div>
-
-            <div class="settings-section">
-                <h3>تغيير الألوان</h3>
-                <div class="settings-control">
-                    <label for="primary-color-picker">اللون الأساسي:</label>
-                    <input type="color" id="primary-color-picker">
-                </div>
-                <div class="settings-control">
-                    <label for="secondary-color-picker">لون الخلفية:</label>
-                    <input type="color" id="secondary-color-picker">
-                </div>
-                <div class="settings-control">
-                    <label for="card-bg-picker">خلفية المربعات:</label>
-                    <input type="color" id="card-bg-picker">
-                </div>
-                <div class="settings-control">
-                    <label for="text-color-picker">لون النصوص:</label>
-                    <input type="color" id="text-color-picker">
-                </div>
-            </div>
-
-            <div class="settings-section">
-                <h3>تغيير حجم الخط</h3>
-                <div class="settings-control">
-                    <label for="main-title-slider">العنوان الرئيسي:</label>
-                    <input type="range" id="main-title-slider" min="1.0" max="3.0" value="1.8" step="0.1">
-                    <span id="main-title-value" class="value">1.8rem</span>
-                </div>
-                <div class="settings-control">
-                    <label for="section-title-slider">عناوين الأقسام:</label>
-                    <input type="range" id="section-title-slider" min="1.0" max="2.0" value="1.2" step="0.1">
-                    <span id="section-title-value" class="value">1.2rem</span>
-                </div>
-                <div class="settings-control">
-                    <label for="link-item-slider">نصوص الروابط:</label>
-                    <input type="range" id="link-item-slider" min="0.8" max="1.5" value="0.9" step="0.1">
-                    <span id="link-item-value" class="value">0.9rem</span>
-                </div>
-            </div>
-
-            <div class="settings-buttons">
-                <button id="save-btn">حفظ التغييرات</button>
-                <button id="reset-btn">إعادة الوضع الافتراضي</button>
-            </div>
+            <button id="save-settings-btn" class="save-btn">حفظ الإعدادات</button>
         </div>
     </div>
+
+    <div id="toastMessage" class="toast-message"></div>
 
     <script>
         const body = document.body;
         const darkModeToggleBtn = document.getElementById('dark-mode-toggle');
         const darkModeText = document.getElementById('dark-mode-text');
         const themeSwitcherBtn = document.getElementById('theme-switcher');
+        const settingsBtn = document.getElementById('settings-btn');
+        const settingsModal = document.getElementById('settingsModal');
+        const settingsCloseBtn = document.querySelector('.settings-close-btn');
+        const brightnessSlider = document.getElementById('brightness-slider');
+        const themeGrid = document.getElementById('theme-grid');
+        const saveSettingsBtn = document.getElementById('save-settings-btn');
+        const toastMessage = document.getElementById('toastMessage');
         const searchInput = document.getElementById('searchInput');
         const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-        
-        // Settings Modal Elements
-        const settingsBtn = document.getElementById('settings-btn');
-        const settingsModal = document.getElementById('settings-modal');
-        const closeBtn = settingsModal.querySelector('.close-btn');
-        const saveBtn = document.getElementById('save-btn');
-        const resetBtn = document.getElementById('reset-btn');
-        
-        // Brightness
-        const brightnessSlider = document.getElementById('brightness-slider');
-        const brightnessValue = document.getElementById('brightness-value');
 
-        // Colors
-        const primaryColorPicker = document.getElementById('primary-color-picker');
-        const secondaryColorPicker = document.getElementById('secondary-color-picker');
-        const cardBgPicker = document.getElementById('card-bg-picker');
-        const textColorPicker = document.getElementById('text-color-picker');
-
-        // Font Sizes
-        const mainTitleSlider = document.getElementById('main-title-slider');
-        const mainTitleValue = document.getElementById('main-title-value');
-        const sectionTitleSlider = document.getElementById('section-title-slider');
-        const sectionTitleValue = document.getElementById('section-title-value');
-        const linkItemSlider = document.getElementById('link-item-slider');
-        const linkItemValue = document.getElementById('link-item-value');
-
-        // Default values
         const defaultSettings = {
             brightness: 100,
-            primaryColor: '#004c99',
-            secondaryColor: '#f0f0f0',
-            cardBg: '#ffffff',
-            textColor: '#2b2b2b',
-            mainTitleSize: 1.8,
-            sectionTitleSize: 1.2,
-            linkItemSize: 0.9,
             theme: 'theme-1',
             darkMode: 'light'
         };
@@ -716,6 +605,10 @@
             'theme-11', 'theme-12', 'theme-13', 'theme-14', 'theme-15', 'theme-16'
         ];
         let currentThemeIndex = 0;
+        let selectedTheme = defaultSettings.theme;
+        let selectedBrightness = defaultSettings.brightness;
+        let isDarkMode = defaultSettings.darkMode === 'dark';
+
         const linkLists = {
             services: document.getElementById('links-1'),
             whatsapp: document.getElementById('links-2'),
@@ -766,135 +659,120 @@
             }
         }
 
-        function applyTheme(themeClass) {
+        function applySettings() {
+            body.style.setProperty('--site-brightness', `${selectedBrightness}%`);
             themes.forEach(t => body.classList.remove(t));
-            if (themeClass) {
-                body.classList.add(themeClass);
+            if (selectedTheme) {
+                body.classList.add(selectedTheme);
             }
-            localStorage.setItem('selected-theme', themeClass);
-        }
-
-        function applyDarkMode(isDark) {
-            if (isDark) {
+            if (isDarkMode) {
                 body.classList.add('dark-mode');
                 darkModeText.textContent = 'الوضع الفاتح';
             } else {
                 body.classList.remove('dark-mode');
                 darkModeText.textContent = 'الوضع الليلي';
             }
-            localStorage.setItem('dark-mode', isDark ? 'dark' : 'light');
-        }
-
-        function setBrightness(value) {
-            document.documentElement.style.setProperty('--site-brightness', `${value}%`);
-            brightnessValue.textContent = `${value}%`;
-        }
-
-        function setColor(property, color) {
-            document.documentElement.style.setProperty(property, color);
-        }
-
-        function setFontSize(property, size) {
-            document.documentElement.style.setProperty(property, `${size}rem`);
-        }
-        
-        function saveSettings() {
-            const customSettings = {
-                brightness: brightnessSlider.value,
-                primaryColor: primaryColorPicker.value,
-                secondaryColor: secondaryColorPicker.value,
-                cardBg: cardBgPicker.value,
-                textColor: textColorPicker.value,
-                mainTitleSize: mainTitleSlider.value,
-                sectionTitleSize: sectionTitleSlider.value,
-                linkItemSize: linkItemSlider.value,
-                isCustom: true
-            };
-            localStorage.setItem('custom-settings', JSON.stringify(customSettings));
-            alert('تم حفظ الإعدادات بنجاح!');
+            updateThemeGridSelection();
         }
 
         function loadSavedSettings() {
-            const savedSettings = JSON.parse(localStorage.getItem('custom-settings'));
-            const savedTheme = localStorage.getItem('selected-theme');
-            const savedDarkMode = localStorage.getItem('dark-mode');
+            const savedSettings = JSON.parse(localStorage.getItem('user-settings'));
+            if (savedSettings) {
+                selectedBrightness = savedSettings.brightness || defaultSettings.brightness;
+                selectedTheme = savedSettings.theme || defaultSettings.theme;
+                isDarkMode = savedSettings.darkMode === 'dark' ? true : false;
+                currentThemeIndex = themes.indexOf(selectedTheme);
+            }
+            applySettings();
+            brightnessSlider.value = selectedBrightness;
+        }
 
-            if (savedSettings && savedSettings.isCustom) {
-                brightnessSlider.value = savedSettings.brightness;
-                setBrightness(savedSettings.brightness);
+        function saveSettings() {
+            const settingsToSave = {
+                brightness: selectedBrightness,
+                theme: selectedTheme,
+                darkMode: isDarkMode ? 'dark' : 'light'
+            };
+            localStorage.setItem('user-settings', JSON.stringify(settingsToSave));
+            showToast('تم حفظ الإعدادات بنجاح!');
+        }
 
-                primaryColorPicker.value = savedSettings.primaryColor;
-                secondaryColorPicker.value = savedSettings.secondaryColor;
-                cardBgPicker.value = savedSettings.cardBg;
-                textColorPicker.value = savedSettings.textColor;
-                setColor('--primary-color', savedSettings.primaryColor);
-                setColor('--secondary-color', savedSettings.secondaryColor);
-                setColor('--card-bg', savedSettings.cardBg);
-                setColor('--text-color', savedSettings.textColor);
+        function showToast(message) {
+            toastMessage.textContent = message;
+            toastMessage.classList.add('show');
+            setTimeout(() => {
+                toastMessage.classList.remove('show');
+            }, 3000);
+        }
 
-                mainTitleSlider.value = savedSettings.mainTitleSize;
-                sectionTitleSlider.value = savedSettings.sectionTitleSize;
-                linkItemSlider.value = savedSettings.linkItemSize;
-                setFontSize('--main-title-size', savedSettings.mainTitleSize);
-                setFontSize('--section-title-size', savedSettings.sectionTitleSize);
-                setFontSize('--link-item-size', savedSettings.linkItemSize);
-                mainTitleValue.textContent = `${savedSettings.mainTitleSize}rem`;
-                sectionTitleValue.textContent = `${savedSettings.sectionTitleSize}rem`;
-                linkItemValue.textContent = `${savedSettings.linkItemSize}rem`;
-                
-                themes.forEach(t => body.classList.remove(t));
-            } else {
-                if (savedTheme && themes.includes(savedTheme)) {
-                    currentThemeIndex = themes.indexOf(savedTheme);
-                    applyTheme(savedTheme);
-                } else {
-                    applyTheme(defaultSettings.theme);
-                    currentThemeIndex = 0;
+        function updateThemeGridSelection() {
+            document.querySelectorAll('.theme-color-box').forEach(box => {
+                box.classList.remove('selected');
+                if (box.getAttribute('data-theme') === selectedTheme) {
+                    box.classList.add('selected');
                 }
-                
-                brightnessSlider.value = defaultSettings.brightness;
-                setBrightness(defaultSettings.brightness);
+            });
+        }
 
-                primaryColorPicker.value = defaultSettings.primaryColor;
-                secondaryColorPicker.value = defaultSettings.secondaryColor;
-                cardBgPicker.value = defaultSettings.cardBg;
-                textColorPicker.value = defaultSettings.textColor;
-
-                mainTitleSlider.value = defaultSettings.mainTitleSize;
-                sectionTitleSlider.value = defaultSettings.sectionTitleSize;
-                linkItemSlider.value = defaultSettings.linkItemSize;
-                mainTitleValue.textContent = `${defaultSettings.mainTitleSize}rem`;
-                sectionTitleValue.textContent = `${defaultSettings.sectionTitleSize}rem`;
-                linkItemValue.textContent = `${defaultSettings.linkItemSize}rem`;
-            }
-
-            if (savedDarkMode) {
-                applyDarkMode(savedDarkMode === 'dark');
-            } else {
-                applyDarkMode(defaultSettings.darkMode === 'dark');
-            }
+        function createThemeGrid() {
+            themeGrid.innerHTML = '';
+            const themeColors = {
+                'theme-1': '004c99', 'theme-2': '487a77', 'theme-3': 'e51280', 'theme-4': 'd1721e',
+                'theme-5': '5d4ce6', 'theme-6': '7b3d12', 'theme-7': '266b6c', 'theme-8': '282828',
+                'theme-9': '004c99', 'theme-10': '1e88e5', 'theme-11': '4285f4', 'theme-12': 'ff5722',
+                'theme-13': '673ab7', 'theme-14': '0a4f5f', 'theme-15': '556b2f', 'theme-16': '8b0000'
+            };
+            themes.forEach(theme => {
+                const box = document.createElement('div');
+                box.className = 'theme-color-box';
+                box.style.backgroundColor = `#${themeColors[theme]}`;
+                box.setAttribute('data-theme', theme);
+                box.addEventListener('click', () => {
+                    selectedTheme = theme;
+                    applySettings();
+                });
+                themeGrid.appendChild(box);
+            });
+            updateThemeGridSelection();
         }
 
         // Initial load
         loadSavedSettings();
         renderLinks();
+        createThemeGrid();
 
         // Event Listeners
         darkModeToggleBtn.addEventListener('click', () => {
-            const isDark = body.classList.contains('dark-mode');
-            applyDarkMode(!isDark);
+            isDarkMode = !isDarkMode;
+            applySettings();
         });
 
         themeSwitcherBtn.addEventListener('click', () => {
             currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-            const nextTheme = themes[currentThemeIndex];
-            applyTheme(nextTheme);
-            const isDark = body.classList.contains('dark-mode');
-            applyDarkMode(isDark);
-            
-            localStorage.removeItem('custom-settings');
-            loadSavedSettings();
+            selectedTheme = themes[currentThemeIndex];
+            applySettings();
         });
+
+        settingsBtn.addEventListener('click', () => {
+            settingsModal.style.display = 'flex';
+        });
+
+        settingsCloseBtn.addEventListener('click', () => {
+            settingsModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === settingsModal) {
+                settingsModal.style.display = 'none';
+            }
+        });
+
+        brightnessSlider.addEventListener('input', (e) => {
+            selectedBrightness = e.target.value;
+            body.style.setProperty('--site-brightness', `${selectedBrightness}%`);
+        });
+
+        saveSettingsBtn.addEventListener('click', saveSettings);
 
         searchInput.addEventListener('input', (e) => {
             renderLinks(e.target.value);
@@ -913,61 +791,6 @@
                 top: 0,
                 behavior: 'smooth'
             });
-        });
-
-        // Settings Modal Event Listeners
-        settingsBtn.addEventListener('click', () => {
-            settingsModal.style.display = 'block';
-        });
-
-        closeBtn.addEventListener('click', () => {
-            settingsModal.style.display = 'none';
-        });
-
-        window.addEventListener('click', (event) => {
-            if (event.target == settingsModal) {
-                settingsModal.style.display = 'none';
-            }
-        });
-        
-        brightnessSlider.addEventListener('input', (e) => {
-            setBrightness(e.target.value);
-        });
-
-        primaryColorPicker.addEventListener('input', (e) => {
-            setColor('--primary-color', e.target.value);
-        });
-        secondaryColorPicker.addEventListener('input', (e) => {
-            setColor('--secondary-color', e.target.value);
-        });
-        cardBgPicker.addEventListener('input', (e) => {
-            setColor('--card-bg', e.target.value);
-        });
-        textColorPicker.addEventListener('input', (e) => {
-            setColor('--text-color', e.target.value);
-        });
-
-        mainTitleSlider.addEventListener('input', (e) => {
-            const size = e.target.value;
-            setFontSize('--main-title-size', size);
-            mainTitleValue.textContent = `${size}rem`;
-        });
-        sectionTitleSlider.addEventListener('input', (e) => {
-            const size = e.target.value;
-            setFontSize('--section-title-size', size);
-            sectionTitleValue.textContent = `${size}rem`;
-        });
-        linkItemSlider.addEventListener('input', (e) => {
-            const size = e.target.value;
-            setFontSize('--link-item-size', size);
-            linkItemValue.textContent = `${size}rem`;
-        });
-        
-        saveBtn.addEventListener('click', saveSettings);
-
-        resetBtn.addEventListener('click', () => {
-            localStorage.clear();
-            location.reload();
         });
     </script>
 </body>
