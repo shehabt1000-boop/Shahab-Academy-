@@ -28,18 +28,21 @@
             --link-hover-color: #003a7a;
             --card-bg: #ffffff;
             --box-shadow: none;
+            
+            /* Custom Colors */
             --bg-color: #f0f0f0;
-
+            --main-text-color: #004c99;
+            --sub-text-color: #2b2b2b;
+            --normal-text-color: #2b2b2b;
+            
+            /* Custom Font Sizes */
             --main-title-size: 1.8rem;
             --subtitle-size: 0.9rem;
             --section-title-size: 1.2rem;
             --link-item-size: 0.9rem;
             
-            --main-text-color: var(--text-color);
-            --sub-text-color: var(--text-color);
-            --normal-text-color: var(--text-color);
-            
             background-color: var(--bg-color);
+            color: var(--normal-text-color);
         }
 
         /* --- Theme definitions --- */
@@ -51,38 +54,41 @@
             --link-hover-color: #a4c4f0;
             --card-bg: #262d3a;
             --bg-color: #151a22;
+            --main-text-color: #799dcf;
+            --sub-text-color: #f1f3f6;
+            --normal-text-color: #f1f3f6;
         }
 
-        body.theme-2 { --primary-color: #487a77; --secondary-color: #f0f0f0; --text-color: #283747; --link-color: #487a77; --link-hover-color: #355e5b; --card-bg: #ffffff; --bg-color: #f0f0f0; }
-        body.theme-2.dark-mode { --primary-color: #8ac0be; --secondary-color: #162029; --text-color: #e4e7ec; --link-color: #9cd4d2; --link-hover-color: #b1e0df; --card-bg: #222d38; --bg-color: #162029; }
-        body.theme-3 { --primary-color: #e51280; --secondary-color: #f0f0f0; --text-color: #2c2c2c; --link-color: #e51280; --link-hover-color: #cc0b72; --card-bg: #ffffff; --bg-color: #f0f0f0; }
-        body.theme-3.dark-mode { --primary-color: #ff88c0; --secondary-color: #1a1a20; --text-color: #f0f0f0; --link-color: #ff88c0; --link-hover-color: #ffb8d9; --card-bg: #282830; --bg-color: #1a1a20; }
-        body.theme-4 { --primary-color: #d1721e; --secondary-color: #f0f0f0; --text-color: #162030; --link-color: #d1721e; --link-hover-color: #bf661a; --card-bg: #ffffff; --bg-color: #f0f0f0; }
-        body.theme-4.dark-mode { --primary-color: #ffb44d; --secondary-color: #070c12; --text-color: #f1f2f3; --link-color: #ffb44d; --link-hover-color: #ffde94; --card-bg: #0f1520; --bg-color: #070c12; }
-        body.theme-5 { --primary-color: #5d4ce6; --secondary-color: #f0f0f0; --text-color: #2c3238; --link-color: #5d4ce6; --link-hover-color: #4c3ecf; --card-bg: #ffffff; --bg-color: #f0f0f0; }
-        body.theme-5.dark-mode { --primary-color: #b2a9ff; --secondary-color: #282e38; --text-color: #f1f3f5; --link-color: #b2a9ff; --link-hover-color: #d3ccff; --card-bg: #323945; --bg-color: #282e38; }
-        body.theme-6 { --primary-color: #7b3d12; --secondary-color: #f0f0f0; --text-color: #422a1b; --link-color: #7b3d12; --link-hover-color: #5c2d0f; --card-bg: #ffffff; --bg-color: #f0f0f0; }
-        body.theme-6.dark-mode { --primary-color: #e0be5b; --secondary-color: #271f1a; --text-color: #f1e7d0; --link-color: #e0be5b; --link-hover-color: #f5d475; --card-bg: #352a24; --bg-color: #271f1a; }
-        body.theme-7 { --primary-color: #266b6c; --secondary-color: #f0f0f0; --text-color: #242d38; --link-color: #e09d4c; --link-hover-color: #d1853b; --card-bg: #ffffff; --bg-color: #f0f0f0; }
-        body.theme-7.dark-mode { --primary-color: #84d2f0; --secondary-color: #0b2033; --text-color: #dae2eb; --link-color: #ffb86c; --link-hover-color: #ffa43b; --card-bg: #152b39; --bg-color: #0b2033; }
-        body.theme-8 { --primary-color: #282828; --secondary-color: #f0f0f0; --text-color: #111111; --link-color: #282828; --link-hover-color: #444444; --card-bg: #ffffff; --bg-color: #f0f0f0; }
-        body.theme-8.dark-mode { --primary-color: #cccccc; --secondary-color: #333333; --text-color: #dddddd; --link-color: #cccccc; --link-hover-color: #999999; --card-bg: #444444; --bg-color: #333333; }
-        body.theme-9 { --primary-color: #004c99; --secondary-color: #f0f0f0; --text-color: #2b2b2b; --link-color: #004c99; --link-hover-color: #003a7a; --card-bg: #ffffff; --bg-color: #f0f0f0; }
-        body.theme-9.dark-mode { --primary-color: #799dcf; --secondary-color: #151a22; --text-color: #f1f3f6; --link-color: #799dcf; --link-hover-color: #a4c4f0; --card-bg: #262d3a; --bg-color: #151a22; }
-        body.theme-10 { --primary-color: #1e88e5; --secondary-color: #f0f0f0; --text-color: #333333; --link-color: #1e88e5; --link-hover-color: #1565c0; --card-bg: #ffffff; --bg-color: #f0f0f0; }
-        body.theme-10.dark-mode { --primary-color: #7ac4ff; --secondary-color: #1a1a2e; --text-color: #f0f0f0; --link-color: #7ac4ff; --link-hover-color: #a8d6ff; --card-bg: #2c2c44; --bg-color: #1a1a2e; }
-        body.theme-11 { --primary-color: #4285f4; --secondary-color: #f5f8fa; --text-color: #333333; --link-color: #4285f4; --link-hover-color: #357ae8; --card-bg: #ffffff; --bg-color: #f5f8fa; }
-        body.theme-11.dark-mode { --primary-color: #a0c3ff; --secondary-color: #1e2a3a; --text-color: #f0f4f8; --link-color: #a0c3ff; --link-hover-color: #c4e0ff; --card-bg: #2c394c; --bg-color: #1e2a3a; }
-        body.theme-12 { --primary-color: #ff5722; --secondary-color: #f7f7f7; --text-color: #212121; --link-color: #ff5722; --link-hover-color: #e64a19; --card-bg: #ffffff; --bg-color: #f7f7f7; }
-        body.theme-12.dark-mode { --primary-color: #ff9800; --secondary-color: #212121; --text-color: #e0e0e0; --link-color: #ff9800; --link-hover-color: #ffb74d; --card-bg: #333333; --bg-color: #212121; }
-        body.theme-13 { --primary-color: #673ab7; --secondary-color: #f8f5ff; --text-color: #303030; --link-color: #673ab7; --link-hover-color: #512da8; --card-bg: #ffffff; --bg-color: #f8f5ff; }
-        body.theme-13.dark-mode { --primary-color: #d1c4e9; --secondary-color: #251d3b; --text-color: #f1eaff; --link-color: #d1c4e9; --link-hover-color: #e6e0ff; --card-bg: #3a2d54; --bg-color: #251d3b; }
-        body.theme-14 { --primary-color: #0a4f5f; --secondary-color: #f2f6f8; --text-color: #2c3a3c; --link-color: #d4a017; --link-hover-color: #b8860b; --card-bg: #ffffff; --bg-color: #f2f6f8; }
-        body.theme-14.dark-mode { --primary-color: #72a5b8; --secondary-color: #121f24; --text-color: #f5f8f9; --link-color: #ffc200; --link-hover-color: #ffd700; --card-bg: #1c2b33; --bg-color: #121f24; }
-        body.theme-15 { --primary-color: #556b2f; --secondary-color: #f6f7f4; --text-color: #33382c; --link-color: #556b2f; --link-hover-color: #4a5d2a; --card-bg: #ffffff; --bg-color: #f6f7f4; }
-        body.theme-15.dark-mode { --primary-color: #a2b96a; --secondary-color: #242b1e; --text-color: #f2f3f1; --link-color: #a2b96a; --link-hover-color: #c2d199; --card-bg: #353f2c; --bg-color: #242b1e; }
-        body.theme-16 { --primary-color: #8b0000; --secondary-color: #f8f8f8; --text-color: #222222; --link-color: #8b0000; --link-hover-color: #770000; --card-bg: #ffffff; --bg-color: #f8f8f8; }
-        body.theme-16.dark-mode { --primary-color: #ef5350; --secondary-color: #1c1c1c; --text-color: #fcfcfc; --link-color: #ef5350; --link-hover-color: #ff8a80; --card-bg: #282828; --bg-color: #1c1c1c; }
+        body.theme-2 { --primary-color: #487a77; --secondary-color: #f0f0f0; --text-color: #283747; --link-color: #487a77; --link-hover-color: #355e5b; --card-bg: #ffffff; --bg-color: #f0f0f0; --main-text-color: #487a77; --sub-text-color: #283747; --normal-text-color: #283747; }
+        body.theme-2.dark-mode { --primary-color: #8ac0be; --secondary-color: #162029; --text-color: #e4e7ec; --link-color: #9cd4d2; --link-hover-color: #b1e0df; --card-bg: #222d38; --bg-color: #162029; --main-text-color: #8ac0be; --sub-text-color: #e4e7ec; --normal-text-color: #e4e7ec; }
+        body.theme-3 { --primary-color: #e51280; --secondary-color: #f0f0f0; --text-color: #2c2c2c; --link-color: #e51280; --link-hover-color: #cc0b72; --card-bg: #ffffff; --bg-color: #f0f0f0; --main-text-color: #e51280; --sub-text-color: #2c2c2c; --normal-text-color: #2c2c2c; }
+        body.theme-3.dark-mode { --primary-color: #ff88c0; --secondary-color: #1a1a20; --text-color: #f0f0f0; --link-color: #ff88c0; --link-hover-color: #ffb8d9; --card-bg: #282830; --bg-color: #1a1a20; --main-text-color: #ff88c0; --sub-text-color: #f0f0f0; --normal-text-color: #f0f0f0; }
+        body.theme-4 { --primary-color: #d1721e; --secondary-color: #f0f0f0; --text-color: #162030; --link-color: #d1721e; --link-hover-color: #bf661a; --card-bg: #ffffff; --bg-color: #f0f0f0; --main-text-color: #d1721e; --sub-text-color: #162030; --normal-text-color: #162030; }
+        body.theme-4.dark-mode { --primary-color: #ffb44d; --secondary-color: #070c12; --text-color: #f1f2f3; --link-color: #ffb44d; --link-hover-color: #ffde94; --card-bg: #0f1520; --bg-color: #070c12; --main-text-color: #ffb44d; --sub-text-color: #f1f2f3; --normal-text-color: #f1f2f3; }
+        body.theme-5 { --primary-color: #5d4ce6; --secondary-color: #f0f0f0; --text-color: #2c3238; --link-color: #5d4ce6; --link-hover-color: #4c3ecf; --card-bg: #ffffff; --bg-color: #f0f0f0; --main-text-color: #5d4ce6; --sub-text-color: #2c3238; --normal-text-color: #2c3238; }
+        body.theme-5.dark-mode { --primary-color: #b2a9ff; --secondary-color: #282e38; --text-color: #f1f3f5; --link-color: #b2a9ff; --link-hover-color: #d3ccff; --card-bg: #323945; --bg-color: #282e38; --main-text-color: #b2a9ff; --sub-text-color: #f1f3f5; --normal-text-color: #f1f3f5; }
+        body.theme-6 { --primary-color: #7b3d12; --secondary-color: #f0f0f0; --text-color: #422a1b; --link-color: #7b3d12; --link-hover-color: #5c2d0f; --card-bg: #ffffff; --bg-color: #f0f0f0; --main-text-color: #7b3d12; --sub-text-color: #422a1b; --normal-text-color: #422a1b; }
+        body.theme-6.dark-mode { --primary-color: #e0be5b; --secondary-color: #271f1a; --text-color: #f1e7d0; --link-color: #e0be5b; --link-hover-color: #f5d475; --card-bg: #352a24; --bg-color: #271f1a; --main-text-color: #e0be5b; --sub-text-color: #f1e7d0; --normal-text-color: #f1e7d0; }
+        body.theme-7 { --primary-color: #266b6c; --secondary-color: #f0f0f0; --text-color: #242d38; --link-color: #e09d4c; --link-hover-color: #d1853b; --card-bg: #ffffff; --bg-color: #f0f0f0; --main-text-color: #266b6c; --sub-text-color: #242d38; --normal-text-color: #242d38; }
+        body.theme-7.dark-mode { --primary-color: #84d2f0; --secondary-color: #0b2033; --text-color: #dae2eb; --link-color: #ffb86c; --link-hover-color: #ffa43b; --card-bg: #152b39; --bg-color: #0b2033; --main-text-color: #84d2f0; --sub-text-color: #dae2eb; --normal-text-color: #dae2eb; }
+        body.theme-8 { --primary-color: #282828; --secondary-color: #f0f0f0; --text-color: #111111; --link-color: #282828; --link-hover-color: #444444; --card-bg: #ffffff; --bg-color: #f0f0f0; --main-text-color: #282828; --sub-text-color: #111111; --normal-text-color: #111111; }
+        body.theme-8.dark-mode { --primary-color: #cccccc; --secondary-color: #333333; --text-color: #dddddd; --link-color: #cccccc; --link-hover-color: #999999; --card-bg: #444444; --bg-color: #333333; --main-text-color: #cccccc; --sub-text-color: #dddddd; --normal-text-color: #dddddd; }
+        body.theme-9 { --primary-color: #004c99; --secondary-color: #f0f0f0; --text-color: #2b2b2b; --link-color: #004c99; --link-hover-color: #003a7a; --card-bg: #ffffff; --bg-color: #f0f0f0; --main-text-color: #004c99; --sub-text-color: #2b2b2b; --normal-text-color: #2b2b2b; }
+        body.theme-9.dark-mode { --primary-color: #799dcf; --secondary-color: #151a22; --text-color: #f1f3f6; --link-color: #799dcf; --link-hover-color: #a4c4f0; --card-bg: #262d3a; --bg-color: #151a22; --main-text-color: #799dcf; --sub-text-color: #f1f3f6; --normal-text-color: #f1f3f6; }
+        body.theme-10 { --primary-color: #1e88e5; --secondary-color: #f0f0f0; --text-color: #333333; --link-color: #1e88e5; --link-hover-color: #1565c0; --card-bg: #ffffff; --bg-color: #f0f0f0; --main-text-color: #1e88e5; --sub-text-color: #333333; --normal-text-color: #333333; }
+        body.theme-10.dark-mode { --primary-color: #7ac4ff; --secondary-color: #1a1a2e; --text-color: #f0f0f0; --link-color: #7ac4ff; --link-hover-color: #a8d6ff; --card-bg: #2c2c44; --bg-color: #1a1a2e; --main-text-color: #7ac4ff; --sub-text-color: #f0f0f0; --normal-text-color: #f0f0f0; }
+        body.theme-11 { --primary-color: #4285f4; --secondary-color: #f5f8fa; --text-color: #333333; --link-color: #4285f4; --link-hover-color: #357ae8; --card-bg: #ffffff; --bg-color: #f5f8fa; --main-text-color: #4285f4; --sub-text-color: #333333; --normal-text-color: #333333; }
+        body.theme-11.dark-mode { --primary-color: #a0c3ff; --secondary-color: #1e2a3a; --text-color: #f0f4f8; --link-color: #a0c3ff; --link-hover-color: #c4e0ff; --card-bg: #2c394c; --bg-color: #1e2a3a; --main-text-color: #a0c3ff; --sub-text-color: #f0f4f8; --normal-text-color: #f0f4f8; }
+        body.theme-12 { --primary-color: #ff5722; --secondary-color: #f7f7f7; --text-color: #212121; --link-color: #ff5722; --link-hover-color: #e64a19; --card-bg: #ffffff; --bg-color: #f7f7f7; --main-text-color: #ff5722; --sub-text-color: #212121; --normal-text-color: #212121; }
+        body.theme-12.dark-mode { --primary-color: #ff9800; --secondary-color: #212121; --text-color: #e0e0e0; --link-color: #ff9800; --link-hover-color: #ffb74d; --card-bg: #333333; --bg-color: #212121; --main-text-color: #ff9800; --sub-text-color: #e0e0e0; --normal-text-color: #e0e0e0; }
+        body.theme-13 { --primary-color: #673ab7; --secondary-color: #f8f5ff; --text-color: #303030; --link-color: #673ab7; --link-hover-color: #512da8; --card-bg: #ffffff; --bg-color: #f8f5ff; --main-text-color: #673ab7; --sub-text-color: #303030; --normal-text-color: #303030; }
+        body.theme-13.dark-mode { --primary-color: #d1c4e9; --secondary-color: #251d3b; --text-color: #f1eaff; --link-color: #d1c4e9; --link-hover-color: #e6e0ff; --card-bg: #3a2d54; --bg-color: #251d3b; --main-text-color: #d1c4e9; --sub-text-color: #f1eaff; --normal-text-color: #f1eaff; }
+        body.theme-14 { --primary-color: #0a4f5f; --secondary-color: #f2f6f8; --text-color: #2c3a3c; --link-color: #d4a017; --link-hover-color: #b8860b; --card-bg: #ffffff; --bg-color: #f2f6f8; --main-text-color: #0a4f5f; --sub-text-color: #2c3a3c; --normal-text-color: #2c3a3c; }
+        body.theme-14.dark-mode { --primary-color: #72a5b8; --secondary-color: #121f24; --text-color: #f5f8f9; --link-color: #ffc200; --link-hover-color: #ffd700; --card-bg: #1c2b33; --bg-color: #121f24; --main-text-color: #72a5b8; --sub-text-color: #f5f8f9; --normal-text-color: #f5f8f9; }
+        body.theme-15 { --primary-color: #556b2f; --secondary-color: #f6f7f4; --text-color: #33382c; --link-color: #556b2f; --link-hover-color: #4a5d2a; --card-bg: #ffffff; --bg-color: #f6f7f4; --main-text-color: #556b2f; --sub-text-color: #33382c; --normal-text-color: #33382c; }
+        body.theme-15.dark-mode { --primary-color: #a2b96a; --secondary-color: #242b1e; --text-color: #f2f3f1; --link-color: #a2b96a; --link-hover-color: #c2d199; --card-bg: #353f2c; --bg-color: #242b1e; --main-text-color: #a2b96a; --sub-text-color: #f2f3f1; --normal-text-color: #f2f3f1; }
+        body.theme-16 { --primary-color: #8b0000; --secondary-color: #f8f8f8; --text-color: #222222; --link-color: #8b0000; --link-hover-color: #770000; --card-bg: #ffffff; --bg-color: #f8f8f8; --main-text-color: #8b0000; --sub-text-color: #222222; --normal-text-color: #222222; }
+        body.theme-16.dark-mode { --primary-color: #ef5350; --secondary-color: #1c1c1c; --text-color: #fcfcfc; --link-color: #ef5350; --link-hover-color: #ff8a80; --card-bg: #282828; --bg-color: #1c1c1c; --main-text-color: #ef5350; --sub-text-color: #fcfcfc; --normal-text-color: #fcfcfc; }
         
         /* General Styles */
         * {
@@ -97,7 +103,7 @@
             align-items: flex-end;
             padding: 5px 10px 0;
             font-size: 0.7rem;
-            color: var(--text-color);
+            color: var(--normal-text-color);
             gap: 3px;
             position: relative;
         }
@@ -116,7 +122,7 @@
         .theme-toggle-btn {
             background: transparent;
             border: none;
-            color: var(--text-color);
+            color: var(--normal-text-color);
             cursor: pointer;
             transition: transform 0.2s ease, color var(--transition-speed);
             display: flex;
@@ -139,7 +145,7 @@
         }
 
         .top-info-section span {
-            color: var(--text-color);
+            color: var(--normal-text-color);
         }
 
         .top-info-section a {
@@ -258,11 +264,11 @@
             padding: 12px 20px;
             padding-right: 50px;
             border-radius: 25px;
-            border: 1px solid var(--text-color);
+            border: 1px solid var(--normal-text-color);
             font-family: 'Cairo', sans-serif;
             font-size: 1rem;
             background-color: var(--card-bg);
-            color: var(--text-color);
+            color: var(--normal-text-color);
             transition: border-color var(--transition-speed), background-color var(--transition-speed), color var(--transition-speed);
         }
 
@@ -297,18 +303,17 @@
         .settings-modal {
             display: none;
             position: fixed;
-            z-index: 1;
+            z-index: 100;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
             background-color: rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
             justify-content: center;
-            align-items: flex-start; /* Aligns to top */
-            padding-top: 50px; /* Space from top */
+            align-items: center;
+            overflow-y: auto;
         }
         
         .settings-modal.active {
@@ -324,8 +329,8 @@
             text-align: right;
             position: relative;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            margin-top: 50px;
             animation: fadeIn 0.3s ease-out;
+            margin: 20px;
         }
 
         @keyframes fadeIn {
@@ -340,7 +345,7 @@
         }
 
         .settings-close-btn {
-            color: var(--text-color);
+            color: var(--normal-text-color);
             position: absolute;
             top: 10px;
             left: 15px;
@@ -370,7 +375,7 @@
             display: block;
             margin-bottom: 8px;
             font-weight: bold;
-            color: var(--text-color);
+            color: var(--normal-text-color);
         }
 
         .setting-range, .setting-color {
@@ -472,7 +477,7 @@
             text-align: center;
             margin-top: 20px;
             font-size: 0.7rem;
-            color: var(--text-color);
+            color: var(--normal-text-color);
             opacity: 0.7;
         }
 
@@ -483,7 +488,7 @@
         }
         .font-size-btn {
             background-color: var(--secondary-color);
-            color: var(--text-color);
+            color: var(--normal-text-color);
             border: 1px solid var(--primary-color);
             padding: 5px 10px;
             border-radius: 5px;
@@ -531,7 +536,7 @@
             .link-item { font-size: 0.8rem; padding: 10px 12px; }
             .link-item i { font-size: 1rem; margin-left: 8px; }
             .search-input { font-size: 0.9rem; }
-            .settings-modal-content { padding: 15px; margin-top: 20px; }
+            .settings-modal-content { padding: 15px; margin: 10px; }
             .settings-title { font-size: 1.3rem; }
             .theme-color-box { height: 35px; }
         }
@@ -626,9 +631,9 @@
             <div class="setting-item">
                 <label class="setting-label">حجم الخطوط:</label>
                 <div class="font-size-group">
-                    <button class="font-size-btn" data-font="main-title" data-size="small">A-</button>
-                    <button class="font-size-btn" data-font="main-title" data-size="medium">A</button>
-                    <button class="font-size-btn" data-font="main-title" data-size="large">A+</button>
+                    <button class="font-size-btn" data-size="small">A-</button>
+                    <button class="font-size-btn" data-size="normal">A</button>
+                    <button class="font-size-btn" data-size="large">A+</button>
                 </div>
             </div>
 
@@ -761,13 +766,11 @@
         function applySettings() {
             body.style.setProperty('--site-brightness', `${selectedSettings.brightness}%`);
             
-            // Remove all theme classes and apply the selected one
+            // Apply theme and dark mode classes
             themes.forEach(t => body.classList.remove(t));
             if (selectedSettings.theme) {
                 body.classList.add(selectedSettings.theme);
             }
-            
-            // Apply dark mode
             if (selectedSettings.darkMode === 'dark') {
                 body.classList.add('dark-mode');
                 darkModeText.textContent = 'الوضع الفاتح';
@@ -776,22 +779,25 @@
                 darkModeText.textContent = 'الوضع الليلي';
             }
 
+            // Apply custom colors (if not in dark mode, themes override)
+            if (selectedSettings.darkMode === 'light') {
+                body.style.setProperty('--bg-color', selectedSettings.bgColor);
+                body.style.setProperty('--main-text-color', selectedSettings.mainTitleColor);
+                body.style.setProperty('--sub-text-color', selectedSettings.subTitleColor);
+                body.style.setProperty('--normal-text-color', selectedSettings.normalTextColor);
+            }
+
             // Apply font sizes
-            const fontSizeFactor = {
+            const fontSizeFactors = {
                 'small': 0.8,
                 'normal': 1,
                 'large': 1.2
-            }[selectedSettings.fontSize];
-            body.style.setProperty('--main-title-size', `${defaultSettings.mainTitleSize.replace('rem', '') * fontSizeFactor}rem`);
-            body.style.setProperty('--subtitle-size', `${defaultSettings.subtitleSize.replace('rem', '') * fontSizeFactor}rem`);
-            body.style.setProperty('--section-title-size', `${defaultSettings.sectionTitleSize.replace('rem', '') * fontSizeFactor}rem`);
-            body.style.setProperty('--link-item-size', `${defaultSettings.linkItemSize.replace('rem', '') * fontSizeFactor}rem`);
-
-            // Apply custom colors
-            body.style.setProperty('--bg-color', selectedSettings.bgColor);
-            body.style.setProperty('--main-text-color', selectedSettings.mainTitleColor);
-            body.style.setProperty('--sub-text-color', selectedSettings.subTitleColor);
-            body.style.setProperty('--normal-text-color', selectedSettings.normalTextColor);
+            };
+            const factor = fontSizeFactors[selectedSettings.fontSize];
+            body.style.setProperty('--main-title-size', `${1.8 * factor}rem`);
+            body.style.setProperty('--subtitle-size', `${0.9 * factor}rem`);
+            body.style.setProperty('--section-title-size', `${1.2 * factor}rem`);
+            body.style.setProperty('--link-item-size', `${0.9 * factor}rem`);
 
             updateThemeGridSelection();
             updateFontSizeButtons();
@@ -800,14 +806,12 @@
 
         function loadSavedSettings() {
             const savedSettings = JSON.parse(localStorage.getItem('user-settings'));
-            selectedSettings = savedSettings ? savedSettings : defaultSettings;
+            selectedSettings = savedSettings || defaultSettings;
+            // Ensure all settings are present
+            selectedSettings = { ...defaultSettings, ...selectedSettings };
             currentThemeIndex = themes.indexOf(selectedSettings.theme);
             applySettings();
             brightnessSlider.value = selectedSettings.brightness;
-            bgColorPicker.value = selectedSettings.bgColor;
-            mainTitleColorPicker.value = selectedSettings.mainTitleColor;
-            subTitleColorPicker.value = selectedSettings.subTitleColor;
-            normalTextColorPicker.value = selectedSettings.normalTextColor;
         }
 
         function saveSettings() {
@@ -842,10 +846,10 @@
         }
 
         function updateColorPickers() {
+            bgColorPicker.value = selectedSettings.bgColor;
             mainTitleColorPicker.value = selectedSettings.mainTitleColor;
             subTitleColorPicker.value = selectedSettings.subTitleColor;
             normalTextColorPicker.value = selectedSettings.normalTextColor;
-            bgColorPicker.value = selectedSettings.bgColor;
         }
 
         function createThemeGrid() {
@@ -863,6 +867,11 @@
                 box.setAttribute('data-theme', theme);
                 box.addEventListener('click', () => {
                     selectedSettings.theme = theme;
+                    // Reset custom colors when a theme is chosen
+                    selectedSettings.bgColor = defaultSettings.bgColor;
+                    selectedSettings.mainTitleColor = defaultSettings.mainTitleColor;
+                    selectedSettings.subTitleColor = defaultSettings.subTitleColor;
+                    selectedSettings.normalTextColor = defaultSettings.normalTextColor;
                     applySettings();
                 });
                 themeGrid.appendChild(box);
@@ -908,21 +917,25 @@
 
         bgColorPicker.addEventListener('input', (e) => {
             selectedSettings.bgColor = e.target.value;
+            selectedSettings.theme = null;
             applySettings();
         });
         
         mainTitleColorPicker.addEventListener('input', (e) => {
             selectedSettings.mainTitleColor = e.target.value;
+            selectedSettings.theme = null;
             applySettings();
         });
         
         subTitleColorPicker.addEventListener('input', (e) => {
             selectedSettings.subTitleColor = e.target.value;
+            selectedSettings.theme = null;
             applySettings();
         });
         
         normalTextColorPicker.addEventListener('input', (e) => {
             selectedSettings.normalTextColor = e.target.value;
+            selectedSettings.theme = null;
             applySettings();
         });
 
@@ -956,4 +969,3 @@
     </script>
 </body>
 </html>
-
