@@ -1155,18 +1155,19 @@
         renderLinks();
         createThemeGrids();
 
-        // Event Listeners
-        darkModeToggleBtn.addEventListener('click', () => {
-            selectedSettings.darkMode = selectedSettings.darkMode === 'dark' ? 'light' : 'dark';
-            applySettings();
-        });
+// Event Listeners
+darkModeToggleBtn.addEventListener('click', () => {
+    selectedSettings.darkMode = selectedSettings.darkMode === 'dark' ? 'light' : 'dark';
+    applySettings();
+    localStorage.setItem('user-settings', JSON.stringify(selectedSettings)); // ✅ يحفظ التغيير مباشرة
+});
 
-        themeSwitcherBtn.addEventListener('click', () => {
-            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-            selectedSettings.theme = themes[currentThemeIndex];
-            selectedSettings.darkMode = selectedSettings.theme.includes('dark') ? 'dark' : 'light';
-            applySettings();
-        });
+themeSwitcherBtn.addEventListener('click', () => {
+    currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+    selectedSettings.theme = themes[currentThemeIndex];
+    applySettings();
+    localStorage.setItem('user-settings', JSON.stringify(selectedSettings)); // ✅ يحفظ التغيير مباشرة
+});
 
         settingsBtn.addEventListener('click', () => {
             settingsModal.classList.add('active');
