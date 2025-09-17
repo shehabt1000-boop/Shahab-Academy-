@@ -791,10 +791,6 @@
             
             <div id="modal-toast" class="modal-toast"></div>
             
-            <button id="modal-scroll-btn" class="modal-scroll-button">
-                عرض المزيد ▼
-            </button>
-
             <div class="modal-body">
                 <div class="setting-item">
                     <label for="brightness-slider" class="setting-label">سطوع الموقع:</label>
@@ -853,6 +849,9 @@
             </div>
             
             <div class="modal-footer">
+                <button id="modal-scroll-btn" class="modal-scroll-button">
+                    اضغط لعرض المزيد 🔻
+                </button>
                 <button id="save-settings-btn" class="save-btn">حفظ الإعدادات</button>
                 <button id="reset-settings-btn" class="reset-btn">إعادة ضبط الإعدادات</button>
             </div>
@@ -1188,7 +1187,7 @@
             body.style.setProperty('--site-brightness', `${selectedSettings.brightness}%`);
             brightnessValueSpan.textContent = `${e.target.value}%`;
         });
- 
+        
         // Font size buttons event listeners
         fontSizeButtons.forEach(button => {
             button.addEventListener('click', (e) => {
@@ -1258,17 +1257,29 @@
         });
 
         // Modal Scroll Button Logic
-        modalBody.addEventListener('scroll', () => {
-            // Check if the user is at the bottom of the modal
-            if (modalBody.scrollHeight - modalBody.scrollTop === modalBody.clientHeight) {
-                modalScrollButton.textContent = 'العودة للأعلى ▲';
-            } else {
-                modalScrollButton.textContent = 'عرض المزيد ▼';
-            }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    modalScrollButton.textContent = 'اضغط لعرض المزيد 🔻';
+                } else {
+                    modalScrollButton.textContent = 'اضغط للصعود للأعلى 🔺';
+                }
+            });
+        }, {
+            root: modalBody,
+            threshold: 1.0 // Trigger when the entire target is visible
         });
+        
+        // We'll create a small, invisible element at the bottom to act as our scroll target
+        const scrollTarget = document.createElement('div');
+        scrollTarget.id = 'scroll-target';
+        scrollTarget.style.height = '1px';
+        scrollTarget.style.opacity = '0';
+        modalBody.appendChild(scrollTarget);
+        observer.observe(scrollTarget);
 
         modalScrollButton.addEventListener('click', () => {
-            if (modalBody.scrollHeight - modalBody.scrollTop === modalBody.clientHeight) {
+            if (modalBody.scrollTop > 0) {
                 // Scroll to top
                 modalBody.scrollTo({
                     top: 0,
