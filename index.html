@@ -1256,31 +1256,34 @@
             });
         });
 
-        // Modal Scroll Button Logic
-        modalBody.addEventListener('scroll', () => {
-            // Check if the user is at the bottom of the modal
-            if (modalBody.scrollHeight - modalBody.scrollTop === modalBody.clientHeight) {
-                modalScrollButton.textContent = 'العودة للأعلى ▲';
-            } else {
-                modalScrollButton.textContent = 'عرض المزيد ▼';
-            }
-        });
+// Modal Scroll Button Logic
+modalBody.addEventListener('scroll', () => {
+    // Check if the user is at the bottom of the modal
+    // Adjusted the condition to be less strict
+    if (modalBody.scrollHeight - modalBody.scrollTop <= modalBody.clientHeight + 1) {
+        modalScrollButton.textContent = 'العودة للأعلى ▲';
+    } else {
+        modalScrollButton.textContent = 'عرض المزيد ▼';
+    }
+});
 
-        modalScrollButton.addEventListener('click', () => {
-            if (modalBody.scrollHeight - modalBody.scrollTop === modalBody.clientHeight) {
-                // Scroll to top
-                modalBody.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            } else {
-                // Scroll to bottom
-                modalBody.scrollTo({
-                    top: modalBody.scrollHeight,
-                    behavior: 'smooth'
-                });
-            }
+
+modalScrollButton.addEventListener('click', () => {
+    // Adjusted the condition here as well for consistency
+    if (modalBody.scrollHeight - modalBody.scrollTop <= modalBody.clientHeight + 1) {
+        // Scroll to top
+        modalBody.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
+    } else {
+        // Scroll to bottom
+        modalBody.scrollTo({
+            top: modalBody.scrollHeight,
+            behavior: 'smooth'
+        });
+    }
+});
     </script>
 </body>
 </html>
