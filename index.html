@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>خدمات طلاب كلية التجارة - جامعة الزقازيق</title>
 
-
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
-
 
         /* Default body styles */
         body {
@@ -22,7 +20,6 @@
             min-height: 100vh;
             transition: background-color var(--transition-speed), color var(--transition-speed);
 
-
             /* Default Theme Colors (Light Mode) */
             --primary-color: #004c99;
             --secondary-color: #f0f0f0;
@@ -31,591 +28,1218 @@
             --link-hover-color: #003a7a;
             --card-bg: #ffffff;
             --bg-color: #f0f0f0;
-            --border-color: #ccc;
-            --box-shadow-color: rgba(0, 0, 0, 0.1);
-            --modal-bg-color: rgba(255, 255, 255, 0.9);
-            --modal-backdrop-filter: blur(5px);
-            --modal-scroll-btn-bg: #e0e0e0;
-            --modal-scroll-btn-hover: #ccc;
+            --main-text-color: var(--primary-color);
+            --sub-text-color: var(--text-color);
+            --normal-text-color: var(--text-color);
+
+            /* Default Font Sizes */
+            --main-title-size: 1.8rem;
+            --subtitle-size: 0.9rem;
+            --section-title-size: 1.2rem;
+            --link-item-size: 0.9rem;
+
+            background-color: var(--bg-color);
+            color: var(--normal-text-color);
         }
 
+        /* --- Theme definitions (Light Mode) --- */
+        body.theme-1 { --primary-color: #004c99; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #2b2b2b; }
+        body.theme-2 { --primary-color: #487a77; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #283747; }
+        body.theme-3 { --primary-color: #e51280; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #2c2c2c; }
+        body.theme-4 { --primary-color: #d1721e; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #162030; }
+        body.theme-5 { --primary-color: #5d4ce6; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #2c3238; }
+        body.theme-6 { --primary-color: #7b3d12; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #422a1b; }
+        body.theme-7 { --primary-color: #266b6c; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #242d38; }
+        body.theme-8 { --primary-color: #282828; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #111111; }
+        body.theme-9 { --primary-color: #1e88e5; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #333333; }
+        body.theme-10 { --primary-color: #4285f4; --card-bg: #ffffff; --bg-color: #f5f8fa; --secondary-color: #f5f8fa; --text-color: #333333; }
+        body.theme-11 { --primary-color: #ff5722; --card-bg: #ffffff; --bg-color: #f7f7f7; --secondary-color: #f7f7f7; --text-color: #212121; }
+        body.theme-12 { --primary-color: #673ab7; --card-bg: #ffffff; --bg-color: #f8f5ff; --secondary-color: #f8f5ff; --text-color: #303030; }
+        body.theme-13 { --primary-color: #0a4f5f; --card-bg: #ffffff; --bg-color: #f2f6f8; --secondary-color: #f2f6f8; --text-color: #2c3a3c; }
+        body.theme-14 { --primary-color: #556b2f; --card-bg: #ffffff; --bg-color: #f6f7f4; --secondary-color: #f6f7f4; --text-color: #33382c; }
+        body.theme-15 { --primary-color: #8b0000; --card-bg: #ffffff; --bg-color: #f8f8f8; --secondary-color: #f8f8f8; --text-color: #222222; }
+        body.theme-16 { --primary-color: #d81b60; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #311b92; }
+        body.theme-17 { --primary-color: #00796b; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #212121; }
+        body.theme-18 { --primary-color: #cddc39; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #424242; }
+        body.theme-19 { --primary-color: #ffc107; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #212121; }
+        body.theme-20 { --primary-color: #ff9800; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #212121; }
+        body.theme-21 { --primary-color: #e91e63; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #2c2c2c; }
+        body.theme-22 { --primary-color: #607d8b; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #263238; }
+        body.theme-23 { --primary-color: #9c27b0; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #212121; }
+        body.theme-24 { --primary-color: #009688; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #212121; }
+        body.theme-25 { --primary-color: #4caf50; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #212121; }
+        body.theme-26 { --primary-color: #8bc34a; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #212121; }
+        body.theme-27 { --primary-color: #00bcd4; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #212121; }
+        body.theme-28 { --primary-color: #c0ca33; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #212121; }
+        body.theme-29 { --primary-color: #ff5252; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #212121; }
+        body.theme-30 { --primary-color: #7c4dff; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #212121; }
 
-        /* Dark Mode */
+        /* --- Dark Mode definitions --- */
         body.dark-mode {
-            --site-brightness: 90%;
-            --primary-color: #4CAF50;
-            --secondary-color: #2b2b2b;
-            --text-color: #f0f0f0;
-            --link-color: #64ffda;
-            --link-hover-color: #00a896;
-            --card-bg: #333333;
-            --bg-color: #1a1a1a;
-            --border-color: #444;
-            --box-shadow-color: rgba(255, 255, 255, 0.1);
-            --modal-bg-color: rgba(26, 26, 26, 0.9);
-            --modal-scroll-btn-bg: #444;
-            --modal-scroll-btn-hover: #555;
+            --primary-color: #799dcf;
+            --secondary-color: #151a22;
+            --text-color: #f1f3f6;
+            --link-color: #799dcf;
+            --link-hover-color: #a4c4f0;
+            --card-bg: #262d3a;
+            --bg-color: #151a22;
+            --main-text-color: var(--primary-color);
+            --sub-text-color: var(--text-color);
+            --normal-text-color: var(--text-color);
         }
 
-
-        /* Theme Colors */
-        .theme-1 {
-            --primary-color: #004c99;
-            --secondary-color: #f0f0f0;
-            --text-color: #2b2b2b;
-            --link-color: #004c99;
-            --link-hover-color: #003a7a;
-            --card-bg: #ffffff;
-            --bg-color: #f0f0f0;
-            --border-color: #ccc;
-            --box-shadow-color: rgba(0, 0, 0, 0.1);
-        }
-        .theme-1.dark-mode {
-            --primary-color: #4CAF50;
-            --secondary-color: #2b2b2b;
-            --text-color: #f0f0f0;
-            --link-color: #64ffda;
-            --link-hover-color: #00a896;
-            --card-bg: #333333;
-            --bg-color: #1a1a1a;
-            --border-color: #444;
-            --box-shadow-color: rgba(255, 255, 255, 0.1);
-        }
-
-
-        .theme-2 {
-            --primary-color: #e74c3c;
-            --secondary-color: #fde8e7;
-            --text-color: #2b2b2b;
-            --link-color: #c0392b;
-            --link-hover-color: #9c2d20;
-            --card-bg: #ffffff;
-            --bg-color: #fde8e7;
-            --border-color: #e74c3c;
-            --box-shadow-color: rgba(0, 0, 0, 0.1);
-        }
-        .theme-2.dark-mode {
-            --primary-color: #e74c3c;
-            --secondary-color: #3e2626;
-            --text-color: #f0f0f0;
-            --link-color: #f1948a;
-            --link-hover-color: #c0392b;
-            --card-bg: #553333;
-            --bg-color: #2b1a1a;
-            --border-color: #e74c3c;
-            --box-shadow-color: rgba(255, 255, 255, 0.1);
-        }
+        body.dark-mode.theme-2 { --primary-color: #8ac0be; --card-bg: #222d38; --bg-color: #162029; --secondary-color: #162029; --text-color: #e4e7ec; }
+        body.dark-mode.theme-3 { --primary-color: #ff88c0; --card-bg: #282830; --bg-color: #1a1a20; --secondary-color: #1a1a20; --text-color: #f0f0f0; }
+        body.dark-mode.theme-4 { --primary-color: #ffb44d; --card-bg: #0f1520; --bg-color: #070c12; --secondary-color: #070c12; --text-color: #f1f2f3; }
+        body.dark-mode.theme-5 { --primary-color: #b2a9ff; --card-bg: #323945; --bg-color: #282e38; --secondary-color: #282e38; --text-color: #f1f3f5; }
+        body.dark-mode.theme-6 { --primary-color: #e0be5b; --card-bg: #352a24; --bg-color: #271f1a; --secondary-color: #271f1a; --text-color: #f1e7d0; }
+        body.dark-mode.theme-7 { --primary-color: #84d2f0; --card-bg: #152b39; --bg-color: #0b2033; --secondary-color: #0b2033; --text-color: #dae2eb; }
+        body.dark-mode.theme-8 { --primary-color: #cccccc; --card-bg: #444444; --bg-color: #333333; --secondary-color: #333333; --text-color: #dddddd; }
+        body.dark-mode.theme-9 { --primary-color: #7ac4ff; --card-bg: #2c2c44; --bg-color: #1a1a2e; --secondary-color: #1a1a2e; --text-color: #f0f0f0; }
+        body.dark-mode.theme-10 { --primary-color: #a0c3ff; --card-bg: #2c394c; --bg-color: #1e2a3a; --secondary-color: #1e2a3a; --text-color: #f0f4f8; }
+        body.dark-mode.theme-11 { --primary-color: #ff9800; --card-bg: #333333; --bg-color: #212121; --secondary-color: #212121; --text-color: #e0e0e0; }
+        body.dark-mode.theme-12 { --primary-color: #d1c4e9; --card-bg: #3a2d54; --bg-color: #251d3b; --secondary-color: #251d3b; --text-color: #f1eaff; }
+        body.dark-mode.theme-13 { --primary-color: #72a5b8; --card-bg: #1c2b33; --bg-color: #121f24; --secondary-color: #121f24; --text-color: #f5f8f9; }
+        body.dark-mode.theme-14 { --primary-color: #a2b96a; --card-bg: #353f2c; --bg-color: #242b1e; --secondary-color: #242b1e; --text-color: #f2f3f1; }
+        body.dark-mode.theme-15 { --primary-color: #ef5350; --card-bg: #282828; --bg-color: #1c1c1c; --secondary-color: #1c1c1c; --text-color: #fcfcfc; }
+        body.dark-mode.theme-16 { --primary-color: #f06292; --card-bg: #26173a; --bg-color: #1e132e; --secondary-color: #1e132e; --text-color: #f8bbd0; }
+        body.dark-mode.theme-17 { --primary-color: #80cbc4; --card-bg: #212121; --bg-color: #121212; --secondary-color: #121212; --text-color: #f5f5f5; }
+        body.dark-mode.theme-18 { --primary-color: #f0f4c3; --card-bg: #282828; --bg-color: #1c1c1c; --secondary-color: #1c1c1c; --text-color: #fafafa; }
+        body.dark-mode.theme-19 { --primary-color: #ffeb3b; --card-bg: #212121; --bg-color: #121212; --secondary-color: #121212; --text-color: #f5f5f5; }
+        body.dark-mode.theme-20 { --primary-color: #ffb74d; --card-bg: #212121; --bg-color: #121212; --secondary-color: #121212; --text-color: #f5f5f5; }
+        body.dark-mode.theme-21 { --primary-color: #ff80ab; --card-bg: #222222; --bg-color: #111111; --secondary-color: #111111; --text-color: #f8f8f8; }
+        body.dark-mode.theme-22 { --primary-color: #b0bec5; --card-bg: #2d3840; --bg-color: #263238; --secondary-color: #263238; --text-color: #eceff1; }
+        body.dark-mode.theme-23 { --primary-color: #e1bee7; --card-bg: #201a24; --bg-color: #151119; --secondary-color: #151119; --text-color: #f3e5f5; }
+        body.dark-mode.theme-24 { --primary-color: #80cbc4; --card-bg: #222222; --bg-color: #111111; --secondary-color: #111111; --text-color: #f5f5f5; }
+        body.dark-mode.theme-25 { --primary-color: #a5d6a7; --card-bg: #222222; --bg-color: #111111; --secondary-color: #111111; --text-color: #f5f5f5; }
+        body.dark-mode.theme-26 { --primary-color: #c5e1a5; --card-bg: #222222; --bg-color: #111111; --secondary-color: #111111; --text-color: #f5f5f5; }
+        body.dark-mode.theme-27 { --primary-color: #80deea; --card-bg: #222222; --bg-color: #111111; --secondary-color: #111111; --text-color: #f5f5f5; }
+        body.dark-mode.theme-28 { --primary-color: #e6ee9c; --card-bg: #222222; --bg-color: #111111; --secondary-color: #111111; --text-color: #f5f5f5; }
+        body.dark-mode.theme-29 { --primary-color: #ff8a80; --card-bg: #222222; --bg-color: #111111; --secondary-color: #111111; --text-color: #f5f5f5; }
+        body.dark-mode.theme-30 { --primary-color: #b388ff; --card-bg: #222222; --bg-color: #111111; --secondary-color: #111111; --text-color: #f5f5f5; }
 
 
-        .theme-3 {
-            --primary-color: #3498db;
-            --secondary-color: #e8f3f8;
-            --text-color: #2b2b2b;
-            --link-color: #2980b9;
-            --link-hover-color: #20618a;
-            --card-bg: #ffffff;
-            --bg-color: #e8f3f8;
-            --border-color: #3498db;
-            --box-shadow-color: rgba(0, 0, 0, 0.1);
-        }
-        .theme-3.dark-mode {
-            --primary-color: #3498db;
-            --secondary-color: #26333e;
-            --text-color: #f0f0f0;
-            --link-color: #85c1e9;
-            --link-hover-color: #3498db;
-            --card-bg: #334455;
-            --bg-color: #1a2b38;
-            --border-color: #3498db;
-            --box-shadow-color: rgba(255, 255, 255, 0.1);
-        }
-
-
-        /* Global Reset */
-        *, *::before, *::after {
+        /* General Styles */
+        * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-
-        /* Body & Layout */
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
+        .top-info-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            padding: 5px 10px 0;
+            font-size: 0.7rem;
+            color: var(--normal-text-color);
+            gap: 3px;
+            position: relative;
         }
 
+        .theme-toggle-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 8px;
+            position: absolute;
+            right: 10px;
+            top: 5px;
+        }
+
+        .theme-toggle-btn {
+            background: transparent;
+            border: none;
+            color: var(--normal-text-color);
+            cursor: pointer;
+            transition: transform 0.2s ease, color var(--transition-speed);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+        }
+
+        .theme-toggle-btn:hover {
+            transform: scale(1.05);
+            color: var(--primary-color);
+        }
+
+        .theme-toggle-text {
+            font-size: 0.7rem;
+        }
+
+        .theme-toggle-btn .fas {
+            font-size: 1rem;
+        }
+
+        .top-info-section span {
+            color: var(--normal-text-color);
+        }
+
+        .top-info-section a {
+            text-decoration: none;
+            color: var(--link-color);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color var(--transition-speed);
+        }
+
+        .top-info-section .contact-text {
+            font-size: 0.65rem;
+            font-weight: bold;
+        }
+
+        .top-info-section a:hover {
+            color: var(--link-hover-color);
+            text-decoration: underline;
+        }
+
+        .top-info-section .fab {
+            font-size: 1rem;
+        }
 
         .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
+            max-width: 850px;
+            margin: 20px auto;
+            padding: 10px;
         }
 
-
-        /* Header */
         header {
-            background-color: var(--primary-color);
-            color: #fff;
-            padding: 20px;
             text-align: center;
-            border-bottom: 5px solid var(--border-color);
             margin-bottom: 20px;
         }
 
-
-        header h1 {
-            font-size: 2.5em;
+        .main-title {
+            font-size: var(--main-title-size);
+            color: var(--main-text-color);
             margin-bottom: 5px;
+            font-weight: 700;
         }
 
-
-        header p {
-            font-size: 1.2em;
+        .subtitle {
+            font-size: var(--subtitle-size);
+            color: var(--sub-text-color);
+            opacity: 0.8;
         }
 
-
-        /* Navigation */
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-
-        nav button {
-            background-color: var(--primary-color);
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color var(--transition-speed);
-        }
-
-
-        nav button:hover {
-            background-color: var(--link-hover-color);
-        }
-
-
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-
-        .service-card {
+        .links-section {
             background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
+            padding: 15px;
             border-radius: 10px;
-            box-shadow: 0 4px 6px var(--box-shadow-color);
-            padding: 20px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
+            box-shadow: none;
+            margin-bottom: 15px;
+            transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
         }
 
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px var(--box-shadow-color);
-        }
-
-
-        .service-card h3 {
+        .section-title {
+            font-size: var(--section-title-size);
             color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 8px;
             margin-bottom: 10px;
+            font-weight: 700;
         }
 
-
-        .service-card p {
-            font-size: 0.9em;
+        .icon {
+            margin-left: 8px;
+            font-size: 1.4rem;
+            color: var(--primary-color);
         }
 
+        .link-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
-        /* Modal */
-        .modal {
-            display: none; /* Hidden by default */
+        .link-item {
+            display: flex;
+            align-items: center;
+            background-color: var(--secondary-color);
+            padding: 12px 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--normal-text-color);
+            font-size: var(--link-item-size);
+            font-weight: 700;
+            transition: background-color var(--transition-speed), transform 0.2s ease;
+            box-shadow: none;
+            position: relative;
+        }
+
+        .link-item i {
+            margin-left: 10px;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            transition: transform 0.2s ease;
+        }
+
+        .link-item span {
+            flex-grow: 1;
+        }
+
+        /* Styles for Search Bar */
+        .search-container {
+            margin-bottom: 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            padding-right: 50px;
+            border-radius: 25px;
+            border: 1px solid var(--normal-text-color);
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            background-color: var(--card-bg);
+            color: var(--normal-text-color);
+            transition: border-color var(--transition-speed), background-color var(--transition-speed), color var(--transition-speed);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px var(--primary-color);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            transition: color var(--transition-speed);
+        }
+
+        /* Hover Effects */
+        .link-item:hover {
+            transform: translateY(-2px);
+            color: var(--link-hover-color);
+        }
+        .link-item:hover i {
+            transform: scale(1.1);
+            color: var(--link-hover-color);
+        }
+        .link-item:hover span {
+            color: var(--link-hover-color);
+        }
+
+        /* Settings Modal */
+        .settings-modal {
+            display: none;
             position: fixed;
-            z-index: 1000;
+            z-index: 100;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
-            background-color: var(--modal-bg-color);
-            backdrop-filter: var(--modal-backdrop-filter);
-            padding-top: 60px;
+            background-color: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
         }
 
+        .settings-modal.active {
+            display: flex;
+        }
 
-        .modal-content {
+        .settings-modal-content {
             background-color: var(--card-bg);
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid var(--border-color);
-            width: 80%;
-            max-width: 700px;
+            padding: 15px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px var(--box-shadow-color);
+            width: 95%;
+            max-width: 450px;
+            text-align: right;
             position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.3s ease-out;
+            margin: 10px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
         }
 
-
-        .close-btn {
-            color: var(--text-color);
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-
-        .close-btn:hover,
-        .close-btn:focus {
-            color: var(--primary-color);
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-
-        #modal-body {
-            max-height: 70vh;
+        .modal-body {
             overflow-y: auto;
-            margin-top: 20px;
-            padding-left: 10px;
+            flex-grow: 1;
+            padding-bottom: 10px; /* Space for the fixed footer */
             scrollbar-width: thin;
             scrollbar-color: var(--primary-color) var(--secondary-color);
         }
 
-
-        #modal-body::-webkit-scrollbar {
+        /* WebKit Scrollbar (Chrome, Safari) */
+        .modal-body::-webkit-scrollbar {
             width: 8px;
         }
-        #modal-body::-webkit-scrollbar-track {
+
+        .modal-body::-webkit-scrollbar-track {
             background: var(--secondary-color);
+            border-radius: 10px;
         }
-        #modal-body::-webkit-scrollbar-thumb {
+
+        .modal-body::-webkit-scrollbar-thumb {
             background-color: var(--primary-color);
-            border-radius: 4px;
+            border-radius: 10px;
+            border: 2px solid var(--secondary-color);
         }
 
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-        .modal-scroll-button {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            background-color: var(--modal-scroll-btn-bg);
-            color: var(--text-color);
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            font-size: 1.5em;
+        .settings-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background-color: var(--card-bg);
+            z-index: 10;
+            padding: 0 0 10px 0;
+        }
+
+        .settings-close-btn {
+            color: #d32f2f;
+            font-size: 28px;
+            font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            transition: background-color var(--transition-speed);
+            transition: color 0.2s ease;
+            background: transparent;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 1rem;
+            padding: 5px;
+        }
+
+        .settings-close-btn:hover {
+            color: #ff5252;
+        }
+
+        .settings-close-btn span {
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .settings-title {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            width: 100%;
+            text-align: right;
+        }
+        .settings-title.modal-header-title {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .setting-item {
+            margin-bottom: 12px;
+        }
+
+        .setting-label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: var(--normal-text-color);
+            font-size: 0.9rem;
+        }
+
+        .setting-range, .setting-color {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(35px, 1fr));
+            gap: 8px;
+        }
+
+        .theme-color-box {
+            width: 100%;
+            height: 35px;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .theme-color-box.selected {
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+        .theme-color-box.selected.light-mode-theme {
+            border-color: #000;
         }
 
 
-        .modal-scroll-button:hover {
-            background-color: var(--modal-scroll-btn-hover);
+        .save-btn, .reset-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            width: 100%;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        .reset-btn {
+            background-color: #f44336;
+            margin-top: 10px;
+        }
+
+        .save-btn:hover {
+            background-color: var(--link-hover-color);
+            transform: translateY(-2px);
+        }
+        .reset-btn:hover {
+            background-color: #d32f2f;
+            transform: translateY(-2px);
+        }
+
+        .toast-message {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #333;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 100;
+        }
+
+        .toast-message.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-toast {
+            position: relative;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-toast.show {
+            opacity: 1;
+            visibility: visible;
         }
 
 
+        /* Scroll-to-Top Button */
         .scroll-to-top {
             position: fixed;
             bottom: 20px;
-            right: 20px;
+            left: 20px;
             background-color: var(--primary-color);
             color: white;
             border: none;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 1.5em;
+            width: 45px;
+            height: 45px;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            display: none;
             opacity: 0;
-            transition: opacity 0.3s;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
         }
-
 
         .scroll-to-top.show {
-            display: block;
             opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .scroll-to-top:hover {
+            transform: translateY(-3px);
         }
 
+        /* Footer centered */
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.7rem;
+            color: var(--normal-text-color);
+            opacity: 0.7;
+        }
 
-        .info-section {
-            padding: 10px;
-            margin-bottom: 15px;
+        .setting-range-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 6px;
+        }
+
+        .range-value {
+            font-size: 0.8rem;
+            color: var(--normal-text-color);
+            min-width: 35px;
+            text-align: center;
+        }
+
+        .color-input-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 6px;
+            gap: 10px;
+        }
+        .color-input {
+            width: 45px;
+            height: 25px;
+            border: none;
+            cursor: pointer;
+            background: transparent;
+        }
+
+        .font-size-options {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .font-size-btn {
             background-color: var(--secondary-color);
-            border-radius: 8px;
+            color: var(--text-color);
+            border: 1px solid var(--text-color);
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.2s ease, transform 0.2s ease;
         }
-        .info-section h4 {
+        .font-size-btn:hover {
+            transform: translateY(-2px);
+        }
+        .font-size-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Fixed buttons at the bottom */
+        .modal-footer {
+            position: sticky;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--card-bg);
+            padding-top: 10px;
+            z-index: 10;
+        }
+
+        .modal-scroll-button {
+            background: var(--secondary-color);
             color: var(--primary-color);
-            margin-bottom: 5px;
+            border: 1px solid var(--primary-color);
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: background-color 0.2s ease;
         }
-        .info-section p {
-            margin-bottom: 5px;
-        }
-        .info-section a {
-            color: var(--link-color);
-            text-decoration: none;
-        }
-        .info-section a:hover {
-            text-decoration: underline;
+        .modal-scroll-button:hover {
+            background: var(--primary-color);
+            color: white;
         }
 
-
+        /* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 5px;
+        margin: 10px auto;
+    }
+    .main-title { font-size: 1.5rem; }
+    .subtitle { font-size: 0.8rem; }
+    .top-info-section { padding: 5px; }
+    .theme-toggle-container { 
+        right: 5px; 
+        top: 5px;
+        flex-direction: row; /* تم التعديل هنا */
+        align-items: center;  /* تم التعديل هنا */
+    }
+    .theme-toggle-btn { font-size: 0.8rem; }
+    .links-section { padding: 10px; }
+    .section-title { font-size: 1.1rem; padding-bottom: 5px; }
+    .link-item { font-size: 0.8rem; padding: 10px 12px; }
+    .link-item i { font-size: 1rem; margin-left: 8px; }
+    .search-input { font-size: 0.9rem; }
+    .settings-modal-content { 
+        padding: 10px; 
+        margin: 5px;
+        top: 20px;
+        transform: translateY(0);
+        align-self: flex-start;
+        max-height: 85vh;
+    }
+    .settings-modal.active {
+        align-items: flex-start;
+    }
+    .settings-title { font-size: 1.2rem; }
+    .theme-color-box { height: 30px; }
+}
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <div class="top-info-section">
+        <div class="theme-toggle-container">
+            <button id="dark-mode-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+                <span id="dark-mode-text" class="theme-toggle-text">الوضع الليلي</span>
+            </button>
+            <button id="theme-switcher" class="theme-toggle-btn" aria-label="Switch theme">
+                <i class="fas fa-palette"></i>
+                <span id="theme-switcher-text" class="theme-toggle-text">تبديل المظهر</span>
+            </button>
+            <button id="settings-btn" class="theme-toggle-btn" aria-label="Open settings">
+                <i class="fas fa-cog"></i>
+                <span class="theme-toggle-text">الإعدادات</span>
+            </button>
+        </div>
+        <span>تصميم: شهاب طارق</span>
+        <a href="https://wa.me/201206244875" target="_blank" class="whatsapp-link-container">
+            <span class="contact-text">اضغط هنا للتواصل</span>
+            <i class="fab fa-whatsapp"></i>
+            <span>01206244875</span>
+        </a>
+    </div>
 
+    <div class="container">
+        <header>
+            <h1 class="main-title">خدمات طلاب كلية التجارة - جامعة الزقازيق</h1>
+            <p class="subtitle">كل ما تحتاجه من روابط هامة في مكان واحد.</p>
+        </header>
 
-    <header>
-        <h1>خدمات طلاب كلية التجارة</h1>
-        <p>جامعة الزقازيق - قسم الحاسب الآلي</p>
-    </header>
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="ابحث عن رابط...">
+            <i class="fas fa-search search-icon"></i>
+        </div>
 
+        <section id="servicesSection" class="links-section">
+            <h2 class="section-title"><i class="fas fa-university icon"></i> خدمات الطلاب والمصروفات</h2>
+            <div id="links-1" class="link-list"></div>
+        </section>
 
-    <nav>
-        <button id="dark-mode-toggle"><span id="dark-mode-text">الوضع الليلي</span></button>
-        <button id="theme-switcher">تبديل المظهر</button>
-    </nav>
+        <section id="whatsappSection" class="links-section">
+            <h2 class="section-title"><i class="fab fa-whatsapp icon"></i> مجموعات الواتساب</h2>
+            <div id="links-2" class="link-list"></div>
+        </section>
 
+        <section id="resultsSection" class="links-section">
+            <h2 class="section-title"><i class="fas fa-poll icon"></i> نتائج الامتحانات</h2>
+            <div id="links-3" class="link-list"></div>
+        </section>
 
-    <main class="container">
-        <div class="services-grid">
+        <section id="medicalSection" class="links-section">
+            <h2 class="section-title"><i class="fas fa-heartbeat icon"></i> الكشف الطبي</h2>
+            <div id="links-4" class="link-list"></div>
+        </section>
+
+        <section id="hostelSection" class="links-section">
+            <h2 class="section-title"><i class="fas fa-home icon"></i> المدينة الجامعية</h2>
+            <div id="links-5" class="link-list"></div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        - تصميم: شهاب طارق -
+    </footer>
+
+    <button id="scrollToTopBtn" class="scroll-to-top" aria-label="العودة إلى الأعلى">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <div id="settingsModal" class="settings-modal">
+        <div class="settings-modal-content">
+            <div class="settings-header">
+                <h3 class="settings-title modal-header-title">الإعدادات</h3>
+                <button class="settings-close-btn">&times; إغلاق</button>
             </div>
-    </main>
 
+            <div id="modal-toast" class="modal-toast"></div>
 
-    <div id="infoModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <div id="modal-body">
+            <button id="modal-scroll-btn" class="modal-scroll-button">
+                عرض المزيد ▼
+            </button>
+
+            <div class="modal-body">
+                <div class="setting-item">
+                    <label for="brightness-slider" class="setting-label">سطوع الموقع:</label>
+                    <div class="setting-range-group">
+                        <input type="range" id="brightness-slider" class="setting-range" min="50" max="150" value="100">
+                        <span id="brightness-value" class="range-value">100%</span>
+                    </div>
                 </div>
-            <button id="modal-scroll-button" class="modal-scroll-button">↓</button>
+
+                <h4 class="settings-title">تخصيص الألوان (للمظهر الحالي)</h4>
+                <div class="setting-item">
+                    <div class="color-input-group">
+                        <span>اللون الأساسي:</span>
+                        <input type="color" id="primary-color-picker" class="color-input">
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <div class="color-input-group">
+                        <span>لون الخلفية:</span>
+                        <input type="color" id="bg-color-picker" class="color-input">
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <div class="color-input-group">
+                        <span>لون المربعات (الروابط):</span>
+                        <input type="color" id="card-bg-color-picker" class="color-input">
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <div class="color-input-group">
+                        <span>لون الخطوط:</span>
+                        <input type="color" id="text-color-picker" class="color-input">
+                    </div>
+                </div>
+
+                <h4 class="settings-title">تغيير حجم الخط</h4>
+                <div class="setting-item">
+                    <label class="setting-label">اختر حجم الخط المناسب:</label>
+                    <div class="font-size-options">
+                        <button class="font-size-btn" data-size="small">A1</button>
+                        <button class="font-size-btn" data-size="medium">A2</button>
+                        <button class="font-size-btn" data-size="large">A3</button>
+                    </div>
+                </div>
+
+                <h4 class="settings-title">تغيير المظهر</h4>
+                <div class="setting-item">
+                    <label class="setting-label">الوضع الفاتح:</label>
+                    <div id="light-theme-grid" class="theme-grid"></div>
+                </div>
+
+                <div class="setting-item">
+                    <label class="setting-label">الوضع الداكن:</label>
+                    <div id="dark-theme-grid" class="theme-grid"></div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button id="save-settings-btn" class="save-btn">حفظ الإعدادات</button>
+                <button id="reset-settings-btn" class="reset-btn">إعادة ضبط الإعدادات</button>
+            </div>
         </div>
     </div>
 
-
-    <button id="scrollToTopBtn" class="scroll-to-top">↑</button>
-
-
     <script>
-        const services = [
-            {
-                title: "التنسيق الإلكتروني",
-                description: "مساعدتك في عملية التنسيق الإلكتروني وتحديد رغباتك بشكل صحيح."
-            },
-            {
-                title: "الأوراق المطلوبة للتقديم",
-                description: "قائمة كاملة بالأوراق والمستندات اللازمة للتقديم في الكلية."
-            },
-            {
-                title: "طرق دفع المصروفات",
-                description: "شرح تفصيلي لطرق دفع المصروفات الدراسية بسهولة ويسر."
-            },
-            {
-                title: "جداول الدراسة",
-                description: "الوصول إلى جداول المحاضرات والسكاشن المحدثة."
-            },
-            {
-                title: "مواعيد الامتحانات",
-                description: "معرفة مواعيد الامتحانات وجداولها لكل الفرق الدراسية."
-            },
-            {
-                title: "الكتب والمذكرات",
-                description: "توفير معلومات حول الكتب والمذكرات المتاحة لكل مادة."
-            },
-            {
-                title: "نتائج الامتحانات",
-                description: "الاستعلام عن نتائج الامتحانات فور إعلانها."
-            },
-            {
-                title: "الأنشطة الطلابية",
-                description: "التعرف على الأنشطة الطلابية والفعاليات داخل الكلية."
-            },
-            {
-                title: "دليل الكلية",
-                description: "دليل شامل لأقسام الكلية، وأعضاء هيئة التدريس، والمرافق المتاحة."
-            }
+        const body = document.body;
+        const darkModeToggleBtn = document.getElementById('dark-mode-toggle');
+        const darkModeText = document.getElementById('dark-mode-text');
+        const themeSwitcherBtn = document.getElementById('theme-switcher');
+        const settingsBtn = document.getElementById('settings-btn');
+        const settingsModal = document.getElementById('settingsModal');
+        const settingsCloseBtn = document.querySelector('.settings-close-btn');
+        const brightnessSlider = document.getElementById('brightness-slider');
+        const brightnessValueSpan = document.getElementById('brightness-value');
+        const lightThemeGrid = document.getElementById('light-theme-grid');
+        const darkThemeGrid = document.getElementById('dark-theme-grid');
+        const saveSettingsBtn = document.getElementById('save-settings-btn');
+        const resetSettingsBtn = document.getElementById('reset-settings-btn');
+        const modalToast = document.getElementById('modal-toast');
+        const searchInput = document.getElementById('searchInput');
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+        const modalScrollButton = document.getElementById('modal-scroll-btn');
+        const modalBody = document.querySelector('.modal-body');
+
+        const fontSizeButtons = document.querySelectorAll('.font-size-btn');
+
+        const primaryColorPicker = document.getElementById('primary-color-picker');
+        const bgColorPicker = document.getElementById('bg-color-picker');
+        const cardBgColorPicker = document.getElementById('card-bg-color-picker');
+        const textColorPicker = document.getElementById('text-color-picker');
+
+        const defaultSettings = {
+            brightness: 100,
+            theme: 'theme-1',
+            darkMode: 'light',
+            fontSize: 'medium',
+            customColors: {}
+        };
+
+        const fontSizes = {
+            small: { main: 1.6, section: 1.1, link: 0.8 },
+            medium: { main: 1.8, section: 1.2, link: 0.9 },
+            large: { main: 2.1, section: 1.4, link: 1.1 }
+        };
+
+        let selectedSettings = {};
+
+        const linksData = [
+            { id: 1, category: 'services', name: 'المنصة الإلكترونية لسداد مصروفات الكتب والمقررات الدراسية', url: 'http://admincom.eps.zu.edu.eg/Views/StudentViews/StudentLogin', icon: 'fas fa-credit-card' },
+            { id: 2, category: 'services', name: 'بوابة الخدمات الطلابية والمصروفات', url: 'https://militaryeducation.zu.edu.eg/Views/ED_Students/Login', icon: 'fas fa-graduation-cap' },
+            { id: 3, category: 'services', name: 'الحصول على الكود الجامعي', url: 'https://militaryeducation.zu.edu.eg/Views/General/GetStudInfo', icon: 'fas fa-id-card' },
+            { id: 4, category: 'whatsapp', name: 'جروب واتساب فرقة أولى', url: 'https://chat.whatsapp.com/D3fHA8WdKzELcYiLmJbrUU', icon: 'fab fa-whatsapp' },
+            { id: 5, category: 'whatsapp', name: 'جروب واتساب فرقة ثانية', url: 'https://chat.whatsapp.com/BVk8aNUajS0BPtVJb73jhO', icon: 'fab fa-whatsapp' },
+            { id: 6, category: 'results', name: 'نتائج امتحانات الفرق الدراسية', url: 'http://www.studentactivities.zu.edu.eg/Students/Registration/ed_login.aspx', icon: 'fas fa-poll-h' },
+            { id: 7, category: 'medical', name: 'استمارة الكشف الطبي - رابط 1', url: 'http://www.medical.zustudents.zu.edu.eg/', icon: 'fas fa-notes-medical' },
+            { id: 8, category: 'medical', name: 'استمارة الكشف الطبي - رابط 2', url: 'http://www.medical2.zustudents.zu.edu.eg/', icon: 'fas fa-notes-medical' },
+            { id: 9, category: 'medical', name: 'استمارة الكشف الطبي - رابط 3', url: 'http://www.medical3.zustudents.zu.edu.eg/', icon: 'fas fa-notes-medical' },
+            { id: 10, category: 'hostel', name: 'التقديم للمدن الجامعية', url: 'https://hostelstudreg.zu.edu.eg/', icon: 'fas fa-dorm-room' }
         ];
 
+        const themes = [
+            'theme-1', 'theme-2', 'theme-3', 'theme-4', 'theme-5', 'theme-6', 
+            'theme-7', 'theme-8', 'theme-9', 'theme-10', 'theme-11', 'theme-12',
+            'theme-13', 'theme-14', 'theme-15', 'theme-16', 'theme-17', 'theme-18',
+            'theme-19', 'theme-20', 'theme-21', 'theme-22', 'theme-23', 'theme-24',
+            'theme-25', 'theme-26', 'theme-27', 'theme-28', 'theme-29', 'theme-30'
+        ];
+        let currentThemeIndex = 0;
 
-        const servicesGrid = document.querySelector('.services-grid');
-        const modal = document.getElementById("infoModal");
-        const closeModalBtn = document.querySelector(".close-btn");
-        const modalBody = document.getElementById("modal-body");
-        const modalScrollButton = document.getElementById("modal-scroll-button");
-        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+        const linkLists = {
+            services: document.getElementById('links-1'),
+            whatsapp: document.getElementById('links-2'),
+            results: document.getElementById('links-3'),
+            medical: document.getElementById('links-4'),
+            hostel: document.getElementById('links-5')
+        };
+        const sections = {
+            services: document.getElementById('servicesSection'),
+            whatsapp: document.getElementById('whatsappSection'),
+            results: document.getElementById('resultsSection'),
+            medical: document.getElementById('medicalSection'),
+            hostel: document.getElementById('hostelSection')
+        };
 
+        function renderLinks(searchTerm = '') {
+            const normalizedSearchTerm = searchTerm.trim().toLowerCase();
+            Object.values(linkLists).forEach(list => list.innerHTML = '');
+            Object.values(sections).forEach(section => section.style.display = 'none');
+            const filteredData = linksData.filter(link => {
+                const normalizedName = link.name.toLowerCase();
+                const normalizedCategory = link.category.toLowerCase();
+                return normalizedName.includes(normalizedSearchTerm) || normalizedCategory.includes(normalizedSearchTerm);
+            });
+            const displayedCategories = new Set();
+            filteredData.forEach(link => {
+                const a = document.createElement('a');
+                a.className = 'link-item';
+                a.href = link.url;
+                a.target = '_blank';
+                const icon = document.createElement('i');
+                icon.className = link.icon;
+                a.appendChild(icon);
+                const span = document.createElement('span');
+                span.textContent = link.name;
+                a.appendChild(span);
+                linkLists[link.category].appendChild(a);
+                displayedCategories.add(link.category);
+            });
+            displayedCategories.forEach(category => {
+                sections[category].style.display = 'block';
+            });
+            if (filteredData.length === 0) {
+                const noResults = document.createElement('p');
+                noResults.className = 'no-results-message';
+                noResults.textContent = 'لا توجد نتائج بحث مطابقة.';
+                Object.values(linkLists)[0].appendChild(noResults);
+            }
+        }
 
-        services.forEach(service => {
-            const card = document.createElement('div');
-            card.classList.add('service-card');
-            card.innerHTML = `<h3>${service.title}</h3><p>${service.description}</p>`;
-            servicesGrid.appendChild(card);
-            card.addEventListener('click', () => {
-                showModal(service.title, service.description);
+        function applySettings() {
+            // Apply brightness
+            body.style.setProperty('--site-brightness', `${selectedSettings.brightness}%`);
+
+            // Remove all theme classes and apply the selected one
+            themes.forEach(t => body.classList.remove(t));
+            if (selectedSettings.theme) {
+                body.classList.add(selectedSettings.theme);
+            }
+
+            // Apply dark mode class
+            if (selectedSettings.darkMode === 'dark') {
+                body.classList.add('dark-mode');
+                darkModeText.textContent = 'الوضع الفاتح';
+            } else {
+                body.classList.remove('dark-mode');
+                darkModeText.textContent = 'الوضع الليلي';
+            }
+
+            // Apply custom colors for the current theme
+            const customColors = selectedSettings.customColors[selectedSettings.theme] || {};
+            body.style.setProperty('--primary-color', customColors.primary || '');
+            body.style.setProperty('--bg-color', customColors.bg || '');
+            body.style.setProperty('--card-bg', customColors.cardBg || '');
+            body.style.setProperty('--text-color', customColors.text || '');
+
+            // Apply font sizes
+            const sizes = fontSizes[selectedSettings.fontSize];
+            body.style.setProperty('--main-title-size', `${sizes.main}rem`);
+            body.style.setProperty('--subtitle-size', `${sizes.link}rem`);
+            body.style.setProperty('--section-title-size', `${sizes.section}rem`);
+            body.style.setProperty('--link-item-size', `${sizes.link}rem`);
+
+            updateThemeGridSelection();
+            updateSliderValues();
+            updateColorPickers();
+            updateFontSizeButtons();
+        }
+
+        function updateFontSizeButtons() {
+            fontSizeButtons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-size') === selectedSettings.fontSize) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        function loadSavedSettings() {
+            const savedSettings = JSON.parse(localStorage.getItem('user-settings'));
+            selectedSettings = { ...defaultSettings, ...savedSettings };
+            // Ensure customColors object exists
+            if (!selectedSettings.customColors) {
+                selectedSettings.customColors = {};
+            }
+            currentThemeIndex = themes.indexOf(selectedSettings.theme);
+
+            brightnessSlider.value = selectedSettings.brightness;
+
+            applySettings();
+        }
+
+        function saveSettings() {
+            localStorage.setItem('user-settings', JSON.stringify(selectedSettings));
+            showToast('تم حفظ الإعدادات بنجاح!');
+        }
+
+        function resetSettings() {
+            selectedSettings = JSON.parse(JSON.stringify(defaultSettings)); // Deep copy to avoid reference issues
+            localStorage.removeItem('user-settings');
+            applySettings();
+            showToast('تم إعادة ضبط الإعدادات!', 'reset');
+            setTimeout(() => {
+                settingsModal.classList.remove('active');
+            }, 1000);
+        }
+
+        function showToast(message, type = 'save') {
+            modalToast.textContent = message;
+            modalToast.style.backgroundColor = type === 'save' ? '#4CAF50' : '#f44336';
+            modalToast.classList.add('show');
+            setTimeout(() => {
+                modalToast.classList.remove('show');
+            }, 3000);
+        }
+
+        function updateThemeGridSelection() {
+            document.querySelectorAll('.theme-color-box').forEach(box => {
+                box.classList.remove('selected');
+                if (box.getAttribute('data-theme') === selectedSettings.theme) {
+                    box.classList.add('selected');
+                }
+            });
+        }
+
+        function updateSliderValues() {
+            brightnessValueSpan.textContent = `${selectedSettings.brightness}%`;
+        }
+
+        function updateColorPickers() {
+            const tempDiv = document.createElement('div');
+            tempDiv.style.display = 'none';
+            tempDiv.className = selectedSettings.theme;
+            if (selectedSettings.darkMode === 'dark') {
+                tempDiv.classList.add('dark-mode');
+            }
+            body.appendChild(tempDiv);
+
+            const tempStyle = getComputedStyle(tempDiv);
+
+            const customColors = selectedSettings.customColors[selectedSettings.theme] || {};
+
+            primaryColorPicker.value = customColors.primary || rgbToHex(tempStyle.getPropertyValue('--primary-color'));
+            bgColorPicker.value = customColors.bg || rgbToHex(tempStyle.getPropertyValue('--bg-color'));
+            cardBgColorPicker.value = customColors.cardBg || rgbToHex(tempStyle.getPropertyValue('--card-bg'));
+            textColorPicker.value = customColors.text || rgbToHex(tempStyle.getPropertyValue('--text-color'));
+
+            body.removeChild(tempDiv);
+        }
+
+        function rgbToHex(rgb) {
+            if (!rgb) return '#ffffff';
+            const result = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+            if (!result) return rgb;
+            function hex(x) {
+                return ("0" + parseInt(x).toString(16)).slice(-2);
+            }
+            return "#" + hex(result[1]) + hex(result[2]) + hex(result[3]);
+        }
+
+        function createThemeGrids() {
+            lightThemeGrid.innerHTML = '';
+            darkThemeGrid.innerHTML = '';
+
+            const lightThemes = themes.slice(0, 15);
+            const darkThemes = themes.slice(15, 30);
+
+            const themeColors = {
+                'theme-1': '004c99', 'theme-2': '487a77', 'theme-3': 'e51280', 'theme-4': 'd1721e',
+                'theme-5': '5d4ce6', 'theme-6': '7b3d12', 'theme-7': '266b6c', 'theme-8': '282828',
+                'theme-9': '1e88e5', 'theme-10': '4285f4', 'theme-11': 'ff5722', 'theme-12': '673ab7',
+                'theme-13': '0a4f5f', 'theme-14': '556b2f', 'theme-15': '8b0000', 'theme-16': 'd81b60',
+                'theme-17': '00796b', 'theme-18': 'cddc39', 'theme-19': 'ffc107', 'theme-20': 'ff9800',
+                'theme-21': 'e91e63', 'theme-22': '607d8b', 'theme-23': '9c27b0', 'theme-24': '009688',
+                'theme-25': '4caf50', 'theme-26': '8bc34a', 'theme-27': '00bcd4', 'theme-28': 'c0ca33',
+                'theme-29': 'ff5252', 'theme-30': '7c4dff'
+            };
+
+            lightThemes.forEach(theme => {
+                const box = document.createElement('div');
+                box.className = 'theme-color-box light-mode-theme';
+                box.style.backgroundColor = `#${themeColors[theme]}`;
+                box.setAttribute('data-theme', theme);
+                box.addEventListener('click', () => {
+                    selectedSettings.theme = theme;
+                    selectedSettings.darkMode = 'light';
+                    applySettings();
+                });
+                lightThemeGrid.appendChild(box);
+            });
+
+            darkThemes.forEach(theme => {
+                const box = document.createElement('div');
+                box.className = 'theme-color-box';
+                box.style.backgroundColor = `#${themeColors[theme]}`;
+                box.setAttribute('data-theme', theme);
+                box.addEventListener('click', () => {
+                    selectedSettings.theme = theme;
+                    selectedSettings.darkMode = 'dark';
+                    applySettings();
+                });
+                darkThemeGrid.appendChild(box);
+            });
+            updateThemeGridSelection();
+        }
+
+        // Initial load
+        loadSavedSettings();
+        renderLinks();
+        createThemeGrids();
+
+        // Event Listeners
+        darkModeToggleBtn.addEventListener('click', () => {
+            selectedSettings.darkMode = selectedSettings.darkMode === 'dark' ? 'light' : 'dark';
+            applySettings();
+        });
+
+        themeSwitcherBtn.addEventListener('click', () => {
+            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+            selectedSettings.theme = themes[currentThemeIndex];
+            selectedSettings.darkMode = selectedSettings.theme.includes('dark') ? 'dark' : 'light';
+            applySettings();
+        });
+
+        settingsBtn.addEventListener('click', () => {
+            settingsModal.classList.add('active');
+            updateColorPickers();
+        });
+
+        settingsCloseBtn.addEventListener('click', () => {
+            settingsModal.classList.remove('active');
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === settingsModal) {
+                settingsModal.classList.remove('active');
+            }
+        });
+
+        brightnessSlider.addEventListener('input', (e) => {
+            selectedSettings.brightness = parseFloat(e.target.value);
+            body.style.setProperty('--site-brightness', `${selectedSettings.brightness}%`);
+            brightnessValueSpan.textContent = `${e.target.value}%`;
+        });
+         // Font size buttons event listeners
+        fontSizeButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const newSize = e.target.getAttribute('data-size');
+                selectedSettings.fontSize = newSize;
+                applySettings();
             });
         });
 
-
-        function showModal(title, description) {
-            modalBody.innerHTML = `
-                <div class="info-section">
-                    <h4>${title}</h4>
-                    <p>${description}</p>
-                    <p>هذا مجرد مثال. سيتم تحديث هذه الصفحة بمعلومات تفصيلية لكل خدمة قريباً.</p>
-                </div>
-            `;
-            modal.style.display = "block";
-            modalScrollButton.textContent = "↓";
-            modalBody.scrollTop = 0;
-        }
-
-
-        closeModalBtn.addEventListener('click', () => {
-            modal.style.display = "none";
+        // Event listeners for color pickers (only affect current theme)
+        primaryColorPicker.addEventListener('input', (e) => {
+            const currentTheme = selectedSettings.theme;
+            if (!selectedSettings.customColors[currentTheme]) {
+                selectedSettings.customColors[currentTheme] = {};
+            }
+            selectedSettings.customColors[currentTheme].primary = e.target.value;
+            applySettings();
         });
 
-
-        window.addEventListener('click', (event) => {
-            if (event.target == modal) {
-                modal.style.display = "none";
+        bgColorPicker.addEventListener('input', (e) => {
+            const currentTheme = selectedSettings.theme;
+            if (!selectedSettings.customColors[currentTheme]) {
+                selectedSettings.customColors[currentTheme] = {};
             }
+            selectedSettings.customColors[currentTheme].bg = e.target.value;
+            applySettings();
         });
 
-
-        const darkModeToggle = document.getElementById('dark-mode-toggle');
-        const themeSwitcher = document.getElementById('theme-switcher');
-        const body = document.body;
-
-
-        let currentTheme = 1;
-
-
-        // Function to save preferences to localStorage
-        function savePreferences() {
-            const isDarkMode = body.classList.contains('dark-mode');
-            const currentThemeClass = Array.from(body.classList).find(className => className.startsWith('theme-'));
-            localStorage.setItem('isDarkMode', isDarkMode);
-            localStorage.setItem('currentTheme', currentThemeClass);
-        }
-
-
-        // Function to apply preferences from localStorage on page load
-        function applyPreferences() {
-            const savedIsDarkMode = localStorage.getItem('isDarkMode') === 'true';
-            const savedCurrentTheme = localStorage.getItem('currentTheme');
-
-
-            if (savedIsDarkMode) {
-                body.classList.add('dark-mode');
-                updateDarkModeText();
-            } else {
-                body.classList.remove('dark-mode');
-                updateDarkModeText();
+        cardBgColorPicker.addEventListener('input', (e) => {
+            const currentTheme = selectedSettings.theme;
+            if (!selectedSettings.customColors[currentTheme]) {
+                selectedSettings.customColors[currentTheme] = {};
             }
-
-
-            if (savedCurrentTheme) {
-                body.classList.add(savedCurrentTheme);
-                const themeNumber = parseInt(savedCurrentTheme.replace('theme-', ''));
-                currentTheme = themeNumber;
-            } else {
-                // Default theme if nothing is saved
-                body.classList.add('theme-1');
-            }
-        }
-
-
-        // Function to toggle dark mode
-        darkModeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            updateDarkModeText();
-            savePreferences();
+            selectedSettings.customColors[currentTheme].cardBg = e.target.value;
+            applySettings();
         });
 
-
-        // Function to switch theme
-        themeSwitcher.addEventListener('click', () => {
-            const isDarkMode = body.classList.contains('dark-mode');
-
-
-            // Remove the current theme class regardless of mode
-            const currentThemeClass = Array.from(body.classList).find(className => className.startsWith('theme-'));
-            if (currentThemeClass) {
-                body.classList.remove(currentThemeClass);
+        textColorPicker.addEventListener('input', (e) => {
+            const currentTheme = selectedSettings.theme;
+            if (!selectedSettings.customColors[currentTheme]) {
+                selectedSettings.customColors[currentTheme] = {};
             }
-
-
-            // Cycle to the next theme
-            currentTheme = (currentTheme % 30) + 1; // Assuming 30 themes
-            body.classList.add(`theme-${currentTheme}`);
-            savePreferences();
+            selectedSettings.customColors[currentTheme].text = e.target.value;
+            applySettings();
         });
 
+        saveSettingsBtn.addEventListener('click', saveSettings);
+        resetSettingsBtn.addEventListener('click', resetSettings);
 
-        // Call applyPreferences on page load
-        document.addEventListener('DOMContentLoaded', applyPreferences);
-
-
-        function updateDarkModeText() {
-            const darkModeText = document.getElementById('dark-mode-text');
-            if (body.classList.contains('dark-mode')) {
-                darkModeText.textContent = "الوضع النهاري";
-            } else {
-                darkModeText.textContent = "الوضع الليلي";
-            }
-        }
-
-
-        // Modal Scroll Button Logic
-        modalScrollButton.addEventListener('click', () => {
-            const isAtBottom = Math.round(modalBody.scrollHeight - modalBody.scrollTop) <= modalBody.clientHeight + 1;
-
-
-            if (isAtBottom) {
-                // إذا كان المستخدم في الأسفل، انتقل للأعلى
-                modalBody.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            } else {
-                // إذا كان في أي مكان آخر، انتقل للأسفل
-                modalBody.scrollTo({
-                    top: modalBody.scrollHeight,
-                    behavior: 'smooth'
-                });
-            }
+        searchInput.addEventListener('input', (e) => {
+            renderLinks(e.target.value);
         });
-
-
-        modalBody.addEventListener('scroll', () => {
-            const isAtBottom = Math.round(modalBody.scrollHeight - modalBody.scrollTop) <= modalBody.clientHeight + 1;
-
-
-            if (isAtBottom) {
-                // تغيير نص الزر عند الوصول إلى الأسفل
-                modalScrollButton.textContent = "↑";
-            } else {
-                // تغيير نص الزر عند الابتعاد عن الأسفل
-                modalScrollButton.textContent = "↓";
-            }
-        });
-
 
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
@@ -625,13 +1249,43 @@
             }
         });
 
-
         scrollToTopBtn.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         });
-    </script>
+
+// Modal Scroll Button Logic
+modalScrollButton.addEventListener('click', () => {
+    const isAtBottom = Math.round(modalBody.scrollHeight - modalBody.scrollTop) <= modalBody.clientHeight + 1;
+
+    if (isAtBottom) {
+        // إذا كان المستخدم في الأسفل، انتقل للأعلى
+        modalBody.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    } else {
+        // إذا كان في أي مكان آخر، انتقل للأسفل
+        modalBody.scrollTo({
+            top: modalBody.scrollHeight,
+            behavior: 'smooth'
+        });
+    }
+});
+
+modalBody.addEventListener('scroll', () => {
+    const isAtBottom = Math.round(modalBody.scrollHeight - modalBody.scrollTop) <= modalBody.clientHeight + 1;
+
+    if (isAtBottom) {
+        // تغيير نص الزر عند الوصول إلى الأسفل
+        modalScrollButton.textContent = 'العودة للأعلى ▲';
+    } else {
+        // تغيير نص الزر عندما يكون المستخدم ليس في الأسفل
+        modalScrollButton.textContent = 'عرض المزيد ▼';
+    }
+});
+  </script>
 </body>
 </html>
