@@ -1258,8 +1258,10 @@
 
 // Modal Scroll Button Logic
 modalBody.addEventListener('scroll', () => {
-    // Check if the user is at the bottom of the modal, using a more reliable check
-    if (Math.round(modalBody.scrollHeight - modalBody.scrollTop) <= modalBody.clientHeight) {
+    // Check if the user is at the bottom of the modal using a reliable threshold
+    const atBottom = modalBody.scrollTop >= modalBody.scrollHeight - modalBody.clientHeight - 1;
+
+    if (atBottom) {
         modalScrollButton.textContent = 'العودة للأعلى ▲';
     } else {
         modalScrollButton.textContent = 'عرض المزيد ▼';
@@ -1269,7 +1271,9 @@ modalBody.addEventListener('scroll', () => {
 
 modalScrollButton.addEventListener('click', () => {
     // Perform the same check on click
-    if (Math.round(modalBody.scrollHeight - modalBody.scrollTop) <= modalBody.clientHeight) {
+    const atBottom = modalBody.scrollTop >= modalBody.scrollHeight - modalBody.clientHeight - 1;
+
+    if (atBottom) {
         // Scroll to top
         modalBody.scrollTo({
             top: 0,
@@ -1283,6 +1287,7 @@ modalScrollButton.addEventListener('click', () => {
         });
     }
 });
+
     </script>
 </body>
 </html>
