@@ -20,22 +20,19 @@
             min-height: 100vh;
             transition: background-color var(--transition-speed), color var(--transition-speed);
             
-            /* Default Light Mode */
+            /* Default Theme Colors (Light Mode) */
             --primary-color: #004c99;
             --secondary-color: #f0f0f0;
             --text-color: #2b2b2b;
             --link-color: #004c99;
             --link-hover-color: #003a7a;
             --card-bg: #ffffff;
-            --box-shadow: none;
-            
-            /* Custom Colors */
             --bg-color: #f0f0f0;
-            --main-text-color: #004c99;
-            --sub-text-color: #2b2b2b;
-            --normal-text-color: #2b2b2b;
-            
-            /* Custom Font Sizes */
+            --main-text-color: var(--primary-color);
+            --sub-text-color: var(--text-color);
+            --normal-text-color: var(--text-color);
+
+            /* Default Font Sizes */
             --main-title-size: 1.8rem;
             --subtitle-size: 0.9rem;
             --section-title-size: 1.2rem;
@@ -45,7 +42,39 @@
             color: var(--normal-text-color);
         }
 
-        /* --- Theme definitions --- */
+        /* --- Theme definitions (Light Mode) --- */
+        body.theme-1 { --primary-color: #004c99; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #2b2b2b; }
+        body.theme-2 { --primary-color: #487a77; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #283747; }
+        body.theme-3 { --primary-color: #e51280; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #2c2c2c; }
+        body.theme-4 { --primary-color: #d1721e; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #162030; }
+        body.theme-5 { --primary-color: #5d4ce6; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #2c3238; }
+        body.theme-6 { --primary-color: #7b3d12; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #422a1b; }
+        body.theme-7 { --primary-color: #266b6c; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #242d38; }
+        body.theme-8 { --primary-color: #282828; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #111111; }
+        body.theme-9 { --primary-color: #1e88e5; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #333333; }
+        body.theme-10 { --primary-color: #4285f4; --card-bg: #ffffff; --bg-color: #f5f8fa; --secondary-color: #f5f8fa; --text-color: #333333; }
+        body.theme-11 { --primary-color: #ff5722; --card-bg: #ffffff; --bg-color: #f7f7f7; --secondary-color: #f7f7f7; --text-color: #212121; }
+        body.theme-12 { --primary-color: #673ab7; --card-bg: #ffffff; --bg-color: #f8f5ff; --secondary-color: #f8f5ff; --text-color: #303030; }
+        body.theme-13 { --primary-color: #0a4f5f; --card-bg: #ffffff; --bg-color: #f2f6f8; --secondary-color: #f2f6f8; --text-color: #2c3a3c; }
+        body.theme-14 { --primary-color: #556b2f; --card-bg: #ffffff; --bg-color: #f6f7f4; --secondary-color: #f6f7f4; --text-color: #33382c; }
+        body.theme-15 { --primary-color: #8b0000; --card-bg: #ffffff; --bg-color: #f8f8f8; --secondary-color: #f8f8f8; --text-color: #222222; }
+        body.theme-16 { --primary-color: #d81b60; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #311b92; }
+        body.theme-17 { --primary-color: #00796b; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #212121; }
+        body.theme-18 { --primary-color: #cddc39; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #424242; }
+        body.theme-19 { --primary-color: #ffc107; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #212121; }
+        body.theme-20 { --primary-color: #ff9800; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #212121; }
+        body.theme-21 { --primary-color: #e91e63; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #2c2c2c; }
+        body.theme-22 { --primary-color: #607d8b; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #263238; }
+        body.theme-23 { --primary-color: #9c27b0; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #212121; }
+        body.theme-24 { --primary-color: #009688; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #212121; }
+        body.theme-25 { --primary-color: #4caf50; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #212121; }
+        body.theme-26 { --primary-color: #8bc34a; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #212121; }
+        body.theme-27 { --primary-color: #00bcd4; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #212121; }
+        body.theme-28 { --primary-color: #c0ca33; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #212121; }
+        body.theme-29 { --primary-color: #ff5252; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #212121; }
+        body.theme-30 { --primary-color: #7c4dff; --card-bg: #ffffff; --bg-color: #f0f0f0; --secondary-color: #f0f0f0; --text-color: #212121; }
+
+        /* --- Dark Mode definitions --- */
         body.dark-mode {
             --primary-color: #799dcf;
             --secondary-color: #151a22;
@@ -54,42 +83,42 @@
             --link-hover-color: #a4c4f0;
             --card-bg: #262d3a;
             --bg-color: #151a22;
-            --main-text-color: #799dcf;
-            --sub-text-color: #f1f3f6;
-            --normal-text-color: #f1f3f6;
+            --main-text-color: var(--primary-color);
+            --sub-text-color: var(--text-color);
+            --normal-text-color: var(--text-color);
         }
 
-        body.theme-2 { --primary-color: #487a77; --secondary-color: #f0f0f0; --text-color: #283747; --link-color: #487a77; --link-hover-color: #355e5b; --card-bg: #ffffff; --bg-color: #f0f0f0; --main-text-color: #487a77; --sub-text-color: #283747; --normal-text-color: #283747; }
-        body.theme-2.dark-mode { --primary-color: #8ac0be; --secondary-color: #162029; --text-color: #e4e7ec; --link-color: #9cd4d2; --link-hover-color: #b1e0df; --card-bg: #222d38; --bg-color: #162029; --main-text-color: #8ac0be; --sub-text-color: #e4e7ec; --normal-text-color: #e4e7ec; }
-        body.theme-3 { --primary-color: #e51280; --secondary-color: #f0f0f0; --text-color: #2c2c2c; --link-color: #e51280; --link-hover-color: #cc0b72; --card-bg: #ffffff; --bg-color: #f0f0f0; --main-text-color: #e51280; --sub-text-color: #2c2c2c; --normal-text-color: #2c2c2c; }
-        body.theme-3.dark-mode { --primary-color: #ff88c0; --secondary-color: #1a1a20; --text-color: #f0f0f0; --link-color: #ff88c0; --link-hover-color: #ffb8d9; --card-bg: #282830; --bg-color: #1a1a20; --main-text-color: #ff88c0; --sub-text-color: #f0f0f0; --normal-text-color: #f0f0f0; }
-        body.theme-4 { --primary-color: #d1721e; --secondary-color: #f0f0f0; --text-color: #162030; --link-color: #d1721e; --link-hover-color: #bf661a; --card-bg: #ffffff; --bg-color: #f0f0f0; --main-text-color: #d1721e; --sub-text-color: #162030; --normal-text-color: #162030; }
-        body.theme-4.dark-mode { --primary-color: #ffb44d; --secondary-color: #070c12; --text-color: #f1f2f3; --link-color: #ffb44d; --link-hover-color: #ffde94; --card-bg: #0f1520; --bg-color: #070c12; --main-text-color: #ffb44d; --sub-text-color: #f1f2f3; --normal-text-color: #f1f2f3; }
-        body.theme-5 { --primary-color: #5d4ce6; --secondary-color: #f0f0f0; --text-color: #2c3238; --link-color: #5d4ce6; --link-hover-color: #4c3ecf; --card-bg: #ffffff; --bg-color: #f0f0f0; --main-text-color: #5d4ce6; --sub-text-color: #2c3238; --normal-text-color: #2c3238; }
-        body.theme-5.dark-mode { --primary-color: #b2a9ff; --secondary-color: #282e38; --text-color: #f1f3f5; --link-color: #b2a9ff; --link-hover-color: #d3ccff; --card-bg: #323945; --bg-color: #282e38; --main-text-color: #b2a9ff; --sub-text-color: #f1f3f5; --normal-text-color: #f1f3f5; }
-        body.theme-6 { --primary-color: #7b3d12; --secondary-color: #f0f0f0; --text-color: #422a1b; --link-color: #7b3d12; --link-hover-color: #5c2d0f; --card-bg: #ffffff; --bg-color: #f0f0f0; --main-text-color: #7b3d12; --sub-text-color: #422a1b; --normal-text-color: #422a1b; }
-        body.theme-6.dark-mode { --primary-color: #e0be5b; --secondary-color: #271f1a; --text-color: #f1e7d0; --link-color: #e0be5b; --link-hover-color: #f5d475; --card-bg: #352a24; --bg-color: #271f1a; --main-text-color: #e0be5b; --sub-text-color: #f1e7d0; --normal-text-color: #f1e7d0; }
-        body.theme-7 { --primary-color: #266b6c; --secondary-color: #f0f0f0; --text-color: #242d38; --link-color: #e09d4c; --link-hover-color: #d1853b; --card-bg: #ffffff; --bg-color: #f0f0f0; --main-text-color: #266b6c; --sub-text-color: #242d38; --normal-text-color: #242d38; }
-        body.theme-7.dark-mode { --primary-color: #84d2f0; --secondary-color: #0b2033; --text-color: #dae2eb; --link-color: #ffb86c; --link-hover-color: #ffa43b; --card-bg: #152b39; --bg-color: #0b2033; --main-text-color: #84d2f0; --sub-text-color: #dae2eb; --normal-text-color: #dae2eb; }
-        body.theme-8 { --primary-color: #282828; --secondary-color: #f0f0f0; --text-color: #111111; --link-color: #282828; --link-hover-color: #444444; --card-bg: #ffffff; --bg-color: #f0f0f0; --main-text-color: #282828; --sub-text-color: #111111; --normal-text-color: #111111; }
-        body.theme-8.dark-mode { --primary-color: #cccccc; --secondary-color: #333333; --text-color: #dddddd; --link-color: #cccccc; --link-hover-color: #999999; --card-bg: #444444; --bg-color: #333333; --main-text-color: #cccccc; --sub-text-color: #dddddd; --normal-text-color: #dddddd; }
-        body.theme-9 { --primary-color: #004c99; --secondary-color: #f0f0f0; --text-color: #2b2b2b; --link-color: #004c99; --link-hover-color: #003a7a; --card-bg: #ffffff; --bg-color: #f0f0f0; --main-text-color: #004c99; --sub-text-color: #2b2b2b; --normal-text-color: #2b2b2b; }
-        body.theme-9.dark-mode { --primary-color: #799dcf; --secondary-color: #151a22; --text-color: #f1f3f6; --link-color: #799dcf; --link-hover-color: #a4c4f0; --card-bg: #262d3a; --bg-color: #151a22; --main-text-color: #799dcf; --sub-text-color: #f1f3f6; --normal-text-color: #f1f3f6; }
-        body.theme-10 { --primary-color: #1e88e5; --secondary-color: #f0f0f0; --text-color: #333333; --link-color: #1e88e5; --link-hover-color: #1565c0; --card-bg: #ffffff; --bg-color: #f0f0f0; --main-text-color: #1e88e5; --sub-text-color: #333333; --normal-text-color: #333333; }
-        body.theme-10.dark-mode { --primary-color: #7ac4ff; --secondary-color: #1a1a2e; --text-color: #f0f0f0; --link-color: #7ac4ff; --link-hover-color: #a8d6ff; --card-bg: #2c2c44; --bg-color: #1a1a2e; --main-text-color: #7ac4ff; --sub-text-color: #f0f0f0; --normal-text-color: #f0f0f0; }
-        body.theme-11 { --primary-color: #4285f4; --secondary-color: #f5f8fa; --text-color: #333333; --link-color: #4285f4; --link-hover-color: #357ae8; --card-bg: #ffffff; --bg-color: #f5f8fa; --main-text-color: #4285f4; --sub-text-color: #333333; --normal-text-color: #333333; }
-        body.theme-11.dark-mode { --primary-color: #a0c3ff; --secondary-color: #1e2a3a; --text-color: #f0f4f8; --link-color: #a0c3ff; --link-hover-color: #c4e0ff; --card-bg: #2c394c; --bg-color: #1e2a3a; --main-text-color: #a0c3ff; --sub-text-color: #f0f4f8; --normal-text-color: #f0f4f8; }
-        body.theme-12 { --primary-color: #ff5722; --secondary-color: #f7f7f7; --text-color: #212121; --link-color: #ff5722; --link-hover-color: #e64a19; --card-bg: #ffffff; --bg-color: #f7f7f7; --main-text-color: #ff5722; --sub-text-color: #212121; --normal-text-color: #212121; }
-        body.theme-12.dark-mode { --primary-color: #ff9800; --secondary-color: #212121; --text-color: #e0e0e0; --link-color: #ff9800; --link-hover-color: #ffb74d; --card-bg: #333333; --bg-color: #212121; --main-text-color: #ff9800; --sub-text-color: #e0e0e0; --normal-text-color: #e0e0e0; }
-        body.theme-13 { --primary-color: #673ab7; --secondary-color: #f8f5ff; --text-color: #303030; --link-color: #673ab7; --link-hover-color: #512da8; --card-bg: #ffffff; --bg-color: #f8f5ff; --main-text-color: #673ab7; --sub-text-color: #303030; --normal-text-color: #303030; }
-        body.theme-13.dark-mode { --primary-color: #d1c4e9; --secondary-color: #251d3b; --text-color: #f1eaff; --link-color: #d1c4e9; --link-hover-color: #e6e0ff; --card-bg: #3a2d54; --bg-color: #251d3b; --main-text-color: #d1c4e9; --sub-text-color: #f1eaff; --normal-text-color: #f1eaff; }
-        body.theme-14 { --primary-color: #0a4f5f; --secondary-color: #f2f6f8; --text-color: #2c3a3c; --link-color: #d4a017; --link-hover-color: #b8860b; --card-bg: #ffffff; --bg-color: #f2f6f8; --main-text-color: #0a4f5f; --sub-text-color: #2c3a3c; --normal-text-color: #2c3a3c; }
-        body.theme-14.dark-mode { --primary-color: #72a5b8; --secondary-color: #121f24; --text-color: #f5f8f9; --link-color: #ffc200; --link-hover-color: #ffd700; --card-bg: #1c2b33; --bg-color: #121f24; --main-text-color: #72a5b8; --sub-text-color: #f5f8f9; --normal-text-color: #f5f8f9; }
-        body.theme-15 { --primary-color: #556b2f; --secondary-color: #f6f7f4; --text-color: #33382c; --link-color: #556b2f; --link-hover-color: #4a5d2a; --card-bg: #ffffff; --bg-color: #f6f7f4; --main-text-color: #556b2f; --sub-text-color: #33382c; --normal-text-color: #33382c; }
-        body.theme-15.dark-mode { --primary-color: #a2b96a; --secondary-color: #242b1e; --text-color: #f2f3f1; --link-color: #a2b96a; --link-hover-color: #c2d199; --card-bg: #353f2c; --bg-color: #242b1e; --main-text-color: #a2b96a; --sub-text-color: #f2f3f1; --normal-text-color: #f2f3f1; }
-        body.theme-16 { --primary-color: #8b0000; --secondary-color: #f8f8f8; --text-color: #222222; --link-color: #8b0000; --link-hover-color: #770000; --card-bg: #ffffff; --bg-color: #f8f8f8; --main-text-color: #8b0000; --sub-text-color: #222222; --normal-text-color: #222222; }
-        body.theme-16.dark-mode { --primary-color: #ef5350; --secondary-color: #1c1c1c; --text-color: #fcfcfc; --link-color: #ef5350; --link-hover-color: #ff8a80; --card-bg: #282828; --bg-color: #1c1c1c; --main-text-color: #ef5350; --sub-text-color: #fcfcfc; --normal-text-color: #fcfcfc; }
-        
+        body.dark-mode.theme-2 { --primary-color: #8ac0be; --card-bg: #222d38; --bg-color: #162029; --secondary-color: #162029; --text-color: #e4e7ec; }
+        body.dark-mode.theme-3 { --primary-color: #ff88c0; --card-bg: #282830; --bg-color: #1a1a20; --secondary-color: #1a1a20; --text-color: #f0f0f0; }
+        body.dark-mode.theme-4 { --primary-color: #ffb44d; --card-bg: #0f1520; --bg-color: #070c12; --secondary-color: #070c12; --text-color: #f1f2f3; }
+        body.dark-mode.theme-5 { --primary-color: #b2a9ff; --card-bg: #323945; --bg-color: #282e38; --secondary-color: #282e38; --text-color: #f1f3f5; }
+        body.dark-mode.theme-6 { --primary-color: #e0be5b; --card-bg: #352a24; --bg-color: #271f1a; --secondary-color: #271f1a; --text-color: #f1e7d0; }
+        body.dark-mode.theme-7 { --primary-color: #84d2f0; --card-bg: #152b39; --bg-color: #0b2033; --secondary-color: #0b2033; --text-color: #dae2eb; }
+        body.dark-mode.theme-8 { --primary-color: #cccccc; --card-bg: #444444; --bg-color: #333333; --secondary-color: #333333; --text-color: #dddddd; }
+        body.dark-mode.theme-9 { --primary-color: #7ac4ff; --card-bg: #2c2c44; --bg-color: #1a1a2e; --secondary-color: #1a1a2e; --text-color: #f0f0f0; }
+        body.dark-mode.theme-10 { --primary-color: #a0c3ff; --card-bg: #2c394c; --bg-color: #1e2a3a; --secondary-color: #1e2a3a; --text-color: #f0f4f8; }
+        body.dark-mode.theme-11 { --primary-color: #ff9800; --card-bg: #333333; --bg-color: #212121; --secondary-color: #212121; --text-color: #e0e0e0; }
+        body.dark-mode.theme-12 { --primary-color: #d1c4e9; --card-bg: #3a2d54; --bg-color: #251d3b; --secondary-color: #251d3b; --text-color: #f1eaff; }
+        body.dark-mode.theme-13 { --primary-color: #72a5b8; --card-bg: #1c2b33; --bg-color: #121f24; --secondary-color: #121f24; --text-color: #f5f8f9; }
+        body.dark-mode.theme-14 { --primary-color: #a2b96a; --card-bg: #353f2c; --bg-color: #242b1e; --secondary-color: #242b1e; --text-color: #f2f3f1; }
+        body.dark-mode.theme-15 { --primary-color: #ef5350; --card-bg: #282828; --bg-color: #1c1c1c; --secondary-color: #1c1c1c; --text-color: #fcfcfc; }
+        body.dark-mode.theme-16 { --primary-color: #f06292; --card-bg: #26173a; --bg-color: #1e132e; --secondary-color: #1e132e; --text-color: #f8bbd0; }
+        body.dark-mode.theme-17 { --primary-color: #80cbc4; --card-bg: #212121; --bg-color: #121212; --secondary-color: #121212; --text-color: #f5f5f5; }
+        body.dark-mode.theme-18 { --primary-color: #f0f4c3; --card-bg: #282828; --bg-color: #1c1c1c; --secondary-color: #1c1c1c; --text-color: #fafafa; }
+        body.dark-mode.theme-19 { --primary-color: #ffeb3b; --card-bg: #212121; --bg-color: #121212; --secondary-color: #121212; --text-color: #f5f5f5; }
+        body.dark-mode.theme-20 { --primary-color: #ffb74d; --card-bg: #212121; --bg-color: #121212; --secondary-color: #121212; --text-color: #f5f5f5; }
+        body.dark-mode.theme-21 { --primary-color: #ff80ab; --card-bg: #222222; --bg-color: #111111; --secondary-color: #111111; --text-color: #f8f8f8; }
+        body.dark-mode.theme-22 { --primary-color: #b0bec5; --card-bg: #2d3840; --bg-color: #263238; --secondary-color: #263238; --text-color: #eceff1; }
+        body.dark-mode.theme-23 { --primary-color: #e1bee7; --card-bg: #201a24; --bg-color: #151119; --secondary-color: #151119; --text-color: #f3e5f5; }
+        body.dark-mode.theme-24 { --primary-color: #80cbc4; --card-bg: #222222; --bg-color: #111111; --secondary-color: #111111; --text-color: #f5f5f5; }
+        body.dark-mode.theme-25 { --primary-color: #a5d6a7; --card-bg: #222222; --bg-color: #111111; --secondary-color: #111111; --text-color: #f5f5f5; }
+        body.dark-mode.theme-26 { --primary-color: #c5e1a5; --card-bg: #222222; --bg-color: #111111; --secondary-color: #111111; --text-color: #f5f5f5; }
+        body.dark-mode.theme-27 { --primary-color: #80deea; --card-bg: #222222; --bg-color: #111111; --secondary-color: #111111; --text-color: #f5f5f5; }
+        body.dark-mode.theme-28 { --primary-color: #e6ee9c; --card-bg: #222222; --bg-color: #111111; --secondary-color: #111111; --text-color: #f5f5f5; }
+        body.dark-mode.theme-29 { --primary-color: #ff8a80; --card-bg: #222222; --bg-color: #111111; --secondary-color: #111111; --text-color: #f5f5f5; }
+        body.dark-mode.theme-30 { --primary-color: #b388ff; --card-bg: #222222; --bg-color: #111111; --secondary-color: #111111; --text-color: #f5f5f5; }
+
+
         /* General Styles */
         * {
             box-sizing: border-box;
@@ -402,6 +431,10 @@
             border-color: var(--primary-color);
             transform: scale(1.05);
         }
+        .theme-color-box.selected.light-mode-theme {
+            border-color: #000;
+        }
+
 
         .save-btn {
             background-color: var(--primary-color);
@@ -481,38 +514,18 @@
             opacity: 0.7;
         }
 
-        .font-size-group {
+        .setting-range-group {
             display: flex;
+            align-items: center;
             gap: 10px;
             margin-top: 10px;
         }
-        .font-size-btn {
-            background-color: var(--secondary-color);
-            color: var(--normal-text-color);
-            border: 1px solid var(--primary-color);
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.8rem;
-        }
-        .font-size-btn.active {
-            background-color: var(--primary-color);
-            color: white;
-        }
 
-        .color-input-group {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 10px;
-            gap: 15px;
-        }
-        .color-input {
-            width: 50px;
-            height: 30px;
-            border: none;
-            cursor: pointer;
-            background: transparent;
+        .range-value {
+            font-size: 0.9rem;
+            color: var(--normal-text-color);
+            min-width: 40px;
+            text-align: center;
         }
 
         /* Responsive Design */
@@ -616,46 +629,48 @@
         <div class="settings-modal-content">
             <span class="settings-close-btn">&times;</span>
             <div id="toastMessage" class="toast-message"></div>
-            <h3 class="settings-title">إعدادات العرض</h3>
+            <h3 class="settings-title">الإعدادات</h3>
             
             <div class="setting-item">
-                <label for="bg-color-picker" class="setting-label">لون خلفية الصفحة:</label>
-                <input type="color" id="bg-color-picker" class="setting-color" value="#f0f0f0">
-            </div>
-
-            <div class="setting-item">
-                <label for="brightness-slider" class="setting-label">سطوع الصفحة:</label>
-                <input type="range" id="brightness-slider" class="setting-range" min="50" max="150" value="100">
-            </div>
-
-            <div class="setting-item">
-                <label class="setting-label">حجم الخطوط:</label>
-                <div class="font-size-group">
-                    <button class="font-size-btn" data-size="small">A-</button>
-                    <button class="font-size-btn" data-size="normal">A</button>
-                    <button class="font-size-btn" data-size="large">A+</button>
+                <label for="brightness-slider" class="setting-label">سطوع الموقع:</label>
+                <div class="setting-range-group">
+                    <input type="range" id="brightness-slider" class="setting-range" min="50" max="150" value="100">
+                    <span id="brightness-value" class="range-value">100%</span>
                 </div>
             </div>
 
+            <h4 class="settings-title">تغيير حجم الخط</h4>
             <div class="setting-item">
-                <label class="setting-label">لون الخطوط:</label>
-                <div class="color-input-group">
-                    <span>العنوان الرئيسي</span>
-                    <input type="color" id="main-title-color" class="color-input">
+                <label for="main-title-size" class="setting-label">العنوان الرئيسي:</label>
+                <div class="setting-range-group">
+                    <input type="range" id="main-title-size" class="setting-range" min="1.4" max="2.4" step="0.1">
+                    <span id="main-title-value" class="range-value"></span>
                 </div>
-                <div class="color-input-group">
-                    <span>العنوان الفرعي</span>
-                    <input type="color" id="sub-title-color" class="color-input">
+            </div>
+            <div class="setting-item">
+                <label for="section-title-size" class="setting-label">عناوين الأقسام:</label>
+                <div class="setting-range-group">
+                    <input type="range" id="section-title-size" class="setting-range" min="1" max="1.8" step="0.1">
+                    <span id="section-title-value" class="range-value"></span>
                 </div>
-                <div class="color-input-group">
-                    <span>الخط العادي</span>
-                    <input type="color" id="normal-text-color" class="color-input">
+            </div>
+            <div class="setting-item">
+                <label for="link-item-size" class="setting-label">نصوص الروابط:</label>
+                <div class="setting-range-group">
+                    <input type="range" id="link-item-size" class="setting-range" min="0.8" max="1.4" step="0.1">
+                    <span id="link-item-value" class="range-value"></span>
                 </div>
             </div>
 
+            <h4 class="settings-title">تغيير المظهر</h4>
             <div class="setting-item">
-                <label class="setting-label">تغيير المظهر:</label>
-                <div id="theme-grid" class="theme-grid"></div>
+                <label class="setting-label">الوضع الفاتح:</label>
+                <div id="light-theme-grid" class="theme-grid"></div>
+            </div>
+
+            <div class="setting-item">
+                <label class="setting-label">الوضع الداكن:</label>
+                <div id="dark-theme-grid" class="theme-grid"></div>
             </div>
 
             <button id="save-settings-btn" class="save-btn">حفظ الإعدادات</button>
@@ -671,26 +686,31 @@
         const settingsModal = document.getElementById('settingsModal');
         const settingsCloseBtn = document.querySelector('.settings-close-btn');
         const brightnessSlider = document.getElementById('brightness-slider');
-        const themeGrid = document.getElementById('theme-grid');
+        const brightnessValueSpan = document.getElementById('brightness-value');
+        const lightThemeGrid = document.getElementById('light-theme-grid');
+        const darkThemeGrid = document.getElementById('dark-theme-grid');
         const saveSettingsBtn = document.getElementById('save-settings-btn');
         const toastMessage = document.getElementById('toastMessage');
         const searchInput = document.getElementById('searchInput');
         const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-        const bgColorPicker = document.getElementById('bg-color-picker');
-        const mainTitleColorPicker = document.getElementById('main-title-color');
-        const subTitleColorPicker = document.getElementById('sub-title-color');
-        const normalTextColorPicker = document.getElementById('normal-text-color');
+        
+        const mainTitleSizeSlider = document.getElementById('main-title-size');
+        const mainTitleValueSpan = document.getElementById('main-title-value');
+        const sectionTitleSizeSlider = document.getElementById('section-title-size');
+        const sectionTitleValueSpan = document.getElementById('section-title-value');
+        const linkItemSizeSlider = document.getElementById('link-item-size');
+        const linkItemValueSpan = document.getElementById('link-item-value');
 
         const defaultSettings = {
             brightness: 100,
             theme: 'theme-1',
             darkMode: 'light',
-            bgColor: '#f0f0f0',
-            mainTitleColor: '#004c99',
-            subTitleColor: '#2b2b2b',
-            normalTextColor: '#2b2b2b',
-            fontSize: 'normal'
+            mainTitleSize: 1.8,
+            sectionTitleSize: 1.2,
+            linkItemSize: 0.9
         };
+        
+        let selectedSettings = {};
 
         const linksData = [
             { id: 1, category: 'services', name: 'المنصة الإلكترونية لسداد مصروفات الكتب والمقررات الدراسية', url: 'http://admincom.eps.zu.edu.eg/Views/StudentViews/StudentLogin', icon: 'fas fa-credit-card' },
@@ -707,12 +727,13 @@
 
         const themes = [
             'theme-1', 'theme-2', 'theme-3', 'theme-4', 'theme-5', 'theme-6', 
-            'theme-7', 'theme-8', 'theme-9', 'theme-10', 
-            'theme-11', 'theme-12', 'theme-13', 'theme-14', 'theme-15', 'theme-16'
+            'theme-7', 'theme-8', 'theme-9', 'theme-10', 'theme-11', 'theme-12',
+            'theme-13', 'theme-14', 'theme-15', 'theme-16', 'theme-17', 'theme-18',
+            'theme-19', 'theme-20', 'theme-21', 'theme-22', 'theme-23', 'theme-24',
+            'theme-25', 'theme-26', 'theme-27', 'theme-28', 'theme-29', 'theme-30'
         ];
         let currentThemeIndex = 0;
-        let selectedSettings = {};
-
+        
         const linkLists = {
             services: document.getElementById('links-1'),
             whatsapp: document.getElementById('links-2'),
@@ -766,11 +787,11 @@
         function applySettings() {
             body.style.setProperty('--site-brightness', `${selectedSettings.brightness}%`);
             
-            // Apply theme and dark mode classes
             themes.forEach(t => body.classList.remove(t));
             if (selectedSettings.theme) {
                 body.classList.add(selectedSettings.theme);
             }
+            
             if (selectedSettings.darkMode === 'dark') {
                 body.classList.add('dark-mode');
                 darkModeText.textContent = 'الوضع الفاتح';
@@ -778,40 +799,27 @@
                 body.classList.remove('dark-mode');
                 darkModeText.textContent = 'الوضع الليلي';
             }
-
-            // Apply custom colors (if not in dark mode, themes override)
-            if (selectedSettings.darkMode === 'light') {
-                body.style.setProperty('--bg-color', selectedSettings.bgColor);
-                body.style.setProperty('--main-text-color', selectedSettings.mainTitleColor);
-                body.style.setProperty('--sub-text-color', selectedSettings.subTitleColor);
-                body.style.setProperty('--normal-text-color', selectedSettings.normalTextColor);
-            }
-
-            // Apply font sizes
-            const fontSizeFactors = {
-                'small': 0.8,
-                'normal': 1,
-                'large': 1.2
-            };
-            const factor = fontSizeFactors[selectedSettings.fontSize];
-            body.style.setProperty('--main-title-size', `${1.8 * factor}rem`);
-            body.style.setProperty('--subtitle-size', `${0.9 * factor}rem`);
-            body.style.setProperty('--section-title-size', `${1.2 * factor}rem`);
-            body.style.setProperty('--link-item-size', `${0.9 * factor}rem`);
+            
+            body.style.setProperty('--main-title-size', `${selectedSettings.mainTitleSize}rem`);
+            body.style.setProperty('--subtitle-size', `${selectedSettings.sectionTitleSize * 0.75}rem`);
+            body.style.setProperty('--section-title-size', `${selectedSettings.sectionTitleSize}rem`);
+            body.style.setProperty('--link-item-size', `${selectedSettings.linkItemSize}rem`);
 
             updateThemeGridSelection();
-            updateFontSizeButtons();
-            updateColorPickers();
+            updateSliderValues();
         }
 
         function loadSavedSettings() {
             const savedSettings = JSON.parse(localStorage.getItem('user-settings'));
-            selectedSettings = savedSettings || defaultSettings;
-            // Ensure all settings are present
-            selectedSettings = { ...defaultSettings, ...selectedSettings };
+            selectedSettings = { ...defaultSettings, ...savedSettings };
             currentThemeIndex = themes.indexOf(selectedSettings.theme);
-            applySettings();
+            
             brightnessSlider.value = selectedSettings.brightness;
+            mainTitleSizeSlider.value = selectedSettings.mainTitleSize;
+            sectionTitleSizeSlider.value = selectedSettings.sectionTitleSize;
+            linkItemSizeSlider.value = selectedSettings.linkItemSize;
+            
+            applySettings();
         }
 
         function saveSettings() {
@@ -836,45 +844,55 @@
             });
         }
         
-        function updateFontSizeButtons() {
-            document.querySelectorAll('.font-size-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.getAttribute('data-size') === selectedSettings.fontSize) {
-                    btn.classList.add('active');
-                }
-            });
+        function updateSliderValues() {
+            brightnessValueSpan.textContent = `${selectedSettings.brightness}%`;
+            mainTitleValueSpan.textContent = `${selectedSettings.mainTitleSize}rem`;
+            sectionTitleValueSpan.textContent = `${selectedSettings.sectionTitleSize}rem`;
+            linkItemValueSpan.textContent = `${selectedSettings.linkItemSize}rem`;
         }
-
-        function updateColorPickers() {
-            bgColorPicker.value = selectedSettings.bgColor;
-            mainTitleColorPicker.value = selectedSettings.mainTitleColor;
-            subTitleColorPicker.value = selectedSettings.subTitleColor;
-            normalTextColorPicker.value = selectedSettings.normalTextColor;
-        }
-
-        function createThemeGrid() {
-            themeGrid.innerHTML = '';
+        
+        function createThemeGrids() {
+            lightThemeGrid.innerHTML = '';
+            darkThemeGrid.innerHTML = '';
+            
+            const lightThemes = themes.slice(0, 15);
+            const darkThemes = themes.slice(15, 30);
+            
             const themeColors = {
                 'theme-1': '004c99', 'theme-2': '487a77', 'theme-3': 'e51280', 'theme-4': 'd1721e',
                 'theme-5': '5d4ce6', 'theme-6': '7b3d12', 'theme-7': '266b6c', 'theme-8': '282828',
-                'theme-9': '004c99', 'theme-10': '1e88e5', 'theme-11': '4285f4', 'theme-12': 'ff5722',
-                'theme-13': '673ab7', 'theme-14': '0a4f5f', 'theme-15': '556b2f', 'theme-16': '8b0000'
+                'theme-9': '1e88e5', 'theme-10': '4285f4', 'theme-11': 'ff5722', 'theme-12': '673ab7',
+                'theme-13': '0a4f5f', 'theme-14': '556b2f', 'theme-15': '8b0000', 'theme-16': 'd81b60',
+                'theme-17': '00796b', 'theme-18': 'cddc39', 'theme-19': 'ffc107', 'theme-20': 'ff9800',
+                'theme-21': 'e91e63', 'theme-22': '607d8b', 'theme-23': '9c27b0', 'theme-24': '009688',
+                'theme-25': '4caf50', 'theme-26': '8bc34a', 'theme-27': '00bcd4', 'theme-28': 'c0ca33',
+                'theme-29': 'ff5252', 'theme-30': '7c4dff'
             };
-            themes.forEach(theme => {
+            
+            lightThemes.forEach(theme => {
+                const box = document.createElement('div');
+                box.className = 'theme-color-box light-mode-theme';
+                box.style.backgroundColor = `#${themeColors[theme]}`;
+                box.setAttribute('data-theme', theme);
+                box.addEventListener('click', () => {
+                    selectedSettings.theme = theme;
+                    selectedSettings.darkMode = 'light';
+                    applySettings();
+                });
+                lightThemeGrid.appendChild(box);
+            });
+
+            darkThemes.forEach(theme => {
                 const box = document.createElement('div');
                 box.className = 'theme-color-box';
                 box.style.backgroundColor = `#${themeColors[theme]}`;
                 box.setAttribute('data-theme', theme);
                 box.addEventListener('click', () => {
                     selectedSettings.theme = theme;
-                    // Reset custom colors when a theme is chosen
-                    selectedSettings.bgColor = defaultSettings.bgColor;
-                    selectedSettings.mainTitleColor = defaultSettings.mainTitleColor;
-                    selectedSettings.subTitleColor = defaultSettings.subTitleColor;
-                    selectedSettings.normalTextColor = defaultSettings.normalTextColor;
+                    selectedSettings.darkMode = 'dark';
                     applySettings();
                 });
-                themeGrid.appendChild(box);
+                darkThemeGrid.appendChild(box);
             });
             updateThemeGridSelection();
         }
@@ -882,7 +900,7 @@
         // Initial load
         loadSavedSettings();
         renderLinks();
-        createThemeGrid();
+        createThemeGrids();
 
         // Event Listeners
         darkModeToggleBtn.addEventListener('click', () => {
@@ -893,6 +911,7 @@
         themeSwitcherBtn.addEventListener('click', () => {
             currentThemeIndex = (currentThemeIndex + 1) % themes.length;
             selectedSettings.theme = themes[currentThemeIndex];
+            selectedSettings.darkMode = 'light';
             applySettings();
         });
 
@@ -913,37 +932,25 @@
         brightnessSlider.addEventListener('input', (e) => {
             selectedSettings.brightness = e.target.value;
             body.style.setProperty('--site-brightness', `${selectedSettings.brightness}%`);
+            brightnessValueSpan.textContent = `${e.target.value}%`;
         });
 
-        bgColorPicker.addEventListener('input', (e) => {
-            selectedSettings.bgColor = e.target.value;
-            selectedSettings.theme = null;
-            applySettings();
-        });
-        
-        mainTitleColorPicker.addEventListener('input', (e) => {
-            selectedSettings.mainTitleColor = e.target.value;
-            selectedSettings.theme = null;
-            applySettings();
-        });
-        
-        subTitleColorPicker.addEventListener('input', (e) => {
-            selectedSettings.subTitleColor = e.target.value;
-            selectedSettings.theme = null;
-            applySettings();
-        });
-        
-        normalTextColorPicker.addEventListener('input', (e) => {
-            selectedSettings.normalTextColor = e.target.value;
-            selectedSettings.theme = null;
-            applySettings();
+        mainTitleSizeSlider.addEventListener('input', (e) => {
+            selectedSettings.mainTitleSize = parseFloat(e.target.value);
+            body.style.setProperty('--main-title-size', `${selectedSettings.mainTitleSize}rem`);
+            mainTitleValueSpan.textContent = `${selectedSettings.mainTitleSize}rem`;
         });
 
-        document.querySelectorAll('.font-size-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                selectedSettings.fontSize = btn.getAttribute('data-size');
-                applySettings();
-            });
+        sectionTitleSizeSlider.addEventListener('input', (e) => {
+            selectedSettings.sectionTitleSize = parseFloat(e.target.value);
+            body.style.setProperty('--section-title-size', `${selectedSettings.sectionTitleSize}rem`);
+            sectionTitleValueSpan.textContent = `${selectedSettings.sectionTitleSize}rem`;
+        });
+
+        linkItemSizeSlider.addEventListener('input', (e) => {
+            selectedSettings.linkItemSize = parseFloat(e.target.value);
+            body.style.setProperty('--link-item-size', `${selectedSettings.linkItemSize}rem`);
+            linkItemValueSpan.textContent = `${selectedSettings.linkItemSize}rem`;
         });
 
         saveSettingsBtn.addEventListener('click', saveSettings);
