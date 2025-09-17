@@ -527,6 +527,21 @@
             min-width: 40px;
             text-align: center;
         }
+        
+        .color-input-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+            gap: 15px;
+        }
+        .color-input {
+            width: 50px;
+            height: 30px;
+            border: none;
+            cursor: pointer;
+            background: transparent;
+        }
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -639,6 +654,32 @@
                 </div>
             </div>
 
+            <h4 class="settings-title">تخصيص الألوان (للمظهر الحالي فقط)</h4>
+            <div class="setting-item">
+                <div class="color-input-group">
+                    <span>اللون الأساسي:</span>
+                    <input type="color" id="primary-color-picker" class="color-input">
+                </div>
+            </div>
+            <div class="setting-item">
+                <div class="color-input-group">
+                    <span>لون الخلفية:</span>
+                    <input type="color" id="bg-color-picker" class="color-input">
+                </div>
+            </div>
+            <div class="setting-item">
+                <div class="color-input-group">
+                    <span>لون المربعات (الروابط):</span>
+                    <input type="color" id="card-bg-color-picker" class="color-input">
+                </div>
+            </div>
+            <div class="setting-item">
+                <div class="color-input-group">
+                    <span>لون الخطوط:</span>
+                    <input type="color" id="text-color-picker" class="color-input">
+                </div>
+            </div>
+
             <h4 class="settings-title">تغيير حجم الخط</h4>
             <div class="setting-item">
                 <label for="main-title-size" class="setting-label">العنوان الرئيسي:</label>
@@ -701,13 +742,23 @@
         const linkItemSizeSlider = document.getElementById('link-item-size');
         const linkItemValueSpan = document.getElementById('link-item-value');
 
+        const primaryColorPicker = document.getElementById('primary-color-picker');
+        const bgColorPicker = document.getElementById('bg-color-picker');
+        const cardBgColorPicker = document.getElementById('card-bg-color-picker');
+        const textColorPicker = document.getElementById('text-color-picker');
+
+
         const defaultSettings = {
             brightness: 100,
             theme: 'theme-1',
             darkMode: 'light',
             mainTitleSize: 1.8,
             sectionTitleSize: 1.2,
-            linkItemSize: 0.9
+            linkItemSize: 0.9,
+            customPrimaryColor: null,
+            customBgColor: null,
+            customCardBgColor: null,
+            customTextColor: null
         };
         
         let selectedSettings = {};
@@ -785,13 +836,16 @@
         }
 
         function applySettings() {
+            // Apply brightness
             body.style.setProperty('--site-brightness', `${selectedSettings.brightness}%`);
             
+            // Remove all theme classes and apply the selected one
             themes.forEach(t => body.classList.remove(t));
             if (selectedSettings.theme) {
                 body.classList.add(selectedSettings.theme);
             }
             
+            // Apply dark mode class
             if (selectedSettings.darkMode === 'dark') {
                 body.classList.add('dark-mode');
                 darkModeText.textContent = 'الوضع الفاتح';
@@ -799,7 +853,30 @@
                 body.classList.remove('dark-mode');
                 darkModeText.textContent = 'الوضع الليلي';
             }
-            
+
+            // Apply custom colors if theme is set to default (theme-1)
+            if (selectedSettings.theme === 'theme-1') {
+                if (selectedSettings.customPrimaryColor) {
+                    body.style.setProperty('--primary-color', selectedSettings.customPrimaryColor);
+                }
+                if (selectedSettings.customBgColor) {
+                    body.style.setProperty('--bg-color', selectedSettings.customBgColor);
+                }
+                if (selectedSettings.customCardBgColor) {
+                    body.style.setProperty('--card-bg', selectedSettings.customCardBgColor);
+                }
+                if (selectedSettings.customTextColor) {
+                    body.style.setProperty('--text-color', selectedSettings.customTextColor);
+                }
+            } else {
+                // Reset custom colors when a different theme is selected
+                body.style.setProperty('--primary-color', null);
+                body.style.setProperty('--bg-color', null);
+                body.style.setProperty('--card-bg', null);
+                body.style.setProperty('--text-color', null);
+            }
+
+            // Apply font sizes
             body.style.setProperty('--main-title-size', `${selectedSettings.mainTitleSize}rem`);
             body.style.setProperty('--subtitle-size', `${selectedSettings.sectionTitleSize * 0.75}rem`);
             body.style.setProperty('--section-title-size', `${selectedSettings.sectionTitleSize}rem`);
@@ -807,6 +884,7 @@
 
             updateThemeGridSelection();
             updateSliderValues();
+            updateColorPickers();
         }
 
         function loadSavedSettings() {
@@ -818,7 +896,7 @@
             mainTitleSizeSlider.value = selectedSettings.mainTitleSize;
             sectionTitleSizeSlider.value = selectedSettings.sectionTitleSize;
             linkItemSizeSlider.value = selectedSettings.linkItemSize;
-            
+
             applySettings();
         }
 
@@ -851,6 +929,14 @@
             linkItemValueSpan.textContent = `${selectedSettings.linkItemSize}rem`;
         }
         
+        function updateColorPickers() {
+            const rootStyle = getComputedStyle(document.documentElement);
+            primaryColorPicker.value = rootStyle.getPropertyValue('--primary-color').trim();
+            bgColorPicker.value = rootStyle.getPropertyValue('--bg-color').trim();
+            cardBgColorPicker.value = rootStyle.getPropertyValue('--card-bg').trim();
+            textColorPicker.value = rootStyle.getPropertyValue('--text-color').trim();
+        }
+
         function createThemeGrids() {
             lightThemeGrid.innerHTML = '';
             darkThemeGrid.innerHTML = '';
@@ -917,6 +1003,7 @@
 
         settingsBtn.addEventListener('click', () => {
             settingsModal.classList.add('active');
+            updateColorPickers(); // Ensure pickers show current colors when modal opens
         });
 
         settingsCloseBtn.addEventListener('click', () => {
@@ -951,6 +1038,35 @@
             selectedSettings.linkItemSize = parseFloat(e.target.value);
             body.style.setProperty('--link-item-size', `${selectedSettings.linkItemSize}rem`);
             linkItemValueSpan.textContent = `${selectedSettings.linkItemSize}rem`;
+        });
+        
+        // Event listeners for color pickers (only affect theme-1)
+        primaryColorPicker.addEventListener('input', (e) => {
+            if (selectedSettings.theme === 'theme-1') {
+                selectedSettings.customPrimaryColor = e.target.value;
+                body.style.setProperty('--primary-color', selectedSettings.customPrimaryColor);
+            }
+        });
+
+        bgColorPicker.addEventListener('input', (e) => {
+            if (selectedSettings.theme === 'theme-1') {
+                selectedSettings.customBgColor = e.target.value;
+                body.style.setProperty('--bg-color', selectedSettings.customBgColor);
+            }
+        });
+
+        cardBgColorPicker.addEventListener('input', (e) => {
+            if (selectedSettings.theme === 'theme-1') {
+                selectedSettings.customCardBgColor = e.target.value;
+                body.style.setProperty('--card-bg', selectedSettings.customCardBgColor);
+            }
+        });
+
+        textColorPicker.addEventListener('input', (e) => {
+            if (selectedSettings.theme === 'theme-1') {
+                selectedSettings.customTextColor = e.target.value;
+                body.style.setProperty('--text-color', selectedSettings.customTextColor);
+            }
         });
 
         saveSettingsBtn.addEventListener('click', saveSettings);
