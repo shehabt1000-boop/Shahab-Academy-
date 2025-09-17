@@ -546,11 +546,11 @@
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
+
         .modal-toast.show {
             opacity: 1;
             visibility: visible;
         }
-
 
         /* Scroll-to-Top Button */
         .scroll-to-top {
@@ -580,6 +580,7 @@
             visibility: visible;
             transform: translateY(0);
         }
+
         .scroll-to-top:hover {
             transform: translateY(-3px);
         }
@@ -599,14 +600,12 @@
             gap: 10px;
             margin-top: 6px;
         }
-
         .range-value {
             font-size: 0.8rem;
             color: var(--normal-text-color);
             min-width: 35px;
             text-align: center;
         }
-
         .color-input-group {
             display: flex;
             align-items: center;
@@ -621,7 +620,6 @@
             cursor: pointer;
             background: transparent;
         }
-
         .font-size-options {
             display: flex;
             gap: 10px;
@@ -646,7 +644,6 @@
             background-color: var(--primary-color);
             color: white;
         }
-
         /* Fixed buttons at the bottom */
         .modal-footer {
             position: sticky;
@@ -657,7 +654,6 @@
             padding-top: 10px;
             z-index: 10;
         }
-
         .modal-scroll-button {
             background: var(--secondary-color);
             color: var(--primary-color);
@@ -676,40 +672,66 @@
         }
 
         /* Responsive Design */
-@media (max-width: 768px) {
-    .container {
-        padding: 5px;
-        margin: 10px auto;
-    }
-    .main-title { font-size: 1.5rem; }
-    .subtitle { font-size: 0.8rem; }
-    .top-info-section { padding: 5px; }
-    .theme-toggle-container { 
-        right: 5px; 
-        top: 5px;
-        flex-direction: row; /* تم التعديل هنا */
-        align-items: center;  /* تم التعديل هنا */
-    }
-    .theme-toggle-btn { font-size: 0.8rem; }
-    .links-section { padding: 10px; }
-    .section-title { font-size: 1.1rem; padding-bottom: 5px; }
-    .link-item { font-size: 0.8rem; padding: 10px 12px; }
-    .link-item i { font-size: 1rem; margin-left: 8px; }
-    .search-input { font-size: 0.9rem; }
-    .settings-modal-content { 
-        padding: 10px; 
-        margin: 5px;
-        top: 20px;
-        transform: translateY(0);
-        align-self: flex-start;
-        max-height: 85vh;
-    }
-    .settings-modal.active {
-        align-items: flex-start;
-    }
-    .settings-title { font-size: 1.2rem; }
-    .theme-color-box { height: 30px; }
-}
+        @media (max-width: 768px) {
+            .container {
+                padding: 5px;
+                margin: 10px auto;
+            }
+            .main-title {
+                font-size: 1.5rem;
+            }
+            .subtitle {
+                font-size: 0.8rem;
+            }
+            .top-info-section {
+                padding: 5px;
+            }
+            .theme-toggle-container {
+                right: 5px;
+                top: 5px;
+                flex-direction: row; /* تم التعديل هنا */
+                align-items: center;
+                /* تم التعديل هنا */
+            }
+            .theme-toggle-btn {
+                font-size: 0.8rem;
+            }
+            .links-section {
+                padding: 10px;
+            }
+            .section-title {
+                font-size: 1.1rem;
+                padding-bottom: 5px;
+            }
+            .link-item {
+                font-size: 0.8rem;
+                padding: 10px 12px;
+            }
+            .link-item i {
+                font-size: 1rem;
+                margin-left: 8px;
+            }
+            .search-input {
+                font-size: 0.9rem;
+            }
+            .settings-modal-content {
+                padding: 10px;
+                margin: 5px;
+                top: 20px;
+                transform: translateY(0);
+                align-self: flex-start;
+                max-height: 85vh;
+            }
+            .settings-modal.active {
+                align-items: flex-start;
+            }
+            .settings-title {
+                font-size: 1.2rem;
+            }
+            .theme-color-box {
+                height: 30px;
+            }
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -733,559 +755,471 @@
         <a href="https://wa.me/201206244875" target="_blank" class="whatsapp-link-container">
             <span class="contact-text">اضغط هنا للتواصل</span>
             <i class="fab fa-whatsapp"></i>
-            <span>01206244875</span>
         </a>
     </div>
 
     <div class="container">
         <header>
             <h1 class="main-title">خدمات طلاب كلية التجارة - جامعة الزقازيق</h1>
-            <p class="subtitle">كل ما تحتاجه من روابط هامة في مكان واحد.</p>
+            <p class="subtitle">روابط مهمة لكل ما تحتاجه كطالب</p>
         </header>
 
         <div class="search-container">
-            <input type="text" id="searchInput" class="search-input" placeholder="ابحث عن رابط...">
+            <input type="text" id="searchInput" class="search-input" placeholder="اكتب للبحث عن روابط...">
             <i class="fas fa-search search-icon"></i>
         </div>
 
-        <section id="servicesSection" class="links-section">
-            <h2 class="section-title"><i class="fas fa-university icon"></i> خدمات الطلاب والمصروفات</h2>
-            <div id="links-1" class="link-list"></div>
-        </section>
-
-        <section id="whatsappSection" class="links-section">
-            <h2 class="section-title"><i class="fab fa-whatsapp icon"></i> مجموعات الواتساب</h2>
-            <div id="links-2" class="link-list"></div>
-        </section>
-
-        <section id="resultsSection" class="links-section">
-            <h2 class="section-title"><i class="fas fa-poll icon"></i> نتائج الامتحانات</h2>
-            <div id="links-3" class="link-list"></div>
-        </section>
-
-        <section id="medicalSection" class="links-section">
-            <h2 class="section-title"><i class="fas fa-heartbeat icon"></i> الكشف الطبي</h2>
-            <div id="links-4" class="link-list"></div>
-        </section>
-
-        <section id="hostelSection" class="links-section">
-            <h2 class="section-title"><i class="fas fa-home icon"></i> المدينة الجامعية</h2>
-            <div id="links-5" class="link-list"></div>
-        </section>
+        <main id="links-container">
+            </main>
     </div>
 
-    <footer class="footer">
-        - تصميم: شهاب طارق -
-    </footer>
-
-    <button id="scrollToTopBtn" class="scroll-to-top" aria-label="العودة إلى الأعلى">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <div id="settingsModal" class="settings-modal">
+    <div class="settings-modal" id="settings-modal">
         <div class="settings-modal-content">
             <div class="settings-header">
-                <h3 class="settings-title modal-header-title">الإعدادات</h3>
-                <button class="settings-close-btn">&times; إغلاق</button>
+                <h2 class="settings-title modal-header-title">الإعدادات</h2>
+                <button class="settings-close-btn" id="close-settings-btn">
+                    <span>&times;</span>
+                    إغلاق
+                </button>
             </div>
-
-            <div id="modal-toast" class="modal-toast"></div>
-
-            <button id="modal-scroll-btn" class="modal-scroll-button">
-                عرض المزيد ▼
-            </button>
-
             <div class="modal-body">
+                <div id="modal-toast" class="modal-toast"></div>
                 <div class="setting-item">
-                    <label for="brightness-slider" class="setting-label">سطوع الموقع:</label>
+                    <label class="setting-label">تغيير المظهر</label>
+                    <div class="theme-grid" id="theme-grid-container">
+                        </div>
+                </div>
+                <div class="setting-item">
+                    <label for="font-size-range" class="setting-label">حجم الخط</label>
                     <div class="setting-range-group">
-                        <input type="range" id="brightness-slider" class="setting-range" min="50" max="150" value="100">
+                        <input type="range" id="font-size-range" class="setting-range" min="80" max="120" value="100">
+                        <span id="font-size-value" class="range-value">100%</span>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <label for="brightness-range" class="setting-label">سطوع الموقع</label>
+                    <div class="setting-range-group">
+                        <input type="range" id="brightness-range" class="setting-range" min="70" max="130" value="100">
                         <span id="brightness-value" class="range-value">100%</span>
                     </div>
                 </div>
-
-                <h4 class="settings-title">تخصيص الألوان (للمظهر الحالي)</h4>
                 <div class="setting-item">
+                    <label class="setting-label">تغيير لون العناوين</label>
                     <div class="color-input-group">
-                        <span>اللون الأساسي:</span>
-                        <input type="color" id="primary-color-picker" class="color-input">
+                        <input type="color" id="primary-color-picker" class="setting-color">
+                        <input type="text" id="primary-color-text" class="color-text-input" placeholder="ادخل كود اللون">
                     </div>
                 </div>
                 <div class="setting-item">
+                    <label class="setting-label">تغيير لون النص</label>
                     <div class="color-input-group">
-                        <span>لون الخلفية:</span>
-                        <input type="color" id="bg-color-picker" class="color-input">
+                        <input type="color" id="text-color-picker" class="setting-color">
+                        <input type="text" id="text-color-text" class="color-text-input" placeholder="ادخل كود اللون">
                     </div>
                 </div>
                 <div class="setting-item">
+                    <label class="setting-label">تغيير لون الخلفية</label>
                     <div class="color-input-group">
-                        <span>لون المربعات (الروابط):</span>
-                        <input type="color" id="card-bg-color-picker" class="color-input">
+                        <input type="color" id="bg-color-picker" class="setting-color">
+                        <input type="text" id="bg-color-text" class="color-text-input" placeholder="ادخل كود اللون">
                     </div>
-                </div>
-                <div class="setting-item">
-                    <div class="color-input-group">
-                        <span>لون الخطوط:</span>
-                        <input type="color" id="text-color-picker" class="color-input">
-                    </div>
-                </div>
-
-                <h4 class="settings-title">تغيير حجم الخط</h4>
-                <div class="setting-item">
-                    <label class="setting-label">اختر حجم الخط المناسب:</label>
-                    <div class="font-size-options">
-                        <button class="font-size-btn" data-size="small">A1</button>
-                        <button class="font-size-btn" data-size="medium">A2</button>
-                        <button class="font-size-btn" data-size="large">A3</button>
-                    </div>
-                </div>
-
-                <h4 class="settings-title">تغيير المظهر</h4>
-                <div class="setting-item">
-                    <label class="setting-label">الوضع الفاتح:</label>
-                    <div id="light-theme-grid" class="theme-grid"></div>
-                </div>
-
-                <div class="setting-item">
-                    <label class="setting-label">الوضع الداكن:</label>
-                    <div id="dark-theme-grid" class="theme-grid"></div>
                 </div>
             </div>
-
             <div class="modal-footer">
+                <button id="modal-scroll-button" class="modal-scroll-button">انتقل للأسفل</button>
                 <button id="save-settings-btn" class="save-btn">حفظ الإعدادات</button>
                 <button id="reset-settings-btn" class="reset-btn">إعادة ضبط الإعدادات</button>
             </div>
         </div>
     </div>
 
+    <button id="scrollToTopBtn" class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <div class="toast-message" id="toast-message"></div>
+
+    <footer class="footer">
+        <p>&copy; 2024 جميع الحقوق محفوظة لخدمات طلاب كلية التجارة - جامعة الزقازيق</p>
+    </footer>
+
     <script>
-        const body = document.body;
-        const darkModeToggleBtn = document.getElementById('dark-mode-toggle');
-        const darkModeText = document.getElementById('dark-mode-text');
-        const themeSwitcherBtn = document.getElementById('theme-switcher');
-        const settingsBtn = document.getElementById('settings-btn');
-        const settingsModal = document.getElementById('settingsModal');
-        const settingsCloseBtn = document.querySelector('.settings-close-btn');
-        const brightnessSlider = document.getElementById('brightness-slider');
-        const brightnessValueSpan = document.getElementById('brightness-value');
-        const lightThemeGrid = document.getElementById('light-theme-grid');
-        const darkThemeGrid = document.getElementById('dark-theme-grid');
-        const saveSettingsBtn = document.getElementById('save-settings-btn');
-        const resetSettingsBtn = document.getElementById('reset-settings-btn');
-        const modalToast = document.getElementById('modal-toast');
-        const searchInput = document.getElementById('searchInput');
-        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-        const modalScrollButton = document.getElementById('modal-scroll-btn');
-        const modalBody = document.querySelector('.modal-body');
+        document.addEventListener('DOMContentLoaded', () => {
+            const body = document.body;
+            const darkModeToggle = document.getElementById('dark-mode-toggle');
+            const darkModeText = document.getElementById('dark-mode-text');
+            const themeSwitcherBtn = document.getElementById('theme-switcher');
+            const settingsBtn = document.getElementById('settings-btn');
+            const settingsModal = document.getElementById('settings-modal');
+            const closeSettingsBtn = document.getElementById('close-settings-btn');
+            const themeGridContainer = document.getElementById('theme-grid-container');
+            const searchInput = document.getElementById('searchInput');
+            const linksContainer = document.getElementById('links-container');
+            const fontSizeRange = document.getElementById('font-size-range');
+            const fontSizeValue = document.getElementById('font-size-value');
+            const brightnessRange = document.getElementById('brightness-range');
+            const brightnessValue = document.getElementById('brightness-value');
+            const primaryColorPicker = document.getElementById('primary-color-picker');
+            const primaryColorText = document.getElementById('primary-color-text');
+            const textColorPicker = document.getElementById('text-color-picker');
+            const textColorText = document.getElementById('text-color-text');
+            const bgColorPicker = document.getElementById('bg-color-picker');
+            const bgColorText = document.getElementById('bg-color-text');
+            const saveSettingsBtn = document.getElementById('save-settings-btn');
+            const resetSettingsBtn = document.getElementById('reset-settings-btn');
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            const toastMessage = document.getElementById('toast-message');
+            const modalToast = document.getElementById('modal-toast');
+            const modalScrollButton = document.getElementById('modal-scroll-button');
+            const modalBody = document.querySelector('.modal-body');
 
-        const fontSizeButtons = document.querySelectorAll('.font-size-btn');
+            const links = [
+                { id: '1', title: 'موقع الكلية الرسمي', url: 'https://commerce.zu.edu.eg/', category: 'official' },
+                { id: '2', title: 'نتائج الطلاب', url: 'https://natiga.zu.edu.eg/', category: 'official' },
+                { id: '3', title: 'صفحة الكلية على فيسبوك', url: 'https://www.facebook.com/commerce.zu.edu.eg/', category: 'social' },
+                { id: '4', title: 'روابط جروبات المواد (الفرقة الأولى)', url: 'link_to_groups_1', category: 'groups' },
+                { id: '5', title: 'روابط جروبات المواد (الفرقة الثانية)', url: 'link_to_groups_2', category: 'groups' },
+                { id: '6', title: 'روابط جروبات المواد (الفرقة الثالثة)', url: 'link_to_groups_3', category: 'groups' },
+                { id: '7', title: 'روابط جروبات المواد (الفرقة الرابعة)', url: 'link_to_groups_4', category: 'groups' },
+                { id: '8', title: 'الموقع الرسمي لجامعة الزقازيق', url: 'https://www.zu.edu.eg/', category: 'official' },
+                { id: '9', title: 'دليل الطالب', url: 'https://commerce.zu.edu.eg/student-guide/', category: 'official' },
+                { id: '10', title: 'جدول المحاضرات', url: 'https://commerce.zu.edu.eg/schedule/', category: 'official' },
+                { id: '11', title: 'الكتب والمراجع', url: 'https://commerce.zu.edu.eg/books/', category: 'resources' },
+                { id: '12', title: 'خدمات شؤون الطلاب', url: 'https://commerce.zu.edu.eg/student-affairs/', category: 'official' },
+                { id: '13', title: 'الامتحانات', url: 'https://commerce.zu.edu.eg/exams/', category: 'official' },
+                { id: '14', title: 'المكتبة الرقمية', url: 'http://library.zu.edu.eg/', category: 'resources' },
+                { id: '15', title: 'البريد الجامعي', url: 'https://www.outlook.com/edu.eg', category: 'official' },
+                { id: '16', title: 'منصة التدريب العملي', url: 'https://commerce.zu.edu.eg/training/', category: 'official' },
+                { id: '17', title: 'أخبار الكلية', url: 'https://commerce.zu.edu.eg/news/', category: 'news' },
+                { id: '18', title: 'المقررات الدراسية', url: 'https://commerce.zu.edu.eg/courses/', category: 'official' },
+                { id: '19', title: 'الأبحاث العلمية', url: 'https://commerce.zu.edu.eg/research/', category: 'resources' },
+                { id: '20', title: 'مواعيد القبول والتسجيل', url: 'https://commerce.zu.edu.eg/admission/', category: 'official' },
+                { id: '21', title: 'النماذج الإلكترونية', url: 'https://commerce.zu.edu.eg/forms/', category: 'official' },
+                { id: '22', title: 'موقع المعهد الفني التجاري', url: 'http://fci-zu.edu.eg/', category: 'official' }
+            ];
 
-        const primaryColorPicker = document.getElementById('primary-color-picker');
-        const bgColorPicker = document.getElementById('bg-color-picker');
-        const cardBgColorPicker = document.getElementById('card-bg-color-picker');
-        const textColorPicker = document.getElementById('text-color-picker');
+            const themeColors = [
+                '#004c99', '#487a77', '#e51280', '#d1721e', '#5d4ce6', '#7b3d12',
+                '#266b6c', '#282828', '#1e88e5', '#4285f4', '#ff5722', '#673ab7',
+                '#0a4f5f', '#556b2f', '#8b0000', '#d81b60', '#00796b', '#cddc39',
+                '#ffc107', '#ff9800', '#e91e63', '#607d8b', '#9c27b0', '#009688',
+                '#4caf50', '#8bc34a', '#00bcd4', '#c0ca33', '#ff5252', '#7c4dff'
+            ];
 
-        const defaultSettings = {
-            brightness: 100,
-            theme: 'theme-1',
-            darkMode: 'light',
-            fontSize: 'medium',
-            customColors: {}
-        };
+            function showToast(message, type) {
+                const toast = type === 'modal' ? modalToast : toastMessage;
+                toast.textContent = message;
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }
 
-        const fontSizes = {
-            small: { main: 1.6, section: 1.1, link: 0.8 },
-            medium: { main: 1.8, section: 1.2, link: 0.9 },
-            large: { main: 2.1, section: 1.4, link: 1.1 }
-        };
+            // Function to save settings to localStorage
+            function saveSettings(settings) {
+                localStorage.setItem('websiteSettings', JSON.stringify(settings));
+                showToast('تم حفظ الإعدادات بنجاح!', 'modal');
+            }
 
-        let selectedSettings = {};
+            // Function to get settings from localStorage
+            function getSettings() {
+                const savedSettings = localStorage.getItem('websiteSettings');
+                return savedSettings ? JSON.parse(savedSettings) : null;
+            }
 
-        const linksData = [
-            { id: 1, category: 'services', name: 'المنصة الإلكترونية لسداد مصروفات الكتب والمقررات الدراسية', url: 'http://admincom.eps.zu.edu.eg/Views/StudentViews/StudentLogin', icon: 'fas fa-credit-card' },
-            { id: 2, category: 'services', name: 'بوابة الخدمات الطلابية والمصروفات', url: 'https://militaryeducation.zu.edu.eg/Views/ED_Students/Login', icon: 'fas fa-graduation-cap' },
-            { id: 3, category: 'services', name: 'الحصول على الكود الجامعي', url: 'https://militaryeducation.zu.edu.eg/Views/General/GetStudInfo', icon: 'fas fa-id-card' },
-            { id: 4, category: 'whatsapp', name: 'جروب واتساب فرقة أولى', url: 'https://chat.whatsapp.com/D3fHA8WdKzELcYiLmJbrUU', icon: 'fab fa-whatsapp' },
-            { id: 5, category: 'whatsapp', name: 'جروب واتساب فرقة ثانية', url: 'https://chat.whatsapp.com/BVk8aNUajS0BPtVJb73jhO', icon: 'fab fa-whatsapp' },
-            { id: 6, category: 'results', name: 'نتائج امتحانات الفرق الدراسية', url: 'http://www.studentactivities.zu.edu.eg/Students/Registration/ed_login.aspx', icon: 'fas fa-poll-h' },
-            { id: 7, category: 'medical', name: 'استمارة الكشف الطبي - رابط 1', url: 'http://www.medical.zustudents.zu.edu.eg/', icon: 'fas fa-notes-medical' },
-            { id: 8, category: 'medical', name: 'استمارة الكشف الطبي - رابط 2', url: 'http://www.medical2.zustudents.zu.edu.eg/', icon: 'fas fa-notes-medical' },
-            { id: 9, category: 'medical', name: 'استمارة الكشف الطبي - رابط 3', url: 'http://www.medical3.zustudents.zu.edu.eg/', icon: 'fas fa-notes-medical' },
-            { id: 10, category: 'hostel', name: 'التقديم للمدن الجامعية', url: 'https://hostelstudreg.zu.edu.eg/', icon: 'fas fa-dorm-room' }
-        ];
+            // Function to apply settings from localStorage on page load
+            function applySavedSettings() {
+                const settings = getSettings();
+                if (settings) {
+                    if (settings.isDarkMode) {
+                        body.classList.add('dark-mode');
+                        darkModeText.textContent = 'الوضع النهاري';
+                    } else {
+                        body.classList.remove('dark-mode');
+                        darkModeText.textContent = 'الوضع الليلي';
+                    }
+                    if (settings.themeClass) {
+                        body.className = body.className.replace(/(theme-\d+)/g, '');
+                        body.classList.add(settings.themeClass);
+                        updateThemeSelector(settings.themeClass);
+                    }
+                    if (settings.fontSize) {
+                        document.documentElement.style.fontSize = `${settings.fontSize}%`;
+                        fontSizeRange.value = settings.fontSize;
+                        fontSizeValue.textContent = `${settings.fontSize}%`;
+                    }
+                    if (settings.brightness) {
+                        body.style.setProperty('--site-brightness', `${settings.brightness}%`);
+                        brightnessRange.value = settings.brightness;
+                        brightnessValue.textContent = `${settings.brightness}%`;
+                    }
+                    if (settings.primaryColor) {
+                        body.style.setProperty('--primary-color', settings.primaryColor);
+                        primaryColorPicker.value = settings.primaryColor;
+                        primaryColorText.value = settings.primaryColor;
+                    }
+                    if (settings.textColor) {
+                        body.style.setProperty('--text-color', settings.textColor);
+                        textColorPicker.value = settings.textColor;
+                        textColorText.value = settings.textColor;
+                    }
+                    if (settings.bgColor) {
+                        body.style.setProperty('--bg-color', settings.bgColor);
+                        bgColorPicker.value = settings.bgColor;
+                        bgColorText.value = settings.bgColor;
+                    }
+                }
+            }
 
-        const themes = [
-            'theme-1', 'theme-2', 'theme-3', 'theme-4', 'theme-5', 'theme-6', 
-            'theme-7', 'theme-8', 'theme-9', 'theme-10', 'theme-11', 'theme-12',
-            'theme-13', 'theme-14', 'theme-15', 'theme-16', 'theme-17', 'theme-18',
-            'theme-19', 'theme-20', 'theme-21', 'theme-22', 'theme-23', 'theme-24',
-            'theme-25', 'theme-26', 'theme-27', 'theme-28', 'theme-29', 'theme-30'
-        ];
-        let currentThemeIndex = 0;
+            // Call this function on page load
+            applySavedSettings();
 
-        const linkLists = {
-            services: document.getElementById('links-1'),
-            whatsapp: document.getElementById('links-2'),
-            results: document.getElementById('links-3'),
-            medical: document.getElementById('links-4'),
-            hostel: document.getElementById('links-5')
-        };
-        const sections = {
-            services: document.getElementById('servicesSection'),
-            whatsapp: document.getElementById('whatsappSection'),
-            results: document.getElementById('resultsSection'),
-            medical: document.getElementById('medicalSection'),
-            hostel: document.getElementById('hostelSection')
-        };
-
-        function renderLinks(searchTerm = '') {
-            const normalizedSearchTerm = searchTerm.trim().toLowerCase();
-            Object.values(linkLists).forEach(list => list.innerHTML = '');
-            Object.values(sections).forEach(section => section.style.display = 'none');
-            const filteredData = linksData.filter(link => {
-                const normalizedName = link.name.toLowerCase();
-                const normalizedCategory = link.category.toLowerCase();
-                return normalizedName.includes(normalizedSearchTerm) || normalizedCategory.includes(normalizedSearchTerm);
-            });
-            const displayedCategories = new Set();
-            filteredData.forEach(link => {
+            const createLinkItem = (link) => {
+                const section = document.querySelector(`.links-section[data-category="${link.category}"]`) || createSection(link.category);
                 const a = document.createElement('a');
                 a.className = 'link-item';
                 a.href = link.url;
                 a.target = '_blank';
-                const icon = document.createElement('i');
-                icon.className = link.icon;
-                a.appendChild(icon);
-                const span = document.createElement('span');
-                span.textContent = link.name;
-                a.appendChild(span);
-                linkLists[link.category].appendChild(a);
-                displayedCategories.add(link.category);
-            });
-            displayedCategories.forEach(category => {
-                sections[category].style.display = 'block';
-            });
-            if (filteredData.length === 0) {
-                const noResults = document.createElement('p');
-                noResults.className = 'no-results-message';
-                noResults.textContent = 'لا توجد نتائج بحث مطابقة.';
-                Object.values(linkLists)[0].appendChild(noResults);
-            }
-        }
-
-        function applySettings() {
-            // Apply brightness
-            body.style.setProperty('--site-brightness', `${selectedSettings.brightness}%`);
-
-            // Remove all theme classes and apply the selected one
-            themes.forEach(t => body.classList.remove(t));
-            if (selectedSettings.theme) {
-                body.classList.add(selectedSettings.theme);
-            }
-
-            // Apply dark mode class
-            if (selectedSettings.darkMode === 'dark') {
-                body.classList.add('dark-mode');
-                darkModeText.textContent = 'الوضع الفاتح';
-            } else {
-                body.classList.remove('dark-mode');
-                darkModeText.textContent = 'الوضع الليلي';
-            }
-
-            // Apply custom colors for the current theme
-            const customColors = selectedSettings.customColors[selectedSettings.theme] || {};
-            body.style.setProperty('--primary-color', customColors.primary || '');
-            body.style.setProperty('--bg-color', customColors.bg || '');
-            body.style.setProperty('--card-bg', customColors.cardBg || '');
-            body.style.setProperty('--text-color', customColors.text || '');
-
-            // Apply font sizes
-            const sizes = fontSizes[selectedSettings.fontSize];
-            body.style.setProperty('--main-title-size', `${sizes.main}rem`);
-            body.style.setProperty('--subtitle-size', `${sizes.link}rem`);
-            body.style.setProperty('--section-title-size', `${sizes.section}rem`);
-            body.style.setProperty('--link-item-size', `${sizes.link}rem`);
-
-            updateThemeGridSelection();
-            updateSliderValues();
-            updateColorPickers();
-            updateFontSizeButtons();
-        }
-
-        function updateFontSizeButtons() {
-            fontSizeButtons.forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.getAttribute('data-size') === selectedSettings.fontSize) {
-                    btn.classList.add('active');
-                }
-            });
-        }
-
-        function loadSavedSettings() {
-            const savedSettings = JSON.parse(localStorage.getItem('user-settings'));
-            selectedSettings = { ...defaultSettings, ...savedSettings };
-            // Ensure customColors object exists
-            if (!selectedSettings.customColors) {
-                selectedSettings.customColors = {};
-            }
-            currentThemeIndex = themes.indexOf(selectedSettings.theme);
-
-            brightnessSlider.value = selectedSettings.brightness;
-
-            applySettings();
-        }
-
-        function saveSettings() {
-            localStorage.setItem('user-settings', JSON.stringify(selectedSettings));
-            showToast('تم حفظ الإعدادات بنجاح!');
-        }
-
-        function resetSettings() {
-            selectedSettings = JSON.parse(JSON.stringify(defaultSettings)); // Deep copy to avoid reference issues
-            localStorage.removeItem('user-settings');
-            applySettings();
-            showToast('تم إعادة ضبط الإعدادات!', 'reset');
-            setTimeout(() => {
-                settingsModal.classList.remove('active');
-            }, 1000);
-        }
-
-        function showToast(message, type = 'save') {
-            modalToast.textContent = message;
-            modalToast.style.backgroundColor = type === 'save' ? '#4CAF50' : '#f44336';
-            modalToast.classList.add('show');
-            setTimeout(() => {
-                modalToast.classList.remove('show');
-            }, 3000);
-        }
-
-        function updateThemeGridSelection() {
-            document.querySelectorAll('.theme-color-box').forEach(box => {
-                box.classList.remove('selected');
-                if (box.getAttribute('data-theme') === selectedSettings.theme) {
-                    box.classList.add('selected');
-                }
-            });
-        }
-
-        function updateSliderValues() {
-            brightnessValueSpan.textContent = `${selectedSettings.brightness}%`;
-        }
-
-        function updateColorPickers() {
-            const tempDiv = document.createElement('div');
-            tempDiv.style.display = 'none';
-            tempDiv.className = selectedSettings.theme;
-            if (selectedSettings.darkMode === 'dark') {
-                tempDiv.classList.add('dark-mode');
-            }
-            body.appendChild(tempDiv);
-
-            const tempStyle = getComputedStyle(tempDiv);
-
-            const customColors = selectedSettings.customColors[selectedSettings.theme] || {};
-
-            primaryColorPicker.value = customColors.primary || rgbToHex(tempStyle.getPropertyValue('--primary-color'));
-            bgColorPicker.value = customColors.bg || rgbToHex(tempStyle.getPropertyValue('--bg-color'));
-            cardBgColorPicker.value = customColors.cardBg || rgbToHex(tempStyle.getPropertyValue('--card-bg'));
-            textColorPicker.value = customColors.text || rgbToHex(tempStyle.getPropertyValue('--text-color'));
-
-            body.removeChild(tempDiv);
-        }
-
-        function rgbToHex(rgb) {
-            if (!rgb) return '#ffffff';
-            const result = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
-            if (!result) return rgb;
-            function hex(x) {
-                return ("0" + parseInt(x).toString(16)).slice(-2);
-            }
-            return "#" + hex(result[1]) + hex(result[2]) + hex(result[3]);
-        }
-
-        function createThemeGrids() {
-            lightThemeGrid.innerHTML = '';
-            darkThemeGrid.innerHTML = '';
-
-            const lightThemes = themes.slice(0, 15);
-            const darkThemes = themes.slice(15, 30);
-
-            const themeColors = {
-                'theme-1': '004c99', 'theme-2': '487a77', 'theme-3': 'e51280', 'theme-4': 'd1721e',
-                'theme-5': '5d4ce6', 'theme-6': '7b3d12', 'theme-7': '266b6c', 'theme-8': '282828',
-                'theme-9': '1e88e5', 'theme-10': '4285f4', 'theme-11': 'ff5722', 'theme-12': '673ab7',
-                'theme-13': '0a4f5f', 'theme-14': '556b2f', 'theme-15': '8b0000', 'theme-16': 'd81b60',
-                'theme-17': '00796b', 'theme-18': 'cddc39', 'theme-19': 'ffc107', 'theme-20': 'ff9800',
-                'theme-21': 'e91e63', 'theme-22': '607d8b', 'theme-23': '9c27b0', 'theme-24': '009688',
-                'theme-25': '4caf50', 'theme-26': '8bc34a', 'theme-27': '00bcd4', 'theme-28': 'c0ca33',
-                'theme-29': 'ff5252', 'theme-30': '7c4dff'
+                a.innerHTML = `<i class="fas fa-link"></i><span>${link.title}</span>`;
+                section.querySelector('.link-list').appendChild(a);
             };
 
-            lightThemes.forEach(theme => {
-                const box = document.createElement('div');
-                box.className = 'theme-color-box light-mode-theme';
-                box.style.backgroundColor = `#${themeColors[theme]}`;
-                box.setAttribute('data-theme', theme);
-                box.addEventListener('click', () => {
-                    selectedSettings.theme = theme;
-                    selectedSettings.darkMode = 'light';
-                    applySettings();
-                });
-                lightThemeGrid.appendChild(box);
+            const createSection = (category) => {
+                const section = document.createElement('div');
+                section.className = 'links-section';
+                section.setAttribute('data-category', category);
+                const title = document.createElement('h2');
+                title.className = 'section-title';
+                title.textContent = `روابط ${getCategoryName(category)}`;
+                const list = document.createElement('div');
+                list.className = 'link-list';
+                section.appendChild(title);
+                section.appendChild(list);
+                linksContainer.appendChild(section);
+                return section;
+            };
+
+            const getCategoryName = (category) => {
+                const names = {
+                    'official': 'رسمية',
+                    'social': 'اجتماعية',
+                    'groups': 'الجروبات',
+                    'resources': 'موارد دراسية',
+                    'news': 'أخبار'
+                };
+                return names[category] || 'أخرى';
+            };
+
+            const renderLinks = (filteredLinks) => {
+                linksContainer.innerHTML = '';
+                if (filteredLinks.length === 0) {
+                    linksContainer.innerHTML = '<p style="text-align: center; color: var(--normal-text-color); margin-top: 20px;">لا توجد روابط مطابقة.</p>';
+                } else {
+                    filteredLinks.forEach(createLinkItem);
+                }
+            };
+
+            renderLinks(links);
+
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const filteredLinks = links.filter(link => link.title.toLowerCase().includes(searchTerm));
+                renderLinks(filteredLinks);
             });
 
-            darkThemes.forEach(theme => {
-                const box = document.createElement('div');
-                box.className = 'theme-color-box';
-                box.style.backgroundColor = `#${themeColors[theme]}`;
-                box.setAttribute('data-theme', theme);
-                box.addEventListener('click', () => {
-                    selectedSettings.theme = theme;
-                    selectedSettings.darkMode = 'dark';
-                    applySettings();
-                });
-                darkThemeGrid.appendChild(box);
+            darkModeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+                const isDarkMode = body.classList.contains('dark-mode');
+                darkModeText.textContent = isDarkMode ? 'الوضع النهاري' : 'الوضع الليلي';
+                localStorage.setItem('isDarkMode', isDarkMode);
             });
-            updateThemeGridSelection();
-        }
 
-        // Initial load
-        loadSavedSettings();
-        renderLinks();
-        createThemeGrids();
+            settingsBtn.addEventListener('click', () => {
+                settingsModal.classList.add('active');
+            });
 
-        // Event Listeners
-        darkModeToggleBtn.addEventListener('click', () => {
-            selectedSettings.darkMode = selectedSettings.darkMode === 'dark' ? 'light' : 'dark';
-            applySettings();
-        });
-
-        themeSwitcherBtn.addEventListener('click', () => {
-            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-            selectedSettings.theme = themes[currentThemeIndex];
-            selectedSettings.darkMode = selectedSettings.theme.includes('dark') ? 'dark' : 'light';
-            applySettings();
-        });
-
-        settingsBtn.addEventListener('click', () => {
-            settingsModal.classList.add('active');
-            updateColorPickers();
-        });
-
-        settingsCloseBtn.addEventListener('click', () => {
-            settingsModal.classList.remove('active');
-        });
-
-        window.addEventListener('click', (event) => {
-            if (event.target === settingsModal) {
+            closeSettingsBtn.addEventListener('click', () => {
                 settingsModal.classList.remove('active');
-            }
-        });
+            });
 
-        brightnessSlider.addEventListener('input', (e) => {
-            selectedSettings.brightness = parseFloat(e.target.value);
-            body.style.setProperty('--site-brightness', `${selectedSettings.brightness}%`);
-            brightnessValueSpan.textContent = `${e.target.value}%`;
-        });
-         // Font size buttons event listeners
-        fontSizeButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                const newSize = e.target.getAttribute('data-size');
-                selectedSettings.fontSize = newSize;
-                applySettings();
+            window.addEventListener('click', (event) => {
+                if (event.target === settingsModal) {
+                    settingsModal.classList.remove('active');
+                }
+            });
+
+            function generateThemeGrid() {
+                themeGridContainer.innerHTML = '';
+                const savedTheme = localStorage.getItem('themeClass');
+                themeColors.forEach((color, index) => {
+                    const themeClass = `theme-${index + 1}`;
+                    const box = document.createElement('div');
+                    box.className = 'theme-color-box';
+                    box.style.backgroundColor = color;
+                    box.dataset.theme = themeClass;
+                    if (savedTheme === themeClass) {
+                        box.classList.add('selected');
+                        if (!body.classList.contains('dark-mode')) {
+                            box.classList.add('light-mode-theme');
+                        }
+                    }
+                    box.addEventListener('click', () => {
+                        changeTheme(themeClass);
+                    });
+                    themeGridContainer.appendChild(box);
+                });
+            }
+
+            function changeTheme(themeClass) {
+                const currentThemeClass = [...body.classList].find(cls => cls.startsWith('theme-'));
+                if (currentThemeClass) {
+                    body.classList.remove(currentThemeClass);
+                }
+                body.classList.add(themeClass);
+                localStorage.setItem('themeClass', themeClass);
+                updateThemeSelector(themeClass);
+                showToast(`تم تغيير المظهر بنجاح إلى ${themeClass.replace('theme-', 'مظهر رقم ')}!`, 'modal');
+            }
+
+            function updateThemeSelector(themeClass) {
+                const boxes = document.querySelectorAll('.theme-color-box');
+                boxes.forEach(box => {
+                    box.classList.remove('selected', 'light-mode-theme');
+                    if (box.dataset.theme === themeClass) {
+                        box.classList.add('selected');
+                        if (!body.classList.contains('dark-mode')) {
+                            box.classList.add('light-mode-theme');
+                        }
+                    }
+                });
+            }
+
+            themeSwitcherBtn.addEventListener('click', () => {
+                const currentThemeClass = [...body.classList].find(cls => cls.startsWith('theme-')) || 'theme-0';
+                const currentThemeIndex = parseInt(currentThemeClass.split('-')[1]);
+                const nextThemeIndex = (currentThemeIndex % themeColors.length) + 1;
+                const nextThemeClass = `theme-${nextThemeIndex}`;
+                changeTheme(nextThemeClass);
+            });
+
+            // Initial theme grid generation
+            generateThemeGrid();
+
+            fontSizeRange.addEventListener('input', (e) => {
+                const size = e.target.value;
+                document.documentElement.style.fontSize = `${size}%`;
+                fontSizeValue.textContent = `${size}%`;
+            });
+
+            brightnessRange.addEventListener('input', (e) => {
+                const brightness = e.target.value;
+                body.style.setProperty('--site-brightness', `${brightness}%`);
+                brightnessValue.textContent = `${brightness}%`;
+            });
+
+            primaryColorPicker.addEventListener('input', (e) => {
+                const color = e.target.value;
+                body.style.setProperty('--primary-color', color);
+                primaryColorText.value = color;
+            });
+
+            primaryColorText.addEventListener('input', (e) => {
+                const color = e.target.value;
+                body.style.setProperty('--primary-color', color);
+                primaryColorPicker.value = color;
+            });
+
+            textColorPicker.addEventListener('input', (e) => {
+                const color = e.target.value;
+                body.style.setProperty('--text-color', color);
+                textColorText.value = color;
+            });
+
+            textColorText.addEventListener('input', (e) => {
+                const color = e.target.value;
+                body.style.setProperty('--text-color', color);
+                textColorPicker.value = color;
+            });
+
+            bgColorPicker.addEventListener('input', (e) => {
+                const color = e.target.value;
+                body.style.setProperty('--bg-color', color);
+                bgColorText.value = color;
+            });
+
+            bgColorText.addEventListener('input', (e) => {
+                const color = e.target.value;
+                body.style.setProperty('--bg-color', color);
+                bgColorPicker.value = color;
+            });
+
+            saveSettingsBtn.addEventListener('click', () => {
+                const currentThemeClass = [...body.classList].find(cls => cls.startsWith('theme-'));
+                const settings = {
+                    isDarkMode: body.classList.contains('dark-mode'),
+                    themeClass: currentThemeClass,
+                    fontSize: fontSizeRange.value,
+                    brightness: brightnessRange.value,
+                    primaryColor: primaryColorPicker.value,
+                    textColor: textColorPicker.value,
+                    bgColor: bgColorPicker.value
+                };
+                saveSettings(settings);
+            });
+
+            resetSettingsBtn.addEventListener('click', () => {
+                localStorage.removeItem('websiteSettings');
+                localStorage.removeItem('isDarkMode');
+                localStorage.removeItem('themeClass');
+                location.reload();
+            });
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    scrollToTopBtn.classList.add('show');
+                } else {
+                    scrollToTopBtn.classList.remove('show');
+                }
+            });
+
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Modal Scroll Button Logic
+            modalScrollButton.addEventListener('click', () => {
+                const isAtBottom = Math.round(modalBody.scrollHeight - modalBody.scrollTop) <= modalBody.clientHeight + 1;
+
+                if (isAtBottom) {
+                    // إذا كان المستخدم في الأسفل، انتقل للأعلى
+                    modalBody.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    // إذا كان في أي مكان آخر، انتقل للأسفل
+                    modalBody.scrollTo({
+                        top: modalBody.scrollHeight,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+
+            modalBody.addEventListener('scroll', () => {
+                const isAtBottom = Math.round(modalBody.scrollHeight - modalBody.scrollTop) <= modalBody.clientHeight + 1;
+
+                if (isAtBottom) {
+                    // تغيير نص الزر عند الوصول إلى الأسفل
+                    modalScrollButton.textContent = 'انتقل للأعلى';
+                } else {
+                    // تغيير نص الزر عندما يكون في أي مكان آخر
+                    modalScrollButton.textContent = 'انتقل للأسفل';
+                }
             });
         });
-
-        // Event listeners for color pickers (only affect current theme)
-        primaryColorPicker.addEventListener('input', (e) => {
-            const currentTheme = selectedSettings.theme;
-            if (!selectedSettings.customColors[currentTheme]) {
-                selectedSettings.customColors[currentTheme] = {};
-            }
-            selectedSettings.customColors[currentTheme].primary = e.target.value;
-            applySettings();
-        });
-
-        bgColorPicker.addEventListener('input', (e) => {
-            const currentTheme = selectedSettings.theme;
-            if (!selectedSettings.customColors[currentTheme]) {
-                selectedSettings.customColors[currentTheme] = {};
-            }
-            selectedSettings.customColors[currentTheme].bg = e.target.value;
-            applySettings();
-        });
-
-        cardBgColorPicker.addEventListener('input', (e) => {
-            const currentTheme = selectedSettings.theme;
-            if (!selectedSettings.customColors[currentTheme]) {
-                selectedSettings.customColors[currentTheme] = {};
-            }
-            selectedSettings.customColors[currentTheme].cardBg = e.target.value;
-            applySettings();
-        });
-
-        textColorPicker.addEventListener('input', (e) => {
-            const currentTheme = selectedSettings.theme;
-            if (!selectedSettings.customColors[currentTheme]) {
-                selectedSettings.customColors[currentTheme] = {};
-            }
-            selectedSettings.customColors[currentTheme].text = e.target.value;
-            applySettings();
-        });
-
-        saveSettingsBtn.addEventListener('click', saveSettings);
-        resetSettingsBtn.addEventListener('click', resetSettings);
-
-        searchInput.addEventListener('input', (e) => {
-            renderLinks(e.target.value);
-        });
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                scrollToTopBtn.classList.add('show');
-            } else {
-                scrollToTopBtn.classList.remove('show');
-            }
-        });
-
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-// Modal Scroll Button Logic
-modalScrollButton.addEventListener('click', () => {
-    const isAtBottom = Math.round(modalBody.scrollHeight - modalBody.scrollTop) <= modalBody.clientHeight + 1;
-
-    if (isAtBottom) {
-        // إذا كان المستخدم في الأسفل، انتقل للأعلى
-        modalBody.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    } else {
-        // إذا كان في أي مكان آخر، انتقل للأسفل
-        modalBody.scrollTo({
-            top: modalBody.scrollHeight,
-            behavior: 'smooth'
-        });
-    }
-});
-
-modalBody.addEventListener('scroll', () => {
-    const isAtBottom = Math.round(modalBody.scrollHeight - modalBody.scrollTop) <= modalBody.clientHeight + 1;
-
-    if (isAtBottom) {
-        // تغيير نص الزر عند الوصول إلى الأسفل
-        modalScrollButton.textContent = 'العودة للأعلى ▲';
-    } else {
-        // تغيير نص الزر عندما يكون المستخدم ليس في الأسفل
-        modalScrollButton.textContent = 'عرض المزيد ▼';
-    }
-});
-  </script>
+    </script>
 </body>
 </html>
