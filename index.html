@@ -36,6 +36,16 @@
         }
 
         /* --- Theme definitions --- */
+        body.dark-mode {
+            /* Theme 1 Dark Mode */
+            --primary-color: #799dcf;
+            --secondary-color: #151a22;
+            --text-color: #f1f3f6;
+            --link-color: #799dcf;
+            --link-hover-color: #a4c4f0;
+            --card-bg: #262d3a;
+            --box-shadow: none;
+        }
         
         /* Theme 2 */
         body.theme-2 {
@@ -344,8 +354,11 @@
             padding: 0;
         }
         
+        /* Styles for Image Background */
         body.image-bg {
             background-color: transparent !important;
+            transition: background-image 0.5s ease-in-out;
+            position: relative; /* Add this to ensure z-index works */
         }
         
         body.image-bg::before {
