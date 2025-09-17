@@ -351,15 +351,17 @@
 
         .settings-modal-content {
             background-color: var(--card-bg);
-            padding: 20px;
+            padding: 15px;
             border-radius: 10px;
-            width: 90%;
-            max-width: 500px;
+            width: 95%;
+            max-width: 450px;
             text-align: right;
             position: relative;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             animation: fadeIn 0.3s ease-out;
-            margin: 20px;
+            margin: 10px;
+            max-height: 90vh; /* Added to make it fit on screen without scrolling */
+            overflow-y: auto; /* Allow scrolling only inside modal content if needed */
         }
 
         @keyframes fadeIn {
@@ -389,22 +391,23 @@
         }
 
         .settings-title {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: var(--primary-color);
             border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
         }
 
         .setting-item {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .setting-label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: bold;
             color: var(--normal-text-color);
+            font-size: 0.9rem;
         }
 
         .setting-range, .setting-color {
@@ -414,13 +417,13 @@
 
         .theme-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(35px, 1fr));
+            gap: 8px;
         }
 
         .theme-color-box {
             width: 100%;
-            height: 40px;
+            height: 35px;
             border: 2px solid transparent;
             border-radius: 5px;
             cursor: pointer;
@@ -436,21 +439,29 @@
         }
 
 
-        .save-btn {
+        .save-btn, .reset-btn {
             background-color: var(--primary-color);
             color: white;
             border: none;
             padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 1rem;
-            margin-top: 20px;
+            font-size: 0.9rem;
+            margin-top: 15px;
             width: 100%;
             transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        .reset-btn {
+            background-color: #f44336;
+            margin-top: 10px;
         }
 
         .save-btn:hover {
             background-color: var(--link-hover-color);
+            transform: translateY(-2px);
+        }
+        .reset-btn:hover {
+            background-color: #d32f2f;
             transform: translateY(-2px);
         }
 
@@ -518,13 +529,13 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-top: 10px;
+            margin-top: 6px;
         }
 
         .range-value {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--normal-text-color);
-            min-width: 40px;
+            min-width: 35px;
             text-align: center;
         }
         
@@ -532,12 +543,12 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-top: 10px;
-            gap: 15px;
+            margin-top: 6px;
+            gap: 10px;
         }
         .color-input {
-            width: 50px;
-            height: 30px;
+            width: 45px;
+            height: 25px;
             border: none;
             cursor: pointer;
             background: transparent;
@@ -564,9 +575,9 @@
             .link-item { font-size: 0.8rem; padding: 10px 12px; }
             .link-item i { font-size: 1rem; margin-left: 8px; }
             .search-input { font-size: 0.9rem; }
-            .settings-modal-content { padding: 15px; margin: 10px; }
-            .settings-title { font-size: 1.3rem; }
-            .theme-color-box { height: 35px; }
+            .settings-modal-content { padding: 10px; margin: 5px; }
+            .settings-title { font-size: 1.2rem; }
+            .theme-color-box { height: 30px; }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -654,7 +665,7 @@
                 </div>
             </div>
 
-            <h4 class="settings-title">تخصيص الألوان (للمظهر الحالي فقط)</h4>
+            <h4 class="settings-title">تخصيص الألوان (للمظهر الحالي)</h4>
             <div class="setting-item">
                 <div class="color-input-group">
                     <span>اللون الأساسي:</span>
@@ -715,6 +726,7 @@
             </div>
 
             <button id="save-settings-btn" class="save-btn">حفظ الإعدادات</button>
+            <button id="reset-settings-btn" class="reset-btn">إعادة ضبط الإعدادات</button>
         </div>
     </div>
 
@@ -731,6 +743,7 @@
         const lightThemeGrid = document.getElementById('light-theme-grid');
         const darkThemeGrid = document.getElementById('dark-theme-grid');
         const saveSettingsBtn = document.getElementById('save-settings-btn');
+        const resetSettingsBtn = document.getElementById('reset-settings-btn');
         const toastMessage = document.getElementById('toastMessage');
         const searchInput = document.getElementById('searchInput');
         const scrollToTopBtn = document.getElementById("scrollToTopBtn");
@@ -747,7 +760,6 @@
         const cardBgColorPicker = document.getElementById('card-bg-color-picker');
         const textColorPicker = document.getElementById('text-color-picker');
 
-
         const defaultSettings = {
             brightness: 100,
             theme: 'theme-1',
@@ -755,10 +767,7 @@
             mainTitleSize: 1.8,
             sectionTitleSize: 1.2,
             linkItemSize: 0.9,
-            customPrimaryColor: null,
-            customBgColor: null,
-            customCardBgColor: null,
-            customTextColor: null
+            customColors: {}
         };
         
         let selectedSettings = {};
@@ -854,34 +863,19 @@
                 darkModeText.textContent = 'الوضع الليلي';
             }
 
-            // Apply custom colors if theme is set to default (theme-1)
-            if (selectedSettings.theme === 'theme-1') {
-                if (selectedSettings.customPrimaryColor) {
-                    body.style.setProperty('--primary-color', selectedSettings.customPrimaryColor);
-                }
-                if (selectedSettings.customBgColor) {
-                    body.style.setProperty('--bg-color', selectedSettings.customBgColor);
-                }
-                if (selectedSettings.customCardBgColor) {
-                    body.style.setProperty('--card-bg', selectedSettings.customCardBgColor);
-                }
-                if (selectedSettings.customTextColor) {
-                    body.style.setProperty('--text-color', selectedSettings.customTextColor);
-                }
-            } else {
-                // Reset custom colors when a different theme is selected
-                body.style.setProperty('--primary-color', null);
-                body.style.setProperty('--bg-color', null);
-                body.style.setProperty('--card-bg', null);
-                body.style.setProperty('--text-color', null);
-            }
+            // Apply custom colors for the current theme
+            const customColors = selectedSettings.customColors[selectedSettings.theme] || {};
+            body.style.setProperty('--primary-color', customColors.primary || null);
+            body.style.setProperty('--bg-color', customColors.bg || null);
+            body.style.setProperty('--card-bg', customColors.cardBg || null);
+            body.style.setProperty('--text-color', customColors.text || null);
 
             // Apply font sizes
             body.style.setProperty('--main-title-size', `${selectedSettings.mainTitleSize}rem`);
             body.style.setProperty('--subtitle-size', `${selectedSettings.sectionTitleSize * 0.75}rem`);
             body.style.setProperty('--section-title-size', `${selectedSettings.sectionTitleSize}rem`);
             body.style.setProperty('--link-item-size', `${selectedSettings.linkItemSize}rem`);
-
+            
             updateThemeGridSelection();
             updateSliderValues();
             updateColorPickers();
@@ -890,6 +884,10 @@
         function loadSavedSettings() {
             const savedSettings = JSON.parse(localStorage.getItem('user-settings'));
             selectedSettings = { ...defaultSettings, ...savedSettings };
+            // Ensure customColors object exists
+            if (!selectedSettings.customColors) {
+                selectedSettings.customColors = {};
+            }
             currentThemeIndex = themes.indexOf(selectedSettings.theme);
             
             brightnessSlider.value = selectedSettings.brightness;
@@ -903,6 +901,13 @@
         function saveSettings() {
             localStorage.setItem('user-settings', JSON.stringify(selectedSettings));
             showToast('تم حفظ الإعدادات بنجاح!');
+        }
+        
+        function resetSettings() {
+            localStorage.removeItem('user-settings');
+            loadSavedSettings();
+            showToast('تم إعادة ضبط الإعدادات!');
+            settingsModal.classList.remove('active');
         }
 
         function showToast(message) {
@@ -930,11 +935,27 @@
         }
         
         function updateColorPickers() {
-            const rootStyle = getComputedStyle(document.documentElement);
-            primaryColorPicker.value = rootStyle.getPropertyValue('--primary-color').trim();
-            bgColorPicker.value = rootStyle.getPropertyValue('--bg-color').trim();
-            cardBgColorPicker.value = rootStyle.getPropertyValue('--card-bg').trim();
-            textColorPicker.value = rootStyle.getPropertyValue('--text-color').trim();
+            // Get current computed styles to show in pickers
+            const currentTheme = selectedSettings.theme;
+            const customColors = selectedSettings.customColors[currentTheme] || {};
+
+            const tempDiv = document.createElement('div');
+            tempDiv.style.display = 'none';
+            body.appendChild(tempDiv);
+            
+            tempDiv.className = `theme-${currentTheme}`;
+            if (selectedSettings.darkMode === 'dark') {
+                tempDiv.classList.add('dark-mode');
+            }
+            
+            const tempStyle = getComputedStyle(tempDiv);
+
+            primaryColorPicker.value = customColors.primary || tempStyle.getPropertyValue('--primary-color');
+            bgColorPicker.value = customColors.bg || tempStyle.getPropertyValue('--bg-color');
+            cardBgColorPicker.value = customColors.cardBg || tempStyle.getPropertyValue('--card-bg');
+            textColorPicker.value = customColors.text || tempStyle.getPropertyValue('--text-color');
+            
+            body.removeChild(tempDiv);
         }
 
         function createThemeGrids() {
@@ -1017,7 +1038,7 @@
         });
 
         brightnessSlider.addEventListener('input', (e) => {
-            selectedSettings.brightness = e.target.value;
+            selectedSettings.brightness = parseFloat(e.target.value);
             body.style.setProperty('--site-brightness', `${selectedSettings.brightness}%`);
             brightnessValueSpan.textContent = `${e.target.value}%`;
         });
@@ -1040,36 +1061,46 @@
             linkItemValueSpan.textContent = `${selectedSettings.linkItemSize}rem`;
         });
         
-        // Event listeners for color pickers (only affect theme-1)
+        // Event listeners for color pickers (only affect current theme)
         primaryColorPicker.addEventListener('input', (e) => {
-            if (selectedSettings.theme === 'theme-1') {
-                selectedSettings.customPrimaryColor = e.target.value;
-                body.style.setProperty('--primary-color', selectedSettings.customPrimaryColor);
+            const currentTheme = selectedSettings.theme;
+            if (!selectedSettings.customColors[currentTheme]) {
+                selectedSettings.customColors[currentTheme] = {};
             }
+            selectedSettings.customColors[currentTheme].primary = e.target.value;
+            applySettings();
         });
 
         bgColorPicker.addEventListener('input', (e) => {
-            if (selectedSettings.theme === 'theme-1') {
-                selectedSettings.customBgColor = e.target.value;
-                body.style.setProperty('--bg-color', selectedSettings.customBgColor);
+            const currentTheme = selectedSettings.theme;
+            if (!selectedSettings.customColors[currentTheme]) {
+                selectedSettings.customColors[currentTheme] = {};
             }
+            selectedSettings.customColors[currentTheme].bg = e.target.value;
+            applySettings();
         });
 
         cardBgColorPicker.addEventListener('input', (e) => {
-            if (selectedSettings.theme === 'theme-1') {
-                selectedSettings.customCardBgColor = e.target.value;
-                body.style.setProperty('--card-bg', selectedSettings.customCardBgColor);
+            const currentTheme = selectedSettings.theme;
+            if (!selectedSettings.customColors[currentTheme]) {
+                selectedSettings.customColors[currentTheme] = {};
             }
+            selectedSettings.customColors[currentTheme].cardBg = e.target.value;
+            applySettings();
         });
 
         textColorPicker.addEventListener('input', (e) => {
-            if (selectedSettings.theme === 'theme-1') {
-                selectedSettings.customTextColor = e.target.value;
-                body.style.setProperty('--text-color', selectedSettings.customTextColor);
+            const currentTheme = selectedSettings.theme;
+            if (!selectedSettings.customColors[currentTheme]) {
+                selectedSettings.customColors[currentTheme] = {};
             }
+            selectedSettings.customColors[currentTheme].text = e.target.value;
+            applySettings();
         });
 
+
         saveSettingsBtn.addEventListener('click', saveSettings);
+        resetSettingsBtn.addEventListener('click', resetSettings);
 
         searchInput.addEventListener('input', (e) => {
             renderLinks(e.target.value);
