@@ -27,11 +27,7 @@
             --card-bg: #ffffff;
             --box-shadow: none;
             
-            /* Background properties for image mode */
-            background-image: none;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            /* Default background color */
             background-color: var(--secondary-color);
         }
 
@@ -353,28 +349,6 @@
             margin: 0;
             padding: 0;
         }
-        
-        /* Styles for Image Background */
-        body.image-bg {
-            background-color: transparent !important;
-            transition: background-image 0.5s ease-in-out;
-            position: relative; /* Add this to ensure z-index works */
-        }
-        
-        body.image-bg::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background-color: rgba(255, 255, 255, 0.6);
-            z-index: -1;
-        }
-        
-        body.dark-mode.image-bg::before {
-            background-color: rgba(0, 0, 0, 0.7);
-        }
 
         .top-info-section {
             display: flex;
@@ -482,14 +456,6 @@
             margin-bottom: 15px;
             transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
         }
-        
-        /* Adjust card background for image mode */
-        body.image-bg .links-section {
-            background-color: rgba(255, 255, 255, 0.85);
-        }
-        body.dark-mode.image-bg .links-section {
-            background-color: rgba(28, 45, 51, 0.85);
-        }
 
         .section-title {
             font-size: 1.2rem;
@@ -527,14 +493,6 @@
             position: relative;
         }
 
-        /* Adjust link background for image mode */
-        body.image-bg .link-item {
-            background-color: rgba(255, 255, 255, 0.8);
-        }
-        body.dark-mode.image-bg .link-item {
-            background-color: rgba(28, 45, 51, 0.8);
-        }
-
         .link-item i {
             margin-left: 10px;
             font-size: 1.2rem;
@@ -565,14 +523,6 @@
             background-color: var(--card-bg);
             color: var(--text-color);
             transition: border-color var(--transition-speed), background-color var(--transition-speed), color var(--transition-speed);
-        }
-
-        body.image-bg .search-input {
-            background-color: rgba(255, 255, 255, 0.8);
-        }
-
-        body.dark-mode.image-bg .search-input {
-            background-color: rgba(28, 45, 51, 0.8);
         }
 
         .search-input:focus {
@@ -679,10 +629,6 @@
                 <i class="fas fa-palette"></i>
                 <span id="theme-switcher-text" class="theme-toggle-text">تبديل المظهر</span>
             </button>
-            <button id="change-bg-btn" class="theme-toggle-btn" aria-label="Change background image">
-                <i class="fas fa-image"></i>
-                <span id="bg-text" class="theme-toggle-text">صورة خلفية</span>
-            </button>
         </div>
         <span>تصميم: شهاب طارق</span>
         <a href="https://wa.me/201206244875" target="_blank" class="whatsapp-link-container">
@@ -742,11 +688,9 @@
         const darkModeToggleBtn = document.getElementById('dark-mode-toggle');
         const darkModeText = document.getElementById('dark-mode-text');
         const themeSwitcherBtn = document.getElementById('theme-switcher');
-        const changeBgBtn = document.getElementById('change-bg-btn');
-        const bgText = document.getElementById('bg-text');
         const searchInput = document.getElementById('searchInput');
         const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-
+        
         // Main data source
         const linksData = [
             { id: 1, category: 'services', name: 'المنصة الإلكترونية لسداد مصروفات الكتب والمقررات الدراسية', url: 'http://admincom.eps.zu.edu.eg/Views/StudentViews/StudentLogin', icon: 'fas fa-credit-card' },
@@ -781,20 +725,6 @@
             medical: document.getElementById('medicalSection'),
             hostel: document.getElementById('hostelSection')
         };
-        
-        const backgroundImages = [
-            'https://images.unsplash.com/photo-1542281488-812e99d91549?q=80&w=2070&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1510784738557-6014e393b482?q=80&w=2070&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1506059635070-e4c16a13524b?q=80&w=2070&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1473220464292-0a149f1211e4?q=80&w=2070&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1537233842147-9b2f65a1262d?q=80&w=2070&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1502691871239-012b189a02ea?q=80&w=2070&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1500366620953-f76140507a2c?q=80&w=2070&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1547039988-f54452144ac9?q=80&w=2070&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1520625390022-ed32007823f9?q=80&w=2070&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1589418659223-2882103f56e9?q=80&w=2070&auto=format&fit=crop'
-        ];
-        let currentImageIndex = -1;
         
         function renderLinks(searchTerm = '') {
             const normalizedSearchTerm = searchTerm.trim().toLowerCase();
@@ -850,21 +780,6 @@
             localStorage.setItem('dark-mode', isDark ? 'dark' : 'light');
         }
 
-        function toggleImageBackground() {
-            if (body.classList.contains('image-bg')) {
-                // Revert to solid color
-                body.classList.remove('image-bg');
-                body.style.backgroundImage = 'none';
-                bgText.textContent = 'صورة خلفية';
-            } else {
-                // Apply a random image
-                const randomIndex = Math.floor(Math.random() * backgroundImages.length);
-                body.classList.add('image-bg');
-                body.style.backgroundImage = `url('${backgroundImages[randomIndex]}')`;
-                bgText.textContent = 'خلفية عادية';
-            }
-        }
-
         // Initialize on page load
         const savedTheme = localStorage.getItem('selected-theme');
         const savedDarkMode = localStorage.getItem('dark-mode');
@@ -896,10 +811,6 @@
             applyTheme(nextTheme);
             const isDark = body.classList.contains('dark-mode');
             applyDarkMode(isDark);
-        });
-
-        changeBgBtn.addEventListener('click', () => {
-            toggleImageBackground();
         });
 
         searchInput.addEventListener('input', (e) => {
