@@ -710,6 +710,25 @@
     .settings-title { font-size: 1.2rem; }
     .theme-color-box { height: 30px; }
 }
+
+/* زر اضغط لعرض الموقع - ثابت في نهاية كل لينك */                                                           .view-site-btn {
+    position: absolute;
+    left: 10px;              /* يثبّت الزر على الطرف الشمال (أو آخر السطر) */
+    top: 65%;
+    transform: translateY(-50%);
+    background-color: #1e88e5;                                                                                  color: #fff;
+    font-size: 8px;          /* ثابت: 8px */
+    padding: 2px 7px;                                                                                           border-radius: 4px;
+    white-space: nowrap;
+    line-height: 1;
+    font-weight: normal;
+}
+.view-site-btn:hover {
+    background-color: #1565c0;
+}
+
+/* مهم: نخلي .link-item تسمح بتمركز الزر جوهها */                                                           .link-item {                                                                                                    position: relative;
+}
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -957,9 +976,18 @@
                 const icon = document.createElement('i');
                 icon.className = link.icon;
                 a.appendChild(icon);
-                const span = document.createElement('span');
-                span.textContent = link.name;
-                a.appendChild(span);
+                                const span = document.createElement('span');
+span.textContent = link.name;
+
+// زر صغير للتوضيح
+const viewBtn = document.createElement('span');
+viewBtn.textContent = 'اضغط لعرض الموقع';
+viewBtn.className = 'view-site-btn';
+
+// النص فقط يضاف بشكل طبيعي
+a.appendChild(span);
+// الزر كعنصر ثابت فوق اللينك
+a.appendChild(viewBtn);
                 linkLists[link.category].appendChild(a);
                 displayedCategories.add(link.category);
             });
