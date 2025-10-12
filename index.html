@@ -4,14 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بوابة خدمات طلاب كلية التجارة - جامعة الزقازيق</title>
-    
+
     <!-- تحميل أيقونات Font Awesome للواجهة -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- تحميل خط القاهرة (Cairo) -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
+        /* إضافة box-sizing: border-box; لجميع العناصر */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         /* ==================================== */
         /* الألوان الرئيسية والتصميم العام */
         /* ==================================== */
@@ -19,27 +25,28 @@
             /* جامعة الزقازيق (Deep Blue & Accent Yellow) */
             --primary-color: #004c99; /* أزرق جامعي داكن */ 
             --accent-color: #ffc107; /* أصفر مميز (للتفاعل فقط) */ 
-            
-            /* تدرج البطاقات والهيرو */
+            --gold-glow-color: #ffca28; /* لون ذهبي/أصفر ناعم للإضاءة */
+            /* لون الإطار العلوي للفوتر (أزرق غامق نقي) */
+            --deep-blue-border: #003a7a; 
+
             --dark-blue-deep: #002244; 
             --card-gradient-light: linear-gradient(90deg, var(--dark-blue-deep) 0%, var(--primary-color) 70%, #001529 100%);
             --card-gradient: var(--card-gradient-light); 
-            
-            /* (متغير) تدرج الشريط العلوي والهيرو (الوضع الفاتح) */
+
             --top-bar-bg: var(--card-gradient-light); 
-            
-            /* (متغير) ألوان الشريط السفلي للوضع الفاتح */
+
             --footer-bg: var(--primary-color);
             --footer-border-color: var(--accent-color);
             --footer-color: white; 
-            
+
             --text-color: #212529; 
-            --bg-color: #eceef1; /* خلفية بيضاء غامقة (Off-White) مريحة للعين */ 
+            --bg-color: #eceef1; 
             --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.25); 
-            
-            /* توحيد سمك الحدود لثبات حجم البطاقة */
-            --card-border: 1px solid rgba(0, 76, 153, 0.5); 
-            
+
+            /* الحد القياسي (للويب) */
+            --border-color: var(--primary-color);
+            --border-style: 2px solid var(--border-color); 
+
             font-family: 'Cairo', sans-serif;
             direction: rtl;
             text-align: right; 
@@ -49,8 +56,10 @@
             color: var(--text-color);
             margin: 0;
             padding: 0;
-            padding-bottom: 50px; 
+            /* ترك مسافة للفوتر - يتم تعديله في وضع الهاتف */
+            padding-bottom: 70px; 
             position: relative;
+            overflow-x: hidden;
         }
 
 
@@ -61,7 +70,7 @@
 
         .container {
             width: 95%; 
-            max-width: 370px; 
+            max-width: 1200px; 
             margin: 0 auto;
             padding: 0 10px;
         }
@@ -76,13 +85,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* تم زيادة التعتيم والضبابية لتوضيح التأثير الثلجي */
-            background-color: rgba(255, 255, 255, 0.7); /* زيادة التعتيم (0.7) */ 
-            backdrop-filter: blur(8px); /* زيادة الضبابية (8px) */
+            /* خلفية محايدة هادئة */
+            background-color: rgba(240, 240, 240, 0.8); 
+            backdrop-filter: blur(8px); 
             -webkit-backdrop-filter: blur(8px);
             z-index: -1; 
         }
-        
+
         /* ==================================== */
         /* Dark Mode Styles - الوضع الداكن */
         /* ==================================== */
@@ -90,56 +99,61 @@
             --text-color: #e9ecef;
             --bg-color: #121212; 
 
-            /* تدرج الوضع الداكن للبطاقات والهيرو (أزرق غامق يتجه نحو الأسود) */
             --card-gradient-dark: linear-gradient(90deg, #1f3044 0%, #1f3044 70%, #080808 100%); 
             --card-gradient: var(--card-gradient-dark); 
-            
-            /* تأثير الشريط العلوي في الوضع الداكن */
+
             --top-bar-bg: linear-gradient(90deg, #0f1d2b 0%, #1f3044 70%, #030303 100%); 
 
+            --footer-bg: #0a0a0a; 
+            --footer-border-color: #555; 
+            --footer-color: #ccc; 
 
-            /* ألوان الشريط السفلي في الوضع الداكن */
-            --footer-bg: #0a0a0a; /* خلفية سوداء هادئة */
-            --footer-border-color: #555; /* حدود رمادية خفيفة */
-            --footer-color: #ccc; /* لون نص رمادي فاتح */
-
-            /* توحيد سمك الحدود لضمان ثبات حجم البطاقة */
-            --card-border: 1px solid #555; /* حدود رمادية أغمق - السمك ثابت 1px */
+            --border-style: 2px solid transparent; 
             --card-shadow: 0 6px 15px rgba(255, 255, 255, 0.05);
         }
 
         body.dark-mode .glass-background {
-            /* تعديل تأثير الزجاج في الوضع الداكن */
-            background-color: rgba(18, 18, 18, 0.85); /* تعتيم الخلفية الداكنة أكثر */
+            background-color: rgba(18, 18, 18, 0.85); 
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
         }
         
-        body.dark-mode #darkModeToggleContainer #darkModeToggle {
-             background-color: white;
-             color: #121212;
+        /* تهدئة اللون الأبيض في الوضع الداكن */
+        body.dark-mode .service-card h3 {
+            color: #cccccc; /* لون رمادي فاتح ناعم بدلاً من الأبيض الصارخ */
         }
-        
+
+
         /* ==================================== */
         /* الشريط العلوي (Top Bar) */
         /* ==================================== */
         .top-bar {
             background: var(--top-bar-bg);
             color: white;
-            /* تم الإبقاء على الحجم المصغر السابق */
             padding: 5px 10px 20px 10px; 
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+            /* تهدئة ظل الشريط العلوي في الوضع النهاري */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
             display: flex;
             flex-direction: row; 
             align-items: flex-start;
             justify-content: space-between; 
             position: relative;
-            /* شكل قص الشريط العلوي */
             clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), 85% 100%, 15% 100%, 0 calc(100% - 10px)); 
             margin-bottom: 10px; 
             z-index: 5;
+            
+            border-bottom: none; 
+            border-right: none;
+            border-left: none;
+            
+            min-width: 0; 
         }
-        
+
+
+        body.dark-mode .top-bar {
+             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+        }
+
         .logo-container {
             display: flex;
             flex-direction: column; 
@@ -148,7 +162,7 @@
             flex-grow: 1; 
             order: 2; 
         }
-        
+
         .university-logo {
             width: 30px; 
             height: 30px; 
@@ -161,9 +175,13 @@
             border: 2px solid var(--accent-color); 
             color: var(--primary-color); 
             font-size: 1rem; 
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            /* تهدئة إضاءة الشعار في الوضع النهاري */
+            box-shadow: 0 0 2px var(--accent-color), 0 0 2px rgba(255, 255, 255, 0.5) inset;
         }
-
+        
+        body.dark-mode .university-logo {
+             box-shadow: 0 0 3px var(--accent-color), 0 0 3px rgba(255, 255, 255, 0.1) inset;
+        }
 
         .top-bar h1 {
             font-size: 1rem; 
@@ -180,8 +198,10 @@
             display: block;
             text-align: center; 
         }
-        
-        /* حاوية رابط المصمم (أصبحت رابطاً) */
+
+        /* ==================================== */
+        /* تعديلات حجم المصمم في وضع الهاتف */
+        /* ==================================== */
         .designer-link {
             text-decoration: none;
             color: white;
@@ -198,16 +218,19 @@
             text-align: left;
         }
 
+        /* حجم المصمم والرقم في وضع الهاتف */
         .designer-credit, .designer-phone {
-            font-size: 0.55rem; 
+            font-size: 0.45rem; 
             opacity: 1; 
             color: white; 
             margin: 0;
             padding: 0;
             display: block;
         }
-        
-        /* حاوية زر تبديل الوضع والنص */
+
+        /* ==================================== */
+        /* تعديلات حجم زر التبديل في وضع الهاتف */
+        /* ==================================== */
         #darkModeToggleContainer {
             order: 1; 
             display: flex;
@@ -219,27 +242,26 @@
 
         #darkModeToggle {
             cursor: pointer; 
-            padding: 5px; 
-            background-color: var(--accent-color); 
+            padding: 3px; 
+            background-color: white; 
             color: var(--primary-color);
             border-radius: 50px; 
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
+            box-shadow: 0 0 2px var(--accent-color), 0 0 2px rgba(255, 255, 255, 0.5) inset;
             line-height: 1; 
-            font-size: 1rem; 
+            font-size: 0.85rem; 
             border: 1px solid white;
-            transition: all 0.2s ease;
         }
-        
+
         body.dark-mode #darkModeToggleContainer #darkModeToggle {
-            background-color: white;
+            background-color: #ccc; 
             color: #121212;
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 5px var(--accent-color); 
         }
 
         #modeLabel {
-            font-size: 0.5rem; 
+            font-size: 0.4rem; 
             color: white; 
-            margin-top: 3px; 
+            margin-top: 2px; 
             font-weight: 400;
             opacity: 0.9;
             text-align: center;
@@ -251,21 +273,25 @@
         /* مربع الترحيب وشريط البحث (Hero) */
         /* ==================================== */
         .hero {
-            padding: 8px; 
+            padding: 5px; 
             margin-bottom: 12px; 
             box-shadow: var(--card-shadow);
-            border: var(--card-border);
-            background: var(--card-gradient); 
             border-radius: 8px; 
             color: white; 
+            background: var(--card-gradient); 
+            border: none; 
+            box-shadow: 0 0 8px rgba(0, 76, 153, 0.6);
         }
-        
+
+        body.dark-mode .hero {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+        }
+
         .search-container {
             position: relative;
             display: flex;
             justify-content: center;
         }
-
 
         .search-container::before {
             content: "\f002"; 
@@ -280,50 +306,52 @@
             pointer-events: none; 
             z-index: 2;
         }
-        
+
         body.dark-mode .search-container::before {
              color: var(--accent-color);
         }
-        
+
         #serviceSearch {
             width: 90%;
             max-width: 500px;
-            padding: 8px 45px 8px 12px; 
+            padding: 6px 45px 6px 12px; 
             font-size: 0.85rem; 
             border-radius: 50px; 
             text-align: right;
-            border: 1px solid #ccc;
             background-color: #FFFFFF; 
             color: #212529; 
+            border: 1px solid #ccc;
         }
-        
+
         body.dark-mode #serviceSearch { 
             background-color: #34495e; 
             color: #e9ecef; 
             border-color: var(--accent-color); 
         }
-        
-        /* جعل نص الـ Placeholder أبيض في الوضع الليلي */
+
         body.dark-mode #serviceSearch::placeholder { 
             color: #f8f9fa; 
             opacity: 0.8; 
         }
-        body.dark-mode #serviceSearch:-ms-input-placeholder { /* IE 10+ */
+        body.dark-mode #serviceSearch:-ms-input-placeholder {
             color: #f8f9fa;
             opacity: 0.8; 
         }
-        body.dark-mode #serviceSearch::-ms-input-placeholder { /* Microsoft Edge */
+        body.dark-mode #serviceSearch::-ms-input-placeholder {
             color: #f8f9fa;
             opacity: 0.8; 
         }
-
 
         #serviceSearch:focus {
             outline: none;
             border-color: var(--accent-color);
+            /* إضافة حلقة تركيز ناعمة لسهولة الوصول */
+            box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.5); 
         }
-        
-        /* ==================================== */
+
+        body.dark-mode #serviceSearch:focus {
+             box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.3);
+        }
 
 
         /* ==================================== */
@@ -337,57 +365,102 @@
 
 
         .service-card {
-            /* (تعديل): زيادة طفيفة في الـ padding */
-            padding: 7px; /* تم زيادته من 6px إلى 7px */
-            border-radius: 10px; 
-            box-shadow: var(--card-shadow); 
-            border: var(--card-border); 
+            /* حجم البطاقة النهائي في وضع الهاتف */
+            padding: 10px; 
+            border-radius: 20px; 
+            background: var(--card-gradient); 
+            color: white; 
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
-            /* (تعديل): زيادة طفيفة في الارتفاع الأدنى للبطاقة */
-            min-height: 48px; /* تم زيادته من 45px إلى 48px */
-            background: var(--card-gradient); 
+            min-height: 40px; 
             
-            color: white; 
+            /* إطار جامعي توضيحي */
+            border: 1px solid var(--deep-blue-border); 
+            
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+            
+            transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out; 
+            
+        }
+
+        .service-card.hidden {
+            display: none; 
+            opacity: 0;
+        }
+
+        body.dark-mode .service-card {
+            /* إطار توضيحي للبطاقات في وضع الهاتف (الليلي) */
+            border: 1px solid #3d4a5b; 
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
         }
 
 
         .service-card:hover {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-            transform: translateY(-1px) scale(1.005); 
-            opacity: 0.95;
+            box-shadow: 0 0 15px var(--primary-color), 
+                        0 8px 20px rgba(0, 0, 0, 0.5);
+            transform: translateY(-2px) scale(1.01); 
+            opacity: 1;
             transition: all 0.2s ease-in-out; 
         }
+
+        body.dark-mode .service-card:hover {
+             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1), 
+                         0 8px 20px rgba(0, 0, 0, 0.7);
+            transform: translateY(-2px); 
+        }
         
+        /* حالة التفاعل مع اللمس (Active State) */
+        .service-card:active {
+            transform: scale(0.98); 
+            box-shadow: 0 0 5px var(--primary-color), 
+                        0 3px 10px rgba(0, 0, 0, 0.5);
+            opacity: 0.9;
+            transition: all 0.1s ease-in-out;
+        }
+        
+        body.dark-mode .service-card:active {
+             box-shadow: 0 0 5px var(--accent-color), 
+                         0 3px 10px rgba(0, 0, 0, 0.7);
+        }
+
+
         .service-content {
             flex-grow: 1;
-            margin-right: 8px; 
+            margin-right: 6px; 
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: flex-start; 
             overflow: hidden;
         }
-        
+
+        /* نمط أيقونة البطاقة */
         .service-card .icon {
-            /* تم الإبقاء على الحجم الصغير */
-            font-size: 0.9rem; 
+            font-size: 0.95rem; 
             color: white; 
-            width: 32px; 
-            height: 32px; 
+            width: 30px; 
+            height: 30px; 
             border-radius: 50%; 
             flex-shrink: 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
             display: flex;
             align-items: center;
             justify-content: center;
             margin-left: 6px; 
-            border: 2px solid var(--accent-color); 
+            
+            border: 1px solid var(--gold-glow-color); 
+            box-shadow: 0 0 2px var(--gold-glow-color), 0 0 1px rgba(255, 202, 40, 0.4) inset; 
         }
         
-        /* الأنماط الخاصة بألوان الأيقونات */
+        /* الإضاءة الليلي (كما هي - هادئة) */
+        body.dark-mode .service-card .icon {
+            border: 1px solid var(--gold-glow-color); 
+            box-shadow: 0 0 2px rgba(255, 202, 40, 0.5); 
+            background-clip: padding-box; 
+        }
+        
+        /* الأنماط الخاصة بألوان الأيقونات... (كما هي) */
         .icon.blue { background: radial-gradient(circle, #007bff 40%, #0056b3 100%); }
         .icon.green { background: radial-gradient(circle, #28a745 40%, #1e7e34 100%); }
         .icon.purple { background: radial-gradient(circle, #8a2be2 40%, #6a1ba9 100%); }
@@ -400,19 +473,18 @@
         .icon.whatsapp { background: radial-gradient(circle, #25d366 40%, #1e7e34 100%); }
 
 
-        
+        /* 1. تكبير حجم النص الأساسي للبطاقة في وضع الهاتف */
         .service-card h3 {
-            /* (تعديل): زيادة طفيفة في حجم الخط */
-            font-size: 0.8rem; /* تم زيادته من 0.75rem إلى 0.8rem */
+            font-size: 0.70rem; /* تم تكبيره من 0.75rem */
             margin: 0;
             font-weight: 700;
             color: white; 
         }
-        
+
+        /* 1. تكبير حجم النص الفرعي للبطاقة في وضع الهاتف */
         .service-card p {
             display: block; 
-            /* تم الإبقاء على حجم الخط الصغير */
-            font-size: 0.6rem; 
+            font-size: 0.55rem; /* تم تكبيره من 0.5rem */
             color: rgba(255, 255, 255, 0.85); 
             margin-top: 1px; 
             white-space: normal;
@@ -421,11 +493,11 @@
         }
 
 
+        /* تصغير حجم زر "الدخول للموقع" في وضع الهاتف (الحجم كما هو بعد التصغير الأخير) */
         .service-card .direct-link-btn {
             margin: 0;
-            /* تم الإبقاء على الحجم الصغير */
-            padding: 4px 7px; 
-            font-size: 0.6rem; 
+            padding: 1px 3px; 
+            font-size: 0.5rem; 
             flex-shrink: 0;
             background-color: var(--accent-color); 
             color: var(--primary-color);
@@ -434,24 +506,28 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
             transition: background-color 0.2s;
         }
-        
+
         .service-card .direct-link-btn:hover {
             background-color: #e6b300;
         }
 
 
         /* ==================================== */
-        /* البار السفلي (Footer) - متأثر بالوضع الليلي */
+        /* البار السفلي (Footer) - تعديلات وضع الهاتف */
         /* ==================================== */
         .footer {
             background-color: var(--footer-bg);
             color: var(--footer-color);
-            padding: 5px 0; 
+            /* 2. تصغير حجم البار السفلي في وضع الهاتف */
+            padding: 3px 0; 
             text-align: center;
-            border-top: 5px solid var(--footer-border-color); /* استخدام متغير الإطار */
-            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
-            font-size: 0.8rem;
             
+            border-top: 1px solid var(--accent-color); 
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2), 0 0 5px rgba(255, 193, 7, 0.6); 
+            
+            /* 2. تصغير نص الفوتر في وضع الهاتف */
+            font-size: 0.7rem; /* تم تصغيره من 0.8rem */
+
             position: fixed; 
             bottom: 0;
             left: 0;
@@ -459,9 +535,19 @@
             z-index: 10;
         }
         
+        body.dark-mode .footer {
+             box-shadow: 0 0 5px rgba(255, 193, 7, 0.3); 
+             border-top: 1px solid #ffca28; 
+        }
+
         .footer p {
             margin: 0;
             opacity: 0.9;
+        }
+        
+        /* ضبط الحشوة السفلية لـ body لتتناسب مع حجم الفوتر الجديد في وضع الهاتف */
+        body {
+            padding-bottom: 50px; /* تم تصغيره من 70px */
         }
 
 
@@ -469,9 +555,9 @@
         /* زر الصعود للأعلى */
         /* ==================================== */
         #scrollToTopBtn {
-            display: none; 
             position: fixed; 
-            bottom: 60px; 
+            /* رفعه قليلاً ليتناسب مع الفوتر المصغر */
+            bottom: 55px; 
             right: 20px; 
             z-index: 99; 
             border: none; 
@@ -485,38 +571,104 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
             transition: opacity 0.3s, transform 0.3s; 
             opacity: 0;
+            pointer-events: none; 
         }
         #scrollToTopBtn:hover {
             transform: scale(1.1);
         }
+        
         /* ==================================== */
         /* Media Queries للتحسين على جميع الشاشات */
         /* ==================================== */
-        
-        @media (max-width: 400px) {
+
+        /* شاشات الأيباد والويب (من 600 بكسل وما فوق) */
+        @media (min-width: 600px) {
+            .container {
+                width: 90%; 
+                max-width: 1200px; 
+            }
+            .services-grid {
+                display: grid; 
+                grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); 
+                gap: 25px; 
+            }
+
+            /* تكبير البار العلوي في وضع الويب */
+            .top-bar {
+                padding: 15px 25px 35px 25px; 
+                border-bottom: var(--border-style); 
+                border-right: var(--border-style);
+                border-left: var(--border-style);
+            }
+
+            /* تكبير العناوين الرئيسية */
             .top-bar h1 {
-                font-size: 0.95rem; 
+                font-size: 1.6rem; 
             }
-            .designer-credit, .designer-phone, .site-subtitle {
-                font-size: 0.5rem; 
+            .site-subtitle {
+                font-size: 1.10rem; 
             }
-            .service-card h3 {
-                font-size: 0.75rem; /* تم تعديله ليتناسب مع الزيادة الطفيفة */
-            }
-            .service-card p {
-                font-size: 0.55rem; 
-            }
-            .service-card .direct-link-btn {
-                padding: 3px 5px; 
-                font-size: 0.55rem; /* زيادة طفيفة لزر الرابط */
-            }
-            .service-card .icon {
-                width: 30px; 
-                height: 30px;
-                font-size: 0.8rem;
+            
+            /* 3. تكبير زر التبديل في وضع الآيباد والويب */
+            #darkModeToggle {
+                padding: 9px; /* زيادة في الحشوة */
+                font-size: 1.5rem; /* زيادة في الحجم */
             }
             #modeLabel {
-                font-size: 0.45rem; 
+                font-size: 1rem; /* زيادة في حجم النص التوضيحي */
+            }
+            
+            /* 3. تكبير نص المصمم والرقم في وضع الآيباد والويب */
+            .designer-credit, .designer-phone {
+                font-size: 1rem; /* زيادة في الحجم */
+            }
+
+            /* حجم البطاقة في الويب/الآيباد */
+            .service-card {
+                padding: 10px; 
+                min-height: 65px; 
+                border: 2px solid var(--deep-blue-border); 
+            }
+            body.dark-mode .service-card {
+                 border: 2px solid #3d4a5b; 
+            }
+
+            /* تكبير أيقونات البطاقات في وضع الويب */
+            .service-card .icon {
+                font-size: 1.5rem; 
+                width: 47px; 
+                height: 47px; 
+            }
+
+            /* حجم النص الأساسي للبطاقة في وضع الويب */
+            .service-card h3 {
+                font-size: 1.25rem; 
+            }
+            /* حجم النص الفرعي للبطاقة في وضع الويب */
+            .service-card p {
+                font-size: 1.1rem; 
+            }
+            
+            /* زر "الدخول للموقع" في وضع الويب/الآيباد (الحجم الطبيعي) */
+            .service-card .direct-link-btn {
+                padding: 9px 15px;
+                font-size: 0.80rem; 
+            }
+            
+            /* الفوتر في وضع الويب/الآيباد (الحجم الطبيعي) */
+            .footer {
+                padding: 5px 0; 
+                font-size: 0.8rem;
+            }
+            
+             /* ضبط الحشوة السفلية لـ body لتتناسب مع الفوتر في وضع الويب */
+            body {
+                padding-bottom: 70px; 
+            }
+            
+             /* زر الصعود للأعلى */
+            #scrollToTopBtn {
+                bottom: 80px; 
             }
         }
 
@@ -528,16 +680,16 @@
 
     <!-- طبقة الخلفية الزجاجية الثلجية -->
     <div class="glass-background"></div>
-    
+
 
 
     <div class="top-bar">
         <!-- حاوية تبديل الوضع (الزر والنص) (أقصى اليمين) -->
-        <div id="darkModeToggleContainer">
+        <div id="darkModeToggleContainer" role="button" aria-label="تبديل الوضع الليلي والفاتح">
             <div id="darkModeToggle">☀️</div>
             <span id="modeLabel">تبديل للوضع الداكن</span>
         </div>
-        
+
         <!-- معلومات المصمم (أقصى اليسار) - رابط واتساب مباشر -->
         <a href="https://wa.me/+201206244875" target="_blank" class="designer-link">
             <div class="designer-credit-container">
@@ -545,21 +697,21 @@
                 <span class="designer-phone">📲01206244875</span>
             </div>
         </a>
-        
+
         <!-- الشعار والعنوان (في المنتصف) -->
         <div class="logo-container">
             <!-- الشعار -->
-            <div class="university-logo">
-                <i class="fas fa-university"></i> 
-            </div>
-            
+<div class="university-logo">
+    <i class="fa-solid fa-graduation-cap"></i>
+</div>
+
             <div class="title-group">
                 <h1>كلية التجارة - جامعة الزقازيق</h1>
-                <!-- العنوان الفرعي أصبح الآن في المنتصف -->
+                <!-- العنوان الفرعي (يسمح بسطرين في وضع الهاتف) -->
                 <span class="site-subtitle"> الخدمات الطلابية والتعليمية في مكان واحد.</span>
             </div>
         </div>
-        
+
     </div>
     <div class="container">
 
@@ -567,13 +719,14 @@
         <!-- مربع الترحيب وشريط البحث -->
         <div class="hero">
             <div class="search-container">
-                <input type="text" id="serviceSearch" placeholder="ابحث عن الخدمة المطلوبة ">
+                <!-- تمت إضافة aria-label لدعم سهولة الوصول -->
+                <input type="text" id="serviceSearch" placeholder="ابحث عن الخدمة المطلوبة " aria-label="خانة البحث عن الخدمات">
             </div>
         </div>
 
 
         <div class="services-grid" id="servicesGrid">
-            
+
             <!-- المنصة الرقمية للكتب والمصاريف -->
             <a href="http://admincom.eps.zu.edu.eg/Views/StudentViews/StudentLogin" target="_blank" class="service-card" data-keywords="سداد مصروفات مالية كتب مقررات">
                 <span class="icon blue"><i class="fas fa-desktop"></i></span>
@@ -594,7 +747,7 @@
                 </div>
                 <span class="direct-link-btn">الدخول للموقع</span>
             </a>
-            
+
             <!-- الحصول على الكود الجامعي -->
             <a href="https://militaryeducation.zu.edu.eg/Views/General/GetStudInfo" target="_blank" class="service-card" data-keywords="كود جامعي استعلام رقم جلوس">
                 <span class="icon purple"><i class="fas fa-id-card"></i></span>
@@ -604,7 +757,7 @@
                 </div>
                 <span class="direct-link-btn">الدخول للموقع</span>
             </a>
-            
+
             <!-- محول الصور إلى PDF وضاغط ملفات -->
             <a href="https://shehabt1000-boop.github.io/pdf/" target="_blank" class="service-card" data-keywords="pdf ضغط صور تحويل">
                 <span class="icon red"><i class="fas fa-file-pdf"></i></span>
@@ -636,8 +789,8 @@
                 </div>
                 <span class="direct-link-btn">الدخول للموقع</span>
             </a>
-            
-            <!-- المكتبة الرقمية والمراجع -->
+
+            <!-- المجلس الاعلي للجامعات -->
             <a href="https://scu.eg/" target="_blank" class="service-card" data-keywords="مكتبة رقمية مراجع بحث علمي">
                 <span class="icon cyan"><i class="fas fa-book"></i></span>
                 <div class="service-content">
@@ -646,7 +799,7 @@
                 </div>
                 <span class="direct-link-btn">الدخول للموقع</span>
             </a>
-            
+
             <!-- استمارة الكشف الطبي - رابط 1 -->
             <a href="http://www.medical.zustudents.zu.edu.eg/" target="_blank" class="service-card" data-keywords="كشف طبي استمارة صحي رابط 1">
                 <span class="icon grey"><i class="fas fa-notes-medical"></i></span>
@@ -667,7 +820,7 @@
                 </div>
                 <span class="direct-link-btn">الدخول للموقع</span>
             </a>
-            
+
             <!-- استمارة الكشف الطبي - رابط 3 -->
             <a href="http://www.medical3.zustudents.zu.edu.eg/" target="_blank" class="service-card" data-keywords="كشف طبي استمارة صحي رابط 3">
                 <span class="icon grey"><i class="fas fa-notes-medical"></i></span>
@@ -688,7 +841,7 @@
                 </div>
                 <span class="direct-link-btn">الدخول للموقع</span>
             </a>
-            
+
             <!-- جروب واتساب فرقة أولى -->
             <a href="https://chat.whatsapp.com/D3fHA8WdKzELcYiLmJbrUU" target="_blank" class="service-card" data-keywords="واتساب whatsapp فرقة أولى">
                 <span class="icon whatsapp"><i class="fab fa-whatsapp"></i></span>
@@ -698,7 +851,7 @@
                 </div>
                 <span class="direct-link-btn">الانضمام</span>
             </a>
-            
+
             <!-- جروب واتساب فرقة ثانية -->
             <a href="https://chat.whatsapp.com/BVk8aNUajS0BPtVJb73jhO" target="_blank" class="service-card" data-keywords="واتساب whatsapp فرقة ثانية">
                 <span class="icon whatsapp"><i class="fab fa-whatsapp"></i></span>
@@ -715,12 +868,12 @@
 
 
     <!-- زر العودة للأعلى -->
-    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" id="scrollToTopBtn" title="العودة للأعلى">⬆️</button>
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" id="scrollToTopBtn" title="العودة للأعلى" aria-label="العودة لأعلى الصفحة">⬆️</button>
 
 
     <!-- الشريط السفلي (Footer) -->
     <div class="footer">
-        <p>بوابة الخدمات الإلكترونية | كلية التجارة - جامعة الزقازيق &copy; 2024</p>
+        <p>بوابة الخدمات الإلكترونية | كلية التجارة - جامعة الزقازيق &copy; 2026</p>
     </div>
 
 
@@ -752,52 +905,30 @@
         });
 
 
-        // Search Logic
+        // Search Logic 
         searchInput.addEventListener('input', () => {
             const searchTerm = searchInput.value.trim().toLowerCase();
-            
-            // الحل لمشكلة: عندما يصبح مربع البحث فارغاً (سواء بحذف حرف أو بالمسح المطول)، نعرض كل البطاقات.
-            if (searchTerm === '') {
-                serviceCards.forEach(card => {
-                    card.style.display = 'flex'; // إظهار البطاقة
-                    card.style.opacity = '1'; // جعلها مرئية
-                });
-                return; // إنهاء الدالة هنا
-            }
 
-            const matchingCards = [];
-            const nonMatchingCards = [];
-            
             serviceCards.forEach(card => {
                 const cardTitle = card.querySelector('h3').textContent.toLowerCase();
                 const cardKeywords = card.getAttribute('data-keywords').toLowerCase();
                 const cardDescription = card.querySelector('p').textContent.toLowerCase();
-                
+
                 // البحث في العنوان والكلمات المفتاحية والوصف
                 const isMatch = cardTitle.includes(searchTerm) || cardKeywords.includes(searchTerm) || cardDescription.includes(searchTerm);
-                
-                if (isMatch) {
-                    matchingCards.push(card);
+
+                // استخدام toggle لإضافة أو إزالة فئة 'hidden' بناءً على المطابقة
+                // يتم استخدام opacity 0 و pointer-events: none لضمان عدم إمكانية النقر على البطاقات المخفية 
+                if (!isMatch) {
+                    card.classList.add('hidden');
+                    card.style.opacity = '0';
+                    card.style.pointerEvents = 'none';
                 } else {
-                    nonMatchingCards.push(card);
+                    card.classList.remove('hidden');
+                    card.style.opacity = '1';
+                    card.style.pointerEvents = 'auto';
                 }
             });
-
-
-            // إظهار البطاقات المطابقة
-            matchingCards.forEach(card => {
-                card.style.display = 'flex';
-                setTimeout(() => card.style.opacity = '1', 10);
-            });
-
-
-            // إخفاء البطاقات غير المطابقة
-            nonMatchingCards.forEach(card => {
-                card.style.opacity = '0';
-                setTimeout(() => card.style.display = 'none', 300);
-            });
-
-
         });
 
 
@@ -809,17 +940,18 @@
             }
             updateModeLabel(isDarkMode);
 
-            
-            // إظهار زر الصعود للأعلى
+
+            // منطق زر الصعود للأعلى (تم تبسيطه للاعتماد على opacity و transition)
             window.addEventListener('scroll', () => {
                 const scrollTop = window.scrollY || document.documentElement.scrollTop;
-                
+
+                // إظهار الزر بعد تمرير 10 بكسل
                 if (scrollTop > 10) { 
-                    scrollToTopBtn.style.display = 'block';
-                    setTimeout(() => scrollToTopBtn.style.opacity = '1', 10);
+                    scrollToTopBtn.style.opacity = '1';
+                    scrollToTopBtn.style.pointerEvents = 'auto'; // تفعيل النقرات
                 } else {
                     scrollToTopBtn.style.opacity = '0';
-                    setTimeout(() => scrollToTopBtn.style.display = 'none', 300);
+                    scrollToTopBtn.style.pointerEvents = 'none'; // تعطيل النقرات
                 }
             });
         });
