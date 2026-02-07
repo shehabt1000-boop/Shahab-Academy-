@@ -5,12 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بوابة خدمات طلاب كلية التجارة - جامعة الزقازيق</title>
 
+    <!-- ==================================== -->
+    <!-- إعدادات المشاركة (Open Graph & SEO) -->
+    <!-- هذه الأكواد هي المسؤولة عن ظهور الصورة والنص في واتساب وفيسبوك -->
+    <!-- ==================================== -->
+    <meta name="description" content="بوابة الخدمات الطلابية لكلية التجارة جامعة الزقازيق. احصل على نتائج الامتحانات، الكود الجامعي، دفع المصروفات، والكتب الإلكترونية في مكان واحد.">
+
+    <!-- إعدادات فيسبوك وواتساب -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="بوابة خدمات طلاب كلية التجارة - جامعة الزقازيق">
+    <meta property="og:description" content="المنصة الموحدة: نتائج، جداول، منصة الكتاب، ودفع المصروفات. كل الروابط التي تحتاجها كطالب في مكان واحد.">
+    <!-- تم استخدام الرابط المباشر للصورة (Raw) لضمان ظهورها -->
+    <meta property="og:image" content="https://raw.githubusercontent.com/shehabt1000-boop/Moussa/3f279f6994188af69681ef2bbc795ea71bc69dc2/Link.png">
+
+    <!-- إعدادات تويتر -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="بوابة خدمات طلاب كلية التجارة - جامعة الزقازيق">
+    <meta name="twitter:description" content="المنصة الموحدة للخدمات الطلابية: نتائج، كتب، ومصروفات.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/shehabt1000-boop/Moussa/3f279f6994188af69681ef2bbc795ea71bc69dc2/Link.png">
+    <!-- ==================================== -->
+
     <!-- تحميل أيقونات Font Awesome للواجهة -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- تحميل خط القاهرة (Cairo) -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
         /* إضافة box-sizing: border-box; لجميع العناصر */
@@ -117,7 +137,7 @@
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
         }
-        
+
         /* تهدئة اللون الأبيض في الوضع الداكن */
         body.dark-mode .service-card h3 {
             color: #cccccc; /* لون رمادي فاتح ناعم بدلاً من الأبيض الصارخ */
@@ -141,11 +161,11 @@
             clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), 85% 100%, 15% 100%, 0 calc(100% - 10px)); 
             margin-bottom: 10px; 
             z-index: 5;
-            
+
             border-bottom: none; 
             border-right: none;
             border-left: none;
-            
+
             min-width: 0; 
         }
 
@@ -178,7 +198,7 @@
             /* تهدئة إضاءة الشعار في الوضع النهاري */
             box-shadow: 0 0 2px var(--accent-color), 0 0 2px rgba(255, 255, 255, 0.5) inset;
         }
-        
+
         body.dark-mode .university-logo {
              box-shadow: 0 0 3px var(--accent-color), 0 0 3px rgba(255, 255, 255, 0.1) inset;
         }
@@ -375,14 +395,14 @@
             align-items: center;
             justify-content: space-between;
             min-height: 40px; 
-            
+
             /* إطار جامعي توضيحي */
             border: 1px solid var(--deep-blue-border); 
-            
+
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-            
+
             transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out; 
-            
+
         }
 
         .service-card.hidden {
@@ -410,7 +430,7 @@
                          0 8px 20px rgba(0, 0, 0, 0.7);
             transform: translateY(-2px); 
         }
-        
+
         /* حالة التفاعل مع اللمس (Active State) */
         .service-card:active {
             transform: scale(0.98); 
@@ -419,7 +439,7 @@
             opacity: 0.9;
             transition: all 0.1s ease-in-out;
         }
-        
+
         body.dark-mode .service-card:active {
              box-shadow: 0 0 5px var(--accent-color), 
                          0 3px 10px rgba(0, 0, 0, 0.7);
@@ -448,18 +468,18 @@
             align-items: center;
             justify-content: center;
             margin-left: 6px; 
-            
+
             border: 1px solid var(--gold-glow-color); 
             box-shadow: 0 0 2px var(--gold-glow-color), 0 0 1px rgba(255, 202, 40, 0.4) inset; 
         }
-        
+
         /* الإضاءة الليلي (كما هي - هادئة) */
         body.dark-mode .service-card .icon {
             border: 1px solid var(--gold-glow-color); 
             box-shadow: 0 0 2px rgba(255, 202, 40, 0.5); 
             background-clip: padding-box; 
         }
-        
+
         /* الأنماط الخاصة بألوان الأيقونات... (كما هي) */
         .icon.blue { background: radial-gradient(circle, #007bff 40%, #0056b3 100%); }
         .icon.green { background: radial-gradient(circle, #28a745 40%, #1e7e34 100%); }
@@ -521,10 +541,10 @@
             /* 2. تصغير حجم البار السفلي في وضع الهاتف */
             padding: 3px 0; 
             text-align: center;
-            
+
             border-top: 1px solid var(--accent-color); 
             box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2), 0 0 5px rgba(255, 193, 7, 0.6); 
-            
+
             /* 2. تصغير نص الفوتر في وضع الهاتف */
             font-size: 0.7rem; /* تم تصغيره من 0.8rem */
 
@@ -534,7 +554,7 @@
             width: 100%;
             z-index: 10;
         }
-        
+
         body.dark-mode .footer {
              box-shadow: 0 0 5px rgba(255, 193, 7, 0.3); 
              border-top: 1px solid #ffca28; 
@@ -544,7 +564,7 @@
             margin: 0;
             opacity: 0.9;
         }
-        
+
         /* ضبط الحشوة السفلية لـ body لتتناسب مع حجم الفوتر الجديد في وضع الهاتف */
         body {
             padding-bottom: 50px; /* تم تصغيره من 70px */
@@ -576,7 +596,7 @@
         #scrollToTopBtn:hover {
             transform: scale(1.1);
         }
-        
+
         /* ==================================== */
         /* Media Queries للتحسين على جميع الشاشات */
         /* ==================================== */
@@ -608,7 +628,7 @@
             .site-subtitle {
                 font-size: 1.10rem; 
             }
-            
+
             /* 3. تكبير زر التبديل في وضع الآيباد والويب */
             #darkModeToggle {
                 padding: 9px; /* زيادة في الحشوة */
@@ -617,7 +637,7 @@
             #modeLabel {
                 font-size: 1rem; /* زيادة في حجم النص التوضيحي */
             }
-            
+
             /* 3. تكبير نص المصمم والرقم في وضع الآيباد والويب */
             .designer-credit, .designer-phone {
                 font-size: 1rem; /* زيادة في الحجم */
@@ -648,24 +668,24 @@
             .service-card p {
                 font-size: 1.1rem; 
             }
-            
+
             /* زر "الدخول للموقع" في وضع الويب/الآيباد (الحجم الطبيعي) */
             .service-card .direct-link-btn {
                 padding: 9px 15px;
                 font-size: 0.80rem; 
             }
-            
+
             /* الفوتر في وضع الويب/الآيباد (الحجم الطبيعي) */
             .footer {
                 padding: 5px 0; 
                 font-size: 0.8rem;
             }
-            
+
              /* ضبط الحشوة السفلية لـ body لتتناسب مع الفوتر في وضع الويب */
             body {
                 padding-bottom: 70px; 
             }
-            
+
              /* زر الصعود للأعلى */
             #scrollToTopBtn {
                 bottom: 80px; 
@@ -958,5 +978,3 @@
     </script>
 </body>
 </html>
-
-
